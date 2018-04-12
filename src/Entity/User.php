@@ -2,12 +2,17 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields="email", message="Email already taken")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -49,7 +54,7 @@ class User
     /**
      * @ORM\Column(type="string", length=30)
      */
-    private $role;
+    private $roles;
 
     public function getId()
     {
@@ -97,6 +102,16 @@ class User
         return $this->email;
     }
 
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -127,16 +142,31 @@ class User
 
         return $this;
     }
-
-    public function getRole()
+    
+    /**
+     * @return Collection
+     */
+    public function getRoles(): Collection
     {
-        return $this->role;
+        return $this->roles;
     }
 
-    public function setRole(string $role): self
+    public function __construct()
     {
-        $this->role = $role;
+        $this->roles = new ArrayCollection();
+    }
+
+    public function setRoles(string $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
+    }
+
+    public function getSalt()
+    {
+        // The bcrypt and argon2i algorithms don't require a separate salt.
+        // You *may* need a real salt if you choose a different encoder.
+        return null;
     }
 }
