@@ -16,7 +16,7 @@ class EventController extends Controller
      */
     
     // Function to display the events on a page
-    public function displayEvent(EventRepository $eventRepo)
+    public function (EventRepository $eventRepo)
     {
         $events = $eventRepo->findAll();
         return $this->render('event/event.html.twig', [
