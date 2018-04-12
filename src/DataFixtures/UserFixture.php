@@ -28,6 +28,7 @@ class UserFixture extends Fixture
             $user->setRole('ROLE_EXPO');
             $manager->persist($user);
         }
+        
         $admin = new User();
         $admin->setName('admin');
         $admin->setLastname('admin');
