@@ -32,6 +32,7 @@ class EventController extends Controller
     
      /**
      * @Route("/event/addEvent", name="addEvent")
+     * 
      */
     
     // Function to add and edit an event
@@ -70,4 +71,18 @@ class EventController extends Controller
             
     
     }
+    
+     /**
+     * @Route("/event/oneEvent", name="oneEvent")
+     */
+    
+    public function displayOneEvent (EventRepository $eventRepo)
+    {
+        $events = $eventRepo->find();
+        return $this->render('event/oneevent.html.twig', [
+            'events' => $events
+        ]);
+    }
+    
+    
 }
