@@ -33,6 +33,7 @@ class UserController extends Controller
             // 4) save the User!
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            $user->setRoles(implode('|', $user->getRoles()));
             $entityManager->flush();
 
             // 5) redirection

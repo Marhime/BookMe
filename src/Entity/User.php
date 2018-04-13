@@ -142,13 +142,13 @@ class User implements UserInterface
 
         return $this;
     }
-    
-    /**
-     * @return Collection
-     */
-    public function getRoles(): Collection
+
+    public function getRoles()
     {
-        return $this->roles;
+        if(is_array($this->roles)){
+            return $this->roles;
+        }
+        return explode('|', $this->roles);
     }
 
     public function __construct()
@@ -156,7 +156,7 @@ class User implements UserInterface
         $this->roles = new ArrayCollection();
     }
 
-    public function setRoles(string $roles): self
+    public function setRoles($roles): self
     {
         $this->roles = $roles;
 

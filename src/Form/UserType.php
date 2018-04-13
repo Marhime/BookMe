@@ -38,17 +38,6 @@ class UserType extends AbstractType
                 )
             ))
 
-            ->get('roles')->addModelTransformer(new CallbackTransformer(
-                function($rolesAsString){
-                    // transform the string back to an array
-                    return explode(', ', $rolesAsString);
-                },
-                function($rolesAsArray){
-                    // transform the array to a string
-                    return implode(', ', $rolesAsArray);
-                }
-
-            ))
         ;
     }
 
