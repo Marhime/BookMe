@@ -36,10 +36,6 @@ class Product
      */
     private $price;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_product;
 
     /**
      * @ORM\Column(type="integer")
