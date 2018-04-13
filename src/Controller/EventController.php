@@ -2,9 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Event;
+use App\Form\EventType;
 use App\Repository\EventRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 // Event Controller
 
@@ -16,7 +22,7 @@ class EventController extends Controller
      */
     
     // Function to display the events on a page
-    public function (EventRepository $eventRepo)
+    public function displayEvent (EventRepository $eventRepo)
     {
         $events = $eventRepo->findAll();
         return $this->render('event/event.html.twig', [
@@ -24,34 +30,31 @@ class EventController extends Controller
         ]);
     }
     
-    public function addEditEvent(Request $request)
+    
+     /**
+     * @Route("/event/addEvent", name="event")
+     */
+    
+    // Function to add and edit an event
+    
+    public function addEvent(Request $request, ObjectManager $manager)
     {
         // 1-Créer un nouvel événement
         
         $event = new Event();
-        $event->setTask('Write a blog post');
-        $event->setDueDate(new \DateTime('tomorrow'));
-
-        $form = $this->createFormBuilder($event)
-            ->add('event', TextType::class)
-            ->add('dueDate', DateType::class)
-            ->add('name')
-            ->add('id_user')
-            ->add('place')
-            ->add('opening_date')
-            ->add('closing_date')
-            ->add('phone')
-            ->add('theme')
-            ->add('website')
-            ->add('save', SubmitType::class, array('label' => 'Create Task'))
-            ->getForm();
-
-        return $this->render('default/new.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        $event->setOpeningDate(new \DateTime('now'));
+        $event->setClosingDate(new \DateTime('tomorrow'));
         
         
+         
+        $form = $this->createForm(EventType::class, $event)
+            ->add('Add Event', SubmitType::class);
+            
+               
+        return $this->render('event/add_event.html.twig', ['form' => $form->createView()
+               ]);
     }
+  
             
     
 }
