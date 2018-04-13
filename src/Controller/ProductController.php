@@ -2,9 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 
 class ProductController extends Controller
 {
@@ -21,4 +27,37 @@ class ProductController extends Controller
             'products' => $productsList
         ]);
     }
+
+    /**
+     * @Route("/product/edit", name="edit_product")
+     */
+    //ajout d'un produit
+    public function editProduct(Request $request, ObjectManager $manager, Product $product = null)
+    {
+        //If not exist create a product
+        if($product === null){
+            $product = new Product();
+            $group = 'insertion';
+        }else{
+            $group = 'edition';
+        }
+
+        //Form creation
+        $formProduct = $this->createForm(ProductType::class, $product, ['validation_groups'=>$group])
+                ->add('Envoyer', SubmitType::class);
+
+        //validation of the form
+        $formProduct->handleRequest($request);
+
+        if($formProduct->isSubmitted() && $formProduct->isValid()){
+            //TODO event relation with id event emplementation
+            $manager->persist($product);
+            $manager->flush();
+            return $this->redirectToRoute('product');
+        }
+        return $this->render('product/edit_product.html.twig',
+            ['form' => $formProduct->createView(), ]);
+
+    }
+
 }
