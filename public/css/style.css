@@ -1,0 +1,19 @@
+.navbar-custom{
+    background: white;
+    height: 80px;
+}
+.business-header{
+    height:600px;
+}
+/**barre de recherche principale **/
+.recherche{
+    margin-top: 100px;
+    height: 8vh;
+}
+
+@media screen and (max-width: 750px)
+{
+    
+}
+ 
+ 

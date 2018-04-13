@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ form_start(formUser) }}
+    {{ form_widget(formUser) }}
+    {{ form_row(formUser.email) }}
+    {{ form_row(formUser.password.first) }}
+    {{ form_row(formUser.password.second) }}
+    {{ form_row(formUser.name) }}
+    {{ form_row(formUser.lastname) }}
+    {{ form_row(formUser.company) }}
+<button type="submit">Inscription!</button>
+{{ form_end(formUser) }}
+{% endblock %}
