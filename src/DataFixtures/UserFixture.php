@@ -25,7 +25,7 @@ class UserFixture extends Fixture
             $user->setPassword(password_hash('user'.$i, PASSWORD_DEFAULT));
             $user->setEmail($faker->email);
             $user->setPhone('118218');
-            $user->setRole('ROLE_EXPO');
+            $user->setRoles('ROLE_EXPO');
             $manager->persist($user);
         }
         
@@ -36,7 +36,7 @@ class UserFixture extends Fixture
         $admin->setPassword(password_hash('admin', PASSWORD_DEFAULT));
         $admin->setEmail('admin@email.com');
         $admin->setPhone('118218');
-        $admin->setRole('ROLE_EXPO');
+        $admin->setRoles('ROLE_EXPO');
         $manager->persist($admin);
 
 

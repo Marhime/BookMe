@@ -18,10 +18,9 @@ class EventController extends Controller
 {
     
     /**
-     * @Route("/event", name="event")
+     * @Route("/events", name="events")
      */
     
-    // Function to display the events on a page
     public function displayEvent (EventRepository $eventRepo)
     {
         $events = $eventRepo->findAll();
@@ -32,14 +31,14 @@ class EventController extends Controller
     
     
      /**
-     * @Route("/event/addEvent", name="event")
+     * @Route("/event/addEvent", name="addEvent")
      */
     
     // Function to add and edit an event
     
     public function addEvent(Request $request, ObjectManager $manager)
     {
-        // 1-Créer un nouvel événement
+        // 1-Create a new event
         
         $event = new Event();
         $event->setOpeningDate(new \DateTime('now'));
@@ -47,14 +46,28 @@ class EventController extends Controller
         
         
          
-        $form = $this->createForm(EventType::class, $event)
+        $formEvent = $this->createForm(EventType::class, $event)
             ->add('Add Event', SubmitType::class);
+        
+        
+        //2 - validation of the form
+        
+        $formEvent->handleRequest($request);
+        
+        if($formEvent->isSubmitted() && $formEvent->isValid())
+            {
+        
+            // 3 - Saving the entry in the db
+            $manager->persist($event);
+            $manager->flush();
+            return $this->redirectToRoute('event');
             
-               
-        return $this->render('event/add_event.html.twig', ['form' => $form->createView()
+            }
+    
+    return $this->render('event/add_event.html.twig', ['form' => $formEvent->createView()
                ]);
-    }
   
             
     
+    }
 }
