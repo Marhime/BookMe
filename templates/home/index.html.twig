@@ -2,7 +2,30 @@
 
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
+{%block header %}  
+        <header class="business-header">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <h1 class="display-3 text-center text-white mt-4">Réserver votre emplacement sur notre plateforme dédiée</h1>
+                 <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
+                    <div class="input-group recherche">
+                        <input class="form-control"
+                           placeholder="Que recherchez-vous?">
+                        <button type="submit" class="btn-dark w-25">Rechercher</button>
+                        <div class="input-group-addon"></div>
+                    </div>
+                 </form>
+             </div>
+           </div>
+        </div>
+      </header>
+ {%endblock%}
+    
 {% block body %}
+    
+   
+    
     <div class="row">
         <div class="col-sm-8">
           <h2 class="mt-4">What We Do</h2>
