@@ -20,7 +20,12 @@ yarn-error.log
 
 ###> symfony/web-server-bundle ###
 /.web-server-pid
-###< symfony/web-server-bundle ###
+###< symfony/web-server-bundle ### 
 
 .idea
 /nbproject/private/
+=======
+/nbproject/private/
+nbproject/project.properties
+nbproject/project.xml
+
