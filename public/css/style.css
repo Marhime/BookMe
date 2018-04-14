@@ -1,19 +1,14 @@
 .navbar-custom{
     background: white;
-    height: 80px;
+    min-height:80px;
 }
 .business-header{
     height:600px;
+    background-color: captiontext;
 }
 /**barre de recherche principale **/
 .recherche{
-    margin-top: 100px;
+    margin-top: 120px;
     height: 8vh;
+    padding:2px;
 }
-
-@media screen and (max-width: 750px)
-{
-    
-}
- 
- 
