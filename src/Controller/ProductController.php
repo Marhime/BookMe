@@ -28,6 +28,26 @@ class ProductController extends Controller
         ]);
     }
 
+
+    /**
+     * @Route("/product/{id}", name="product_show")
+     */
+    public function display($id)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+        return $this->render('product/product_inc.html.twig',
+            ['product' => $product]);
+
+    }
+
     /**
      * @Route("/product/edit", name="edit_product")
      */

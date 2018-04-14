@@ -1,14 +1,48 @@
+body {
+    padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+.business-header {
+    height: 50vh;
+    min-height: 300px;
+    background: url('../img/festival_1.jpg') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.card {
+    height: 100%;
+}
+
 .navbar-custom{
     background: white;
     min-height:80px;
 }
 .business-header{
+    margin-top: 23px;
     height:600px;
     background-color: captiontext;
 }
+.container-custom {
+    margin-top: 80px !important;
+}
+
+.home-title {
+    text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    margin-top: 160px;
+}
 /**barre de recherche principale **/
 .recherche{
-    margin-top: 120px;
+    margin-top: 20px;
     height: 8vh;
     padding:2px;
 }

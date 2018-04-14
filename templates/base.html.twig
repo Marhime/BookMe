@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-   <title>{% block title %}Book My Festival{% endblock %}</title>
+   <title>Book My Festival - {% block title %}{% endblock %}</title>
     
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -27,37 +27,34 @@
    
     <nav class="navbar navbar-expand-lg border-bottom navbar-custom navbar-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">BookMyFestival</a>
+        <a class="navbar-brand" href="{{ path('home') }}">BookMyFestival</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-       
             <li class="nav-item">
-              <a class="nav-link" href="#">Ajouter votre festival</a>
+                <a class="nav-link" href="#">Ajouter votre festival</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Connexion</a>
+                <a class="nav-link" href="{{ path('register') }}">Inscription</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Inscription</a>
+                <a class="nav-link" href="{{ path('login') }}">Connexion</a>
             </li>
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Mon Compte
-               </a>
-               <div class="dropdown-menu mt-3" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="#">Modifier le profil</a>
-                 <div class="dropdown-divider"></div>
-                 <a class="dropdown-item" href="#">Déconnexion</a>
-               </div>
-            </li> 
+              {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Mon Compte
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <h6 class="dropdown-header">{{ app.user.username }}</h6>
+                      <a class="dropdown-item" href="#">Modifier le profil</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+                  </div>
+              </li>
+              {% endif %}
           </ul>
         </div>
       </div>
@@ -68,7 +65,7 @@
     
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container container-custom">
  {% block body %}{%endblock %}
     </div>
     <!-- /.container -->
