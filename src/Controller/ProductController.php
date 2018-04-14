@@ -43,7 +43,7 @@ class ProductController extends Controller
                 'No product found for id '.$id
             );
         }
-        return $this->render('product/display_product.html.twig',
+        return $this->render('product/product_inc.html.twig',
             ['product' => $product]);
 
     }

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+                <div class="card-body">
+                    <h4>{{ orga.company }}</h4>
+                    <p class="card-title">{{ orga.name }} {{ orga.lastname }}</p>
+                    <p class="card-text">Emplacement fiche organisateur</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            {{ render(controller(
+                'App\\Controller\\EventController::displayEvent'
+            )) }}
+        </div>
+    </div>
+{% endblock %}

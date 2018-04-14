@@ -16,15 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EventController extends Controller
 {
-    
+
     /**
      * @Route("/events", name="events")
+     *
      */
-    
     public function displayEvent (EventRepository $eventRepo)
     {
         $events = $eventRepo->findAll();
-        return $this->render('event/event.html.twig', [
+        return $this->render('event/events_list_inc.html.twig', [
             'events' => $events
         ]);
     }
