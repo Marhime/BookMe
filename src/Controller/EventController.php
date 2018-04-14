@@ -72,16 +72,19 @@ class EventController extends Controller
     
     }
     
-     /**
-     * @Route("/event/oneEvent", name="oneEvent")
-     */
     
-    public function displayOneEvent (EventRepository $eventRepo)
-    {
-        $events = $eventRepo->find();
-        return $this->render('event/oneevent.html.twig', [
-            'events' => $events
-        ]);
+   /**
+    * 
+    * @Route("/event/{id}", name="oneEvent")
+    */
+    
+   public function displayOneEvent (EventRepository $eventRepo)
+   {
+       
+       $events = $eventRepo->findById();
+      return $this->render('event/oneevent.html.twig', [
+           'events' => $events
+      ]);
     }
     
     
