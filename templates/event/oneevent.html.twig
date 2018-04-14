@@ -3,7 +3,7 @@
 {% block title %} Votre Salon {% endblock %}
 
 {% block body %}
-{% for event in events %}
+{% for event in event %}
     <div class="row">
         <div class="col">
             <img>
@@ -13,13 +13,7 @@
     <div class="row">
         <div class="col">
             <ul>
-                <li>{{ event.name }}</li>
-            
-                <li>{{ event.place }}</li>
-                
-                <li>{{ event.phone }}</li>
-                <li>{{ event.theme }}</li>
-                <li>{{ event.website }}</li>
+                <li>{{ event.name }} {{ event.place }}</li>
             </ul>
         </div>
     </div>
