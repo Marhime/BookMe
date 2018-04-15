@@ -22,9 +22,9 @@ class SearchController extends Controller
      */
     public function search()
     {
-        $em = $this->getDoctrine()->getManagerForClass(Event::class);
-
-        $posts = $this->indexManager->search('query', Event::class, $em);
+//        $em = $this->getDoctrine()->getManagerForClass(Event::class);
+//
+//        $posts = $this->indexManager->search('query', Event::class, $em);
 
         return $this->render('search/index.html.twig', [
             'controller_name' => 'SearchController',
