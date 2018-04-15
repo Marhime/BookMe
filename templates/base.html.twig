@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-   <title>Book My Festival - {% block title %}{% endblock %}</title>
+   <title>{% block title %}{% endblock %}- Book My Festival</title>
     
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -28,22 +28,22 @@
     <nav class="navbar navbar-expand-lg border-bottom navbar-custom navbar-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="{{ path('home') }}">BookMyFestival</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item pr-4">
                 <a class="nav-link" href="#">Ajouter votre festival</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item pr-4">
                 <a class="nav-link" href="{{ path('register') }}">Inscription</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('login') }}">Connexion</a>
             </li>
               {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown pl-4">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mon Compte
                   </a>
@@ -61,7 +61,7 @@
     </nav>
 
     <!-- Header with Background Image -->
-  {%block header %} {%endblock%}
+  {% block header %} {%endblock%}
     
 
     <!-- Page Content -->
@@ -71,7 +71,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 mt-5 bg-dark">
       <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
       </div>
@@ -81,6 +81,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    {% block JavaScript %}{% endblock %}
 
   </body>
 
