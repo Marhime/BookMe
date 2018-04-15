@@ -24,7 +24,7 @@
   <body>
 
     <!-- Navigation -->
-   
+   <!-- Button trigger modal -->
     <nav class="navbar navbar-expand-lg border-bottom navbar-custom navbar-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="{{ path('home') }}">BookMyFestival</a>
@@ -37,10 +37,10 @@
                 <a class="nav-link" href="#">Ajouter votre festival</a>
             </li>
             <li class="nav-item pr-4">
-                <a class="nav-link" href="{{ path('register') }}">Inscription</a>
+                <a class="nav-link" data-toggle="modal" href="" data-target="#RegisterModal">Inscription</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                <a class="nav-link" data-toggle="modal" href="" data-target="#LoginModal">Connexion</a>
             </li>
               {% if is_granted('IS_AUTHENTICATED_FULLY') %}
               <li class="nav-item dropdown pl-4">
@@ -63,8 +63,12 @@
     <!-- Header with Background Image -->
   {% block header %} {%endblock%}
     
-
-    <!-- Page Content -->
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+    {% block modalLogin %}{% endblock %}
+</div>
+<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalLabel" aria-hidden="true">
+    {% block modalRegister %}{% endblock %}
+</div>
     <div class="container container-custom">
  {% block body %}{%endblock %}
     </div>
@@ -82,6 +86,10 @@
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <script>
+        $( "#LoginModal" ).load( "{{ path('login') }}" );
+        $( "#RegisterModal" ).load( "{{ path('register') }}" );
+    </script>
     {% block JavaScript %}{% endblock %}
 
   </body>

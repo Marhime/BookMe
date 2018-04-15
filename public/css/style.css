@@ -142,3 +142,11 @@ p {
 .nav-link:hover {
     color: #484848;
 }
+
+.modal-dialog {
+    position: relative !important;
+    margin: auto !important;
+    top: 50%;
+    transform: translate(0, -50%) !important;
+    overflow: hidden;
+}
