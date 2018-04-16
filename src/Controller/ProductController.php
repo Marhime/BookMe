@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
         $productsList = $productRepository->findAll();
 
-        return $this->render('product/index.html.twig', [
+        return $this->render('product/display_products_inc.html.twig', [
             'controller_name' => 'ProductController',
             'products' => $productsList
         ]);
