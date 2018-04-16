@@ -74,8 +74,8 @@ class ProductController extends Controller
         $formProduct->handleRequest($request);
 
         if($formProduct->isSubmitted() && $formProduct->isValid()){
-            $quantity = $product->setQuantity($request->get('quantity'));
-
+            $product->setQuantity($request->get('quantity'));
+            $quantity= $product->getQuantity();
 
             for ($i = 1; $i < $quantity; $i++ ) {
                 //TODO event relation with id event emplementation

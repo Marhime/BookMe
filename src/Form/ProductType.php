@@ -15,7 +15,7 @@ class ProductType extends AbstractType
         $builder
             ->add('type')
             ->add('description')
-            ->add('quantity', IntegerType::class)
+            ->add('quantity')
             ->add('price')
             ->add('id_event')
         ;
