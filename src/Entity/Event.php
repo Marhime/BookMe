@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use App\Repository\EventRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ORM\Entity(repositoryClass="EventRepository")
  */
 class Event
 {
@@ -14,6 +16,7 @@ class Event
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
+    
     private $id;
 
     /**
@@ -22,9 +25,11 @@ class Event
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
+     * @var type User owner
+     * 
      */
-    private $id_user;
+    private $owner;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -55,6 +60,7 @@ class Event
      * @ORM\Column(type="string", length=255)
      */
     private $website;
+    
 
     public function getId()
     {
@@ -73,14 +79,14 @@ class Event
         return $this;
     }
 
-    public function getIdUser()
+    public function getOwner()
     {
-        return $this->id_user;
+        return $this->owner;
     }
 
-    public function setIdUser(int $id_user): self
+    public function setOwner(User $owner)
     {
-        $this->id_user = $id_user;
+        $this->owner = $owner;
 
         return $this;
     }
@@ -97,24 +103,24 @@ class Event
         return $this;
     }
 
-    public function getOpeningDate(): \DateTimeInterface
+    public function getOpeningDate(): DateTimeInterface
     {
         return $this->opening_date;
     }
 
-    public function setOpeningDate(\DateTimeInterface $opening_date): self
+    public function setOpeningDate(DateTimeInterface $opening_date): self
     {
         $this->opening_date = $opening_date;
 
         return $this;
     }
 
-    public function getClosingDate(): \DateTimeInterface
+    public function getClosingDate(): DateTimeInterface
     {
         return $this->closing_date;
     }
 
-    public function setClosingDate(\DateTimeInterface $closing_date): self
+    public function setClosingDate(DateTimeInterface $closing_date): self
     {
         $this->closing_date = $closing_date;
 
