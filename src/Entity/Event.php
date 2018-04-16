@@ -33,7 +33,7 @@ class Event
 
     /**
      *
-     * ORM\Column(type="text") 
+     * @ORM\Column(type="text") 
      */
      private $description;
     
@@ -171,10 +171,10 @@ class Event
     
     public function getDescription()
     {
-       return $this -> description;
+       return $this->description;
     }
     
-    public function setDescription($description)
+    public function setDescription(string $description):self
     {
         $this->description = $description;
         
