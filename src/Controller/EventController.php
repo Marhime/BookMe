@@ -61,7 +61,7 @@ class EventController extends Controller
             // 3 - Saving the entry in the db
             $manager->persist($event);
             $manager->flush();
-            return $this->redirectToRoute('event');
+            return $this->redirectToRoute('oneEvent');
             
             }
     
