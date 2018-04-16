@@ -5,6 +5,7 @@
     <!-- Always use `2.x` versions in production rather than `2` to mitigate any side effects on your website,
     Find the latest version on InstantSearch.js website: https://community.algolia.com/instantsearch.js/v2/guides/usage.html -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/style-search.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
 </head>
 <body>
 <header>
@@ -14,27 +15,26 @@
     </div>
 </header>
 <main>
-    <div id="hits"></div>
+    <div id="hits">
+        <script type="text/html" id="hit-template">
+            (<div class="hit">
+                <div class="hit-image">
+                    <img src="" alt="{{name}}">
+                </div>
+                <div class="hit-content">
+                    <h3 class="hit-price">1550</h3>
+                    <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
+                    <p class="hit-description">{{{_highlightResult.theme.value}}}</p>
+                </div>
+            </div>)
+        </script>
+    </div>
     <div id="pagination"></div>
 </main>
 
 
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+
 <script src="{{asset('js/app.js')}}"></script>
-    {% autoescape %}
-    <script type="text/html" id="hit-template">
-        (<div class="hit">
-            <div class="hit-image">
-                <img src="" alt="{{name}}">
-            </div>
-            <div class="hit-content">
-                <h3 class="hit-price">1550</h3>
-                <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
-                <p class="hit-description">{{{_highlightResult.theme.value}}}</p>
-            </div>
-        </div>)
-    </script>
-    {% endautoescape %}
 
 </body>
 
