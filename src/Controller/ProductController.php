@@ -64,6 +64,7 @@ class ProductController extends Controller
 
         //Form creation
         $formProduct = $this->createForm(ProductType::class, $product, ['validation_groups'=>$group])
+                ->add('quantity', TextType::class)
                 ->add('Envoyer', SubmitType::class);
 
         //validation of the form
