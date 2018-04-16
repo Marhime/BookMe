@@ -17,16 +17,18 @@
 <main>
     <div id="hits">
         <script type="text/html" id="hit-template">
-            (<div class="hit">
+            {% verbatim %}
+            <div class="hit">
                 <div class="hit-image">
-                    <img src="" alt="{{name}}">
+                    <img src="" alt="">
                 </div>
                 <div class="hit-content">
                     <h3 class="hit-price">1550</h3>
                     <h2 class="hit-name">{{{_highlightResult.name.value}}}</h2>
                     <p class="hit-description">{{{_highlightResult.theme.value}}}</p>
                 </div>
-            </div>)
+            </div>
+            {% endverbatim %}
         </script>
     </div>
     <div id="pagination"></div>

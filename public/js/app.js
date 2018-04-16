@@ -3,9 +3,9 @@
 
 var search = instantsearch({
     // Replace with your own values
-    appId: 'latency',
+    appId: '6URACH1V5V',
     apiKey: '5a4da4475cf2e131f7c0d5821e06c807', // search only API key, no ADMIN key
-    indexName: 'instant_search',
+    indexName: 'dev_events',
     urlSync: true,
     searchParameters: {
         hitsPerPage: 10
