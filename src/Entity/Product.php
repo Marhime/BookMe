@@ -37,6 +37,9 @@ class Product
      */
     private $id_event;
 
+
+    private $quantity;
+
     public function getId()
     {
         return $this->id;
@@ -78,8 +81,6 @@ class Product
         return $this;
     }
 
- 
-
     public function getIdEvent()
     {
         return $this->id_event;
@@ -91,4 +92,19 @@ class Product
 
         return $this;
     }
+
+
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
+    }
+
+
+
 }
