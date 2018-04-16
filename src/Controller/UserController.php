@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use DateTime;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -15,6 +18,7 @@ class UserController extends Controller
 
     /**
      * @Route("/register", name="register")
+     * @Route("/dashboard/edit/{id}", name="edit_user")
      */
     public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -43,6 +47,34 @@ class UserController extends Controller
         return $this->render('user/register.html.twig', [
             'formUser' => $formUser->createView()
         ]);
+    }
+    
+    /**
+     * 
+     * @Route("/dashboard/edit/{id}", name="edit_user")
+     */
+    public function editUser(Request $request, ObjectManager $manager, User $user = null)
+    {
+        
+        $form = $this->createForm(UserType::class, $user)
+            ->add('Envoyer',SubmitType::class);
+        
+        $form->handleRequest($request); 
+        
+        if($form->isSubmitted() && $form->isValid()){
+        // save user edit
+            $user->setRegisterDate(newDateTime('now'));
+            $user->setRoles('ROLE_USER');
+            $manager->persist($user);
+            $manager->flush();
+            return $this->redirectToRoute('dash_orga');
+            
+        }
+        
+       
+        return $this->render('orga_dashboard/edit_dash.html.twig',[
+                'form' => $form->createView(),
+                ]);
     }
 
     /**

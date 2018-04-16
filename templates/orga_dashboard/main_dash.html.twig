@@ -2,20 +2,35 @@
 
 {% block body %}
     <div class="row text-center">
-        <div class="col-md-3 mb-4">
+        
+        <div class="col-md-5">
             <div class="card">
+                
                 <img class="card-img-top" src="" alt="">
                 <div class="card-body">
-                    <h4>{{ orga.company }}</h4>
+                    <h3><i class="far fa-address-card"></i> Mon Profil</h3>
                     <p class="card-title">{{ orga.name }} {{ orga.lastname }}</p>
-                    <p class="card-text">Emplacement fiche organisateur</p>
                 </div>
+                {% include 'orga_dashboard/edit_dash.html.twig' with {'id' : orga.id } %}
+                <div class="card-body">
+                    
+                    <p>Inscrit depuis le : </p>
+                    <br>
+                    <p><i class="far fa-building"></i> : {{ orga.company }} </p>
+                    <br>
+                    <p><i class="far fa-envelope"></i> : {{ orga.email }} </p>
+                    <br>
+                    <p><i class="fas fa-phone-square"></i> : {{ orga.phone }} </p>
+                </div>
+                    <button type="button" class="btn btn-info" href="{{ path('edit_user', {'id' : orga.id }) }}"> 
+                        Modifier Mon Profil <i class="far fa-edit"></i></button>
             </div>
         </div>
-        <div class="col-md-9">
-            {{ render(controller(
+                
+        <!-- <div class="col-md-9">
+         {{ render(controller(
                 'App\\Controller\\EventController::displayEvent'
             )) }}
         </div>
-    </div>
+    </div> !-->
 {% endblock %}

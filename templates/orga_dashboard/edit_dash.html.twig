@@ -1,0 +1,26 @@
+{% block editorga %}
+   
+  
+   
+  <form action="{{ path('edit_user', {'id' : app.user.id }) }}" method="post" class="col-lg-5 mx-auto pt-4">
+    <div class="form-group">
+        <label class="mb-0" for="lastname"><small>Nom</small></label>
+        <input type="lastname" class="form-control" name="_lastname" id="lastname" placeholder="Nom">
+    </div>
+    <div class="form-group">
+        <label class="mb-0" for="name"><small>Prénom</small></label>
+        <input type="name" class="form-control" name="_name" id="name" placeholder="Prénom">
+    </div>
+    <div class="form-group">
+        <label class="mb-0" for="company"><small>Société</small></label>
+        <input type="company" class="form-control" name="_company" id="company" placeholder="Société">
+    </div>
+    <div class="form-group">
+        <label class="mb-0" for="username"><small>Adresse email</small></label>
+        <input type="email" class="form-control" id="username" name="_username" placeholder="exemple@mail.fr">
+    </div>
+   
+</form>
+ 
+
+{% endblock %}
