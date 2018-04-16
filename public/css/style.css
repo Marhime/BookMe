@@ -153,3 +153,25 @@ p {
     color: #484848;
 }
 
+pre-footer .container{
+    border-top: 1px solid lightgrey;
+}
+
+pre-footer li{
+     list-style: none;
+}
+.pre-link{
+    color:grey;
+    text-decoration:none;
+}
+.pre-link:hover{
+    text-decoration: none;
+}
+
+footer .bg-custom{
+    background: white;
+}
+
+footer .container{
+    border-top: 1px solid lightgrey;
+}
