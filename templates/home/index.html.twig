@@ -29,8 +29,9 @@
 {% block body %}
    
     <h2 class="pt-3"> Les festivals en France </h2>
-     
-      <div class="row" id="hits">
+    
+      <div id="hits">
+           <div class="row"> 
           <script type="text/html" id="hit-template">
               {% verbatim %}
                 <div class="col-sm-3 my-3" id="hit">
@@ -46,8 +47,10 @@
                   </div>
                {% endverbatim %}
           </script>
+          </div>
         </div>
-        <div class="row" id="pagination">
+        
+          <div class="row" id="pagination">
 
         </div>
 

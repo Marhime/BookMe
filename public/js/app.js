@@ -17,8 +17,9 @@ var search = instantsearch({
 search.addWidget(
     instantsearch.widgets.searchBox({
         container: '#search-input',
-        magnifier: false,
- 
+        magnifier: false,    /** supprime l'icone recherche **/
+        wrapInput:false      /** bouton submit **/
+        
     })
 );
 
@@ -28,8 +29,9 @@ search.addWidget(
         container: '#hits',
         templates: {
             item: document.getElementById('hit-template').innerHTML,
-            empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
-        }
+            empty: "We didn't find any results for the search <em>\"{{query}}\"</em>",
+        } 
+        
     })
 );
 

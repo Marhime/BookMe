@@ -85,6 +85,7 @@
     padding: 10px 0;
     border-top: 2px solid #eee;
 }
+
 .hit {
     font-size: 0;
     padding: 15px 0;
@@ -105,16 +106,12 @@
 .hit-content {
     font-size: 13px;
     font-weight: 300;
-    display: inline-block;
-    width: 81%;
+    display: inline;
+    width:auto;
     margin-left: 3%;
     vertical-align: top;
 }
-.hit-stars {
-    font-size: 17px;
-    margin: 4px 0;
-    color: #868686;
-}
+
 
 .hit-content .hit-price {
     float: right;
@@ -159,7 +156,7 @@
 
 /* PAGINATION */
 #pagination {
-    margin-top: 60px;
+    margin-top: 20px;
 }
 #pagination ul {
     font-size: 0;
@@ -167,13 +164,13 @@
     text-align: center;
 }
 #pagination li {
-    font-size: 14px;
+    font-size: 20px;
     display: inline;
 }
 #pagination a {
     padding: 8px 12px;
     text-decoration: none;
-    color: #000;
+    color: black;
     border: 1px solid #eee;
 }
 #pagination a:hover {
@@ -190,8 +187,8 @@
 }
 #pagination li.ais-pagination--item__active a {
     color: white;
-    border-color: #ed5565;
-    background: #ed5565;
+    border-color: black;
+    background: #000080;
 }
 #pagination li.ais-pagination--item__active a:hover {
     cursor: default;
@@ -314,7 +311,7 @@
     margin: 3px 0;
 }
 .ais-hierarchical-menu--link:before {
-    display: inline-block;
+/*    display: inline-block;*/
     font: normal normal normal 14px/1 FontAwesome;
     content: "\f105";
     padding: 0 5px 0 0;
@@ -330,7 +327,7 @@
 .ais-refinement-list--item__active .ais-refinement-list--label,
 .ais-menu--link:hover,
 .ais-menu--item__active .ais-menu--link,
-.ais-hierarchical-menu--list .facet-item.active:hover,
+.ais-hierarchical-menu--list .facet-#hit.active:hover,
 .ais-hierarchical-menu--list .facet-item.active {
     color: #ed5565;
 }
@@ -522,8 +519,8 @@ a.clear-all:hover {
 .ais-current-refined-values {
     position: relative;
 }
-
-/* FOOTER */
+/*
+ FOOTER 
 footer {
     font-size: 14px;
     margin-top: 200px;
@@ -537,4 +534,4 @@ footer a {
 footer a:hover {
     text-decoration: underline;
     color: #ed5565;
-}
+}*/
