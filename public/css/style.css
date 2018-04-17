@@ -16,6 +16,20 @@ body {
         display: none;
     }
 }
+
+.nav-link {
+    font-size: 16px;
+    color: #808080;
+    font-weight: normal !important;
+    text-overflow: ellipsis !important;
+    display:inline;
+}
+.nav-link:hover{
+    border-bottom: 2px solid;
+    transition: 0.1s ease;
+    color: #484848;
+}
+
 .business-header {
     min-height: 80vh;
     background: url('../img/festival_1.jpg') center center no-repeat scroll;
@@ -140,16 +154,26 @@ p {
     color: #808080 !important;
 }
 
-.nav-link {
-    font-size: 14px;
-    color: #808080;
-    font-weight: normal !important;
-    text-overflow: ellipsis !important;
-    display:inline;
-}
-.nav-link:hover{
-    border-bottom: 2px solid;
-    transition: 0.1s ease;
-    color: #484848;
+pre-footer .container{
+    border-top: 1px solid lightgrey;
 }
 
+pre-footer li{
+     list-style: none;
+}
+.pre-link{
+    color:grey;
+    text-decoration:none;
+}
+.pre-link:hover{
+    text-decoration: none;
+}
+
+footer .bg-custom{
+    background: white;
+}
+
+footer .container{
+    border-top: 1px solid lightgrey;
+    padding-top:20px;
+}
