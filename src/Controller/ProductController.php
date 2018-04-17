@@ -50,11 +50,14 @@ class ProductController extends Controller
 
     /**
      * @Route("/product/edit", name="edit_product")
+     * 
      */
-    //ajout d'un produit
+    
+    //add a product
+    
     public function editProduct(Request $request, ObjectManager $manager, Product $product = null)
     {
-        //If not exist create a product
+        //If doesn't exist create a product
         if($product === null){
             $product = new Product();
             $group = 'insertion';

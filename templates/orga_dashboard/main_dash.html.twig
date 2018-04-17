@@ -25,11 +25,21 @@
                             Modifier Mon Profil <i class="far fa-edit"></i></a>
             </div>
         </div>
-                
-        <div class="col-md-9">
+                            
+        <div class="col-md-6">
+            <div class="card">
+                <a role="button" class="btn btn-success active" value="submit" aria-pressed="true" href="{{ path('addEvent', {'id' : orga.id }) }}"> 
+                                Ajouter un Evenement <i class="far fa-edit"></i></a>
+                <a role="button" class="btn btn-info active" value="submit" aria-pressed="true" href="{{ path('edit_event', {'id' : orga.id }) }}"> 
+                                Modifier un Evenement <i class="far fa-edit"></i></a>
+                <a role="button" class="btn btn-danger active" value="submit" aria-pressed="true" href="{{ path('delete_event', {'id' : orga.id }) }}"> 
+                            Supprimer un Evenement <i class="far fa-edit"></i></a>            
+            </div>
+        </div>
+        <!-- <div class="col-md-9">
          {{ render(controller(
                 'App\\Controller\\EventController::displayEvent'
             )) }} 
-        </div>
+        </div> --!>
     </div> 
 {% endblock %}

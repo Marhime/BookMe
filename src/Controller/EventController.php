@@ -72,6 +72,44 @@ class EventController extends Controller
     
     }
     
+    /**
+     * 
+     * @Route("/dashboard/edit/{id}", name="edit_event")
+     */
+    public function editEvent(Request $request, ObjectManager $manager)
+    {
+        
+        $form = $this->createForm(EventType::class)
+            ->add('Envoyer',SubmitType::class);
+        
+        $form->handleRequest($request); 
+        
+        if($form->isSubmitted() && $form->isValid()){
+        // save user edit
+            
+            $user->setRoles('ROLE_USER');
+            $manager->persist($user);
+            $manager->flush();
+            return $this->redirectToRoute('dash_orga');
+            
+        }
+        
+       
+        return $this->render('orga_dashboard/event_dash.html.twig',[
+                'form' => $form->createView(),
+                ]);
+    }
+    
+    /**
+     * @Route("/dashboard/delete/{id}", name="delete_event")
+     */
+    public function deleteEvent(Event $event, ObjectManager $manager)
+    {
+        $manager->remove($event);
+        $manager->flush();
+        $this->redirectToRoute('dash_orga');
+        return $this->redirectToRoute('dash_orga');
+    }
     
    /**
     * 
