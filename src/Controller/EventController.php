@@ -21,7 +21,7 @@ class EventController extends Controller
      * @Route("/events", name="events")
      *
      */
-    public function displayEvent (EventRepository $eventRepo)
+    public function displayEvent(EventRepository $eventRepo)
     {
         $events = $eventRepo->findAll();
         return $this->render('event/events_list_inc.html.twig', [
@@ -31,24 +31,25 @@ class EventController extends Controller
     
     
      /**
-     * @Route("/event/addEvent", name="addEvent")
-     * 
+     * @Route("/dashboard/event/add", name="addEvent")
+     * @Route("/dashboard/event/edit/{id}", name="editEvent")
      */
     
     // Function to add and edit an event
     
-    public function addEvent(Request $request, ObjectManager $manager)
+    public function addEvent(Request $request, ObjectManager $manager , Event $event = null)
     {
-        // 1-Create a new event
+        // 1-Create a new event if no event exist
         
-        $event = new Event();
-        $event->setOpeningDate(new \DateTime('now'));
-        $event->setClosingDate(new \DateTime('tomorrow'));
-        
-        
+        // set time only when it's new
+        if ($event === null) {
+            $event = new Event();
+            $event->setOpeningDate(new \DateTime('now'));
+            $event->setClosingDate(new \DateTime('tomorrow'));
+        }
          
         $formEvent = $this->createForm(EventType::class, $event)
-            ->add('Add Event', SubmitType::class);
+            ->add('Envoyer', SubmitType::class);
         
         
         //2 - validation of the form
@@ -116,6 +117,11 @@ class EventController extends Controller
     * @Route("/event/{id}", name="oneEvent")
     */
     
+
+   public function displayOneEvent(EventRepository $eventRepo, ObjectManager $manager)
+   {
+      $repository = $this->getDoctrine()->getRepository(Event::class);
+
     // Afficher un événement
     
    public function display($id)
