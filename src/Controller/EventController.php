@@ -21,7 +21,7 @@ class EventController extends Controller
      * @Route("/events", name="events")
      *
      */
-    public function displayEvent (EventRepository $eventRepo)
+    public function displayEvent(EventRepository $eventRepo)
     {
         $events = $eventRepo->findAll();
         return $this->render('event/events_list_inc.html.twig', [
@@ -31,24 +31,25 @@ class EventController extends Controller
     
     
      /**
-     * @Route("/event/addEvent", name="addEvent")
-     * 
+     * @Route("/dashboard/event/add", name="addEvent")
+     * @Route("/dashboard/event/edit/{id}", name="editEvent")
      */
     
     // Function to add and edit an event
     
-    public function addEvent(Request $request, ObjectManager $manager)
+    public function addEvent(Request $request, ObjectManager $manager , Event $event = null)
     {
-        // 1-Create a new event
+        // 1-Create a new event if no event exist
         
-        $event = new Event();
-        $event->setOpeningDate(new \DateTime('now'));
-        $event->setClosingDate(new \DateTime('tomorrow'));
-        
-        
+        // set time only when it's new
+        if ($event === null) {
+            $event = new Event();
+            $event->setOpeningDate(new \DateTime('now'));
+            $event->setClosingDate(new \DateTime('tomorrow'));
+        }
          
         $formEvent = $this->createForm(EventType::class, $event)
-            ->add('Add Event', SubmitType::class);
+            ->add('Envoyer', SubmitType::class);
         
         
         //2 - validation of the form
@@ -61,7 +62,7 @@ class EventController extends Controller
             // 3 - Saving the entry in the db
             $manager->persist($event);
             $manager->flush();
-            return $this->redirectToRoute('event');
+            return $this->redirectToRoute('oneEvent');
             
             }
     
@@ -72,6 +73,44 @@ class EventController extends Controller
     
     }
     
+    /**
+     * 
+     * @Route("/dashboard/edit/{id}", name="edit_event")
+     */
+    public function editEvent(Request $request, ObjectManager $manager)
+    {
+        
+        $form = $this->createForm(EventType::class)
+            ->add('Envoyer',SubmitType::class);
+        
+        $form->handleRequest($request); 
+        
+        if($form->isSubmitted() && $form->isValid()){
+        // save user edit
+            
+            $user->setRoles('ROLE_USER');
+            $manager->persist($user);
+            $manager->flush();
+            return $this->redirectToRoute('dash_orga');
+            
+        }
+        
+       
+        return $this->render('orga_dashboard/event_dash.html.twig',[
+                'form' => $form->createView(),
+                ]);
+    }
+    
+    /**
+     * @Route("/dashboard/delete/{id}", name="delete_event")
+     */
+    public function deleteEvent(Event $event, ObjectManager $manager)
+    {
+        $manager->remove($event);
+        $manager->flush();
+        $this->redirectToRoute('dash_orga');
+        return $this->redirectToRoute('dash_orga');
+    }
     
    /**
     * 
@@ -96,5 +135,25 @@ class EventController extends Controller
 
     }
     
+    /**
+     * @Route("dashboard/listEvent", name="eventListOwner")
+     */
+
+     // afficher les événement de l'orga
+
+     public function displayEventByOwner($owner)
+     {
+        $event = $this->getDoctrine()
+        ->getRepository(Event::class)
+        ->findBy($owner);
+
+        if (!$eventOwner) {
+            throw $this->createNotFoundException(
+                'No event found for id '.$id
+            );
+        }
+        return $this->render('event/event_list_owner_inc.html.twig',
+            ['eventOwner' => $eventOwner]);
+     }
     
 }

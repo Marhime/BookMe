@@ -52,13 +52,36 @@ class ProductController extends Controller
     }
 
     /**
+     * @Route("/event/product", name="event_product_show")
+     */
+    public function displayEventProduct($id_event)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->findBy($id_event);
+
+        if (!$productEvent) {
+            throw $this->createNotFoundException(
+                'No product found for id_event '.$id_event
+            );
+        }
+        return $this->render('product/event_product_inc.html.twig',
+            ['productEvent' => $productEvent]);
+
+    }
+
+
+    /**
      * @Route("/product/edit", name="edit_product")
      * @Route("/add", name="add_product")
+     * 
      */
-    //ajout d'un produit
+    
+    //add a product
+    
     public function editProduct(Request $request, ObjectManager $manager, Product $product = null)
     {
-        //If not exist create a product
+        //If doesn't exist create a product
         if($product === null){
             $product = new Product();
             $group = 'insertion';
