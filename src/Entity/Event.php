@@ -32,6 +32,12 @@ class Event
     private $owner;
 
     /**
+     *
+     * @ORM\Column(type="text") 
+     */
+     private $description;
+    
+    /**
      * @ORM\Column(type="string", length=100)
      */
     private $place;
@@ -160,6 +166,18 @@ class Event
     {
         $this->website = $website;
 
+        return $this;
+    }
+    
+    public function getDescription()
+    {
+       return $this->description;
+    }
+    
+    public function setDescription(string $description):self
+    {
+        $this->description = $description;
+        
         return $this;
     }
 }
