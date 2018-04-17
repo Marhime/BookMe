@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\EditUserType;
 use App\Form\UserType;
-use DateTime;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -56,14 +56,14 @@ class UserController extends Controller
     public function editUser(Request $request, ObjectManager $manager, User $user = null)
     {
         
-        $form = $this->createForm(UserType::class, $user)
+        $form = $this->createForm(EditUserType::class, $user)
             ->add('Envoyer',SubmitType::class);
         
         $form->handleRequest($request); 
         
         if($form->isSubmitted() && $form->isValid()){
         // save user edit
-            $user->setRegisterDate(newDateTime('now'));
+            
             $user->setRoles('ROLE_USER');
             $manager->persist($user);
             $manager->flush();
