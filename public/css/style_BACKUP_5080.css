@@ -158,6 +158,7 @@ pre-footer .container{
     border-top: 1px solid lightgrey;
 }
 
+<<<<<<< HEAD
 .nav-link:hover {
     color: #484848;
 }
@@ -168,9 +169,8 @@ pre-footer .container{
     top: 50%;
     transform: translate(0, -50%) !important;
     overflow: hidden;
-}
-
-.pre-footer li{
+=======
+pre-footer li{
      list-style: none;
 }
 .pre-link{
@@ -188,4 +188,5 @@ footer .bg-custom{
 footer .container{
     border-top: 1px solid lightgrey;
     padding-top:20px;
+>>>>>>> 3272ea66b5d052721bd5d8f2a7d8b80a430f5c22
 }

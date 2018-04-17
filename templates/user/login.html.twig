@@ -3,6 +3,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
+            <h1 class="modal-title" id="LoginModalLabel">Connexion</h1>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -13,9 +14,7 @@
                     <h2><small>{{ app.user.username }}</small> Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h2>
                     {% else %}
                     {% if last_username %}
-                    <h5 class="modal-title" id="LoginModalLabel">Ravi de vous revoir</h1>
-                    {% else %}
-                    <h5 class="modal-title" id="LoginModalLabel">Se connecter</h1>
+                    <h5 class="modal-title" id="LoginModalLabel">Ravi de vous revoir</h5>
                     {% endif %}
                     <form action="{{ path('login') }}" method="post" class="col-lg-8 mx-auto pt-4">
                         {% if error %}

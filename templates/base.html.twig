@@ -12,11 +12,16 @@
     
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+      <!-- Custom styles for this template -->
+      <link href="{{asset('css/business-frontpage.css')}}" rel="stylesheet">
+      <link href="{{asset('css/style.css')}}" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="{{asset('css/style-search.css')}}">
+      <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+
     
-    <!-- Custom styles for this template -->
-    <link href="{{asset('css/business-frontpage.css')}}" rel="stylesheet">
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
     {% block stylesheets %}{% endblock %}
 
   </head>
@@ -34,7 +39,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item pr-4">
-                <a class="nav-link" href="#">Ajouter votre festival</a>
+                <a class="nav-link" href="#">Ajoutez votre festival</a>
             </li>
             <li class="nav-item pr-4">
                 <a class="nav-link" data-toggle="modal" href="" data-target="#RegisterModal">Inscription</a>
@@ -70,14 +75,48 @@
     {% block modalRegister %}{% endblock %}
 </div>
     <div class="container container-custom">
+
+    <!-- Page Content -->
+    <div class="container container-custom my-5">
  {% block body %}{%endblock %}
     </div>
     <!-- /.container -->
 
+    
+      <pre-footer class="mt-3 bg-custom">
+        <div class="container">
+            <div class="row">
+              <div class="pt-3 col-sm-4 col-xs-6">
+                  <ul>
+                      <li>BookMyFestival</li>
+                        <li> <a class="pre-link" href="{#{{ path('event.list') }}#}">Les festivals</a></li>
+                        <li> <a class="pre-link" href="{{ path('product') }}">Les types de stands</a></li>
+                        <li> <a class="pre-link" href="#">Réservez un stand</a></li>
+                  </ul>
+              </div>
+                <div class="pt-3 col-sm-4 col-xs-6">
+                  <ul>
+                      <li>Organisateurs</li>
+                        <li> <a class="pre-link" href="#{#{{ form ajout organisateur #}">Devenez organisateur</a></li>
+                        <li> <a class="pre-link" href="#{#{{ add.event }}#}">Ajoutez un festival</a></li>
+                  </ul>
+              </div>
+                     <div class="pt-3 col-sm-4 col-xs-6">
+                  <ul>
+                      <li>Besoin d'informations</li>
+                        <li> <a class="pre-link" href="#">Nous Contacter</a></li>
+                        <li> <a class="pre-link" href="#">Nos partenaires</a></li>
+                  </ul>
+              </div>
+            </div>
+        </div>
+      <!-- /.container -->
+    </pre-footer>
+    
     <!-- Footer -->
-    <footer class="py-5 mt-5 bg-dark">
+    <footer class="py-5 mt-3 bg-custom">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="pt-2 text-center text-black">Copyright &copy; BookMyFestival by HAMAN 2018</p>
       </div>
       <!-- /.container -->
     </footer>
@@ -85,6 +124,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script>
         $( "#LoginModal" ).load( "{{ path('login') }}" );

@@ -1,0 +1,16 @@
+{% block productEvent %}
+    <div class="row text-center">
+        {% for product in productEvent %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">{{ productEvent.type }}</h4>
+                    <p class="card-text">{{ productEvent.description }}</p>
+                    <a class="btn btn-success" href="{{ path('book_product', { 'id' : productEvent.id }) }}">Réserver</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

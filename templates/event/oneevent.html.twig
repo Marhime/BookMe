@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Votre Salon {% endblock %}
+{% block title %} Votre Festival {% endblock %}
 
 {% block body %}
-{% for event in event %}
-    <div class="row">
-        <div class="col">
-            <img>
-        </div>
-    </div>
-    
+
     <div class="row">
         <div class="col">
             <ul>
-                <li>{{ event.name }} {{ event.place }}</li>
+                <li>{{ event.name }}</li>
+                <li>{{ event.place }}</li>
+                <li>{{ event.phone }}</li>
+                <li>{{ event.theme }}</li>
+                <li>{{ event.website }}</li>
             </ul>
         </div>
     </div>
-{% endfor %}           
+    
+    {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}
+
 {% endblock %}

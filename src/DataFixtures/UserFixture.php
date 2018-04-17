@@ -17,15 +17,18 @@ class UserFixture extends Fixture
 
         // $product = new Product();
         // $manager->persist($product);
-        for ($i = 0; $i < 20; $i++){
+        for ($i = 0; $i < 100; $i++){
             $user = new User();
-            $user->setName($faker->firstName);
+            $user->setName('user'.$i);
             $user->setLastname($faker->lastName);
             $user->setCompany($faker->company);
             $user->setPassword(password_hash('user'.$i, PASSWORD_DEFAULT));
             $user->setEmail($faker->email);
             $user->setPhone('118218');
             $user->setRoles('ROLE_EXPO');
+            
+            $this->addReference('user'.$i, $user);
+            
             $manager->persist($user);
         }
         
