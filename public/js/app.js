@@ -41,11 +41,7 @@ search.addWidget(
 //PAGINATION WIDGET
 search.addWidget(
     instantsearch.widgets.pagination({
-        container: '#pagination',
-        cssClass: {
-            root: "row",
-            item:""
-        }
+        container: '#pagination'
     })
 );
 
