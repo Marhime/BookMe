@@ -33,9 +33,10 @@ class Product
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="products")
+     * @var Event event
      */
-    private $id_event;
+    private $event;
 
 
     private $quantity;
@@ -81,15 +82,14 @@ class Product
         return $this;
     }
 
-    public function getIdEvent()
+    public function getEvent(): Event
     {
-        return $this->id_event;
+        return $this->event;
     }
 
-    public function setIdEvent(int $id_event): self
+    public function setEvent(Event $event)
     {
-        $this->id_event = $id_event;
-
+        $this->event = $event;
         return $this;
     }
 
