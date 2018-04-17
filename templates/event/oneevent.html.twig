@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Votre Salon {% endblock %}
+
+{% block body %}
+{% for event in event %}
+    <div class="row">
+        <div class="col">
+            <img>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <ul>
+                <li>{{ event.name }} {{ event.place }}</li>
+            </ul>
+        </div>
+    </div>
+{% endfor %}           
+{% endblock %}

@@ -31,4 +31,8 @@ class EventFixture extends Fixture
     }
         $manager->flush();
     }
+
+    public function getDependencies(): array {
+
+    }
 }

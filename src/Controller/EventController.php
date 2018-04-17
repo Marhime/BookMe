@@ -16,15 +16,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EventController extends Controller
 {
-    
+
     /**
      * @Route("/events", name="events")
+     *
      */
-    
     public function displayEvent (EventRepository $eventRepo)
     {
         $events = $eventRepo->findAll();
-        return $this->render('event/event.html.twig', [
+        return $this->render('event/events_list_inc.html.twig', [
             'events' => $events
         ]);
     }
@@ -32,6 +32,7 @@ class EventController extends Controller
     
      /**
      * @Route("/event/addEvent", name="addEvent")
+     * 
      */
     
     // Function to add and edit an event
@@ -70,4 +71,22 @@ class EventController extends Controller
             
     
     }
+    
+    
+   /**
+    * 
+    * @Route("/event/{id}", name="oneEvent")
+    */
+    
+   public function displayOneEvent (EventRepository $eventRepo, ObjectManager $manager)
+   {
+      $repository = $this->getDoctrine()->getRepository(Event::class);
+
+      $event = $repository->findOneBy(['id' => '503']);
+      return $this->render('event/oneevent.html.twig', [
+           'event' => $event
+      ]);
+    }
+    
+    
 }
