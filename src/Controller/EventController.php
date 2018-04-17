@@ -58,11 +58,11 @@ class EventController extends Controller
         
         if($formEvent->isSubmitted() && $formEvent->isValid())
             {
-        
+            $event->setOwner($this->getUser());
             // 3 - Saving the entry in the db
             $manager->persist($event);
             $manager->flush();
-            return $this->redirectToRoute('event');
+            return $this->redirectToRoute('oneEvent');
             
             }
     
@@ -73,20 +73,71 @@ class EventController extends Controller
     
     }
     
+    /**
+     * 
+     * @Route("/dashboard/edit/{id}", name="edit_event")
+     */
+    public function editEvent(Request $request, ObjectManager $manager)
+    {
+        
+        $form = $this->createForm(EventType::class)
+            ->add('Envoyer',SubmitType::class);
+        
+        $form->handleRequest($request); 
+        
+        if($form->isSubmitted() && $form->isValid()){
+        // save user edit
+            
+            $user->setRoles('ROLE_USER');
+            $manager->persist($user);
+            $manager->flush();
+            return $this->redirectToRoute('dash_orga');
+            
+        }
+        
+       
+        return $this->render('orga_dashboard/event_dash.html.twig',[
+                'form' => $form->createView(),
+                ]);
+    }
+    
+    /**
+     * @Route("/dashboard/delete/{id}", name="delete_event")
+     */
+    public function deleteEvent(Event $event, ObjectManager $manager)
+    {
+        $manager->remove($event);
+        $manager->flush();
+        $this->redirectToRoute('dash_orga');
+        return $this->redirectToRoute('dash_orga');
+    }
     
    /**
     * 
     * @Route("/event/{id}", name="oneEvent")
     */
     
+
    public function displayOneEvent(EventRepository $eventRepo, ObjectManager $manager)
    {
       $repository = $this->getDoctrine()->getRepository(Event::class);
 
-      $event = $repository->findOneBy(['id' => '503']);
-      return $this->render('event/oneevent.html.twig', [
-           'event' => $event
-      ]);
+    // Afficher un événement
+    
+   public function display($id)
+    {
+        $event = $this->getDoctrine()
+            ->getRepository(Event::class)
+            ->find($id);
+
+        if (!$event) {
+            throw $this->createNotFoundException(
+                'No event found for id '.$id
+            );
+        }
+        return $this->render('event/oneEvent.html.twig',
+            ['event' => $event]);
+
     }
     
     
