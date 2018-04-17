@@ -55,24 +55,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=30)
      */
     private $roles;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Event", mappedBy="owner")
-     * @var Collection events
-     */
-    
-    private $events;
-    
-    public function __construct()
-    {
-        $this->roles = new ArrayCollection();
-        $this->events = new ArrayCollection();
-    }
-    
-    public function getEvent() : Collection
-    {
-        return $this->events;
-    }
 
     public function getId()
     {
@@ -169,7 +151,10 @@ class User implements UserInterface
         return explode('|', $this->roles);
     }
 
-    
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+    }
 
     public function setRoles($roles): self
     {

@@ -2,12 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
-use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="EventRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  */
 class Event
 {
@@ -16,7 +14,6 @@ class Event
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    
     private $id;
 
     /**
@@ -25,18 +22,10 @@ class Event
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
-     * @var type User owner
-     * 
+     * @ORM\Column(type="integer")
      */
-    private $owner;
+    private $id_user;
 
-    /**
-     *
-     * @ORM\Column(type="text") 
-     */
-     private $description;
-    
     /**
      * @ORM\Column(type="string", length=100)
      */
@@ -66,7 +55,6 @@ class Event
      * @ORM\Column(type="string", length=255)
      */
     private $website;
-    
 
     public function getId()
     {
@@ -85,14 +73,14 @@ class Event
         return $this;
     }
 
-    public function getOwner()
+    public function getIdUser()
     {
-        return $this->owner;
+        return $this->id_user;
     }
 
-    public function setOwner(User $owner)
+    public function setIdUser(int $id_user): self
     {
-        $this->owner = $owner;
+        $this->id_user = $id_user;
 
         return $this;
     }
@@ -109,24 +97,24 @@ class Event
         return $this;
     }
 
-    public function getOpeningDate(): DateTimeInterface
+    public function getOpeningDate(): \DateTimeInterface
     {
         return $this->opening_date;
     }
 
-    public function setOpeningDate(DateTimeInterface $opening_date): self
+    public function setOpeningDate(\DateTimeInterface $opening_date): self
     {
         $this->opening_date = $opening_date;
 
         return $this;
     }
 
-    public function getClosingDate(): DateTimeInterface
+    public function getClosingDate(): \DateTimeInterface
     {
         return $this->closing_date;
     }
 
-    public function setClosingDate(DateTimeInterface $closing_date): self
+    public function setClosingDate(\DateTimeInterface $closing_date): self
     {
         $this->closing_date = $closing_date;
 
@@ -166,18 +154,6 @@ class Event
     {
         $this->website = $website;
 
-        return $this;
-    }
-    
-    public function getDescription()
-    {
-       return $this->description;
-    }
-    
-    public function setDescription(string $description):self
-    {
-        $this->description = $description;
-        
         return $this;
     }
 }

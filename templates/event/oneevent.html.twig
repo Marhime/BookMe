@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Votre Festival {% endblock %}
+{% block title %} Votre Salon {% endblock %}
 
 {% block body %}
-
+{% for event in event %}
     <div class="row">
         <div class="col">
+            <img>
         </div>
     </div>
     
@@ -16,5 +17,5 @@
             </ul>
         </div>
     </div>
-          
+{% endfor %}           
 {% endblock %}
