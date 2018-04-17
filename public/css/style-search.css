@@ -96,7 +96,7 @@
 }
 .hit-image {
     display: inline-block;
-    width: 16%;
+    width: 100%;
     text-align: center;
 }
 .hit-image img {
@@ -109,7 +109,6 @@
     display: inline;
     width:auto;
     margin-left: 3%;
-    vertical-align: top;
 }
 
 

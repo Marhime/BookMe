@@ -29,16 +29,23 @@ search.addWidget(
         container: '#hits',
         templates: {
             item: document.getElementById('hit-template').innerHTML,
-            empty: "We didn't find any results for the search <em>\"{{query}}\"</em>",
-        } 
-        
+            empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
+        },   
+        cssClasses: {
+           root: "row",
+           item: "col-sm-3 col-md-3 col-lg-3 col-xs-6"
+        }            
     })
 );
 
 //PAGINATION WIDGET
 search.addWidget(
     instantsearch.widgets.pagination({
-        container: '#pagination'
+        container: '#pagination',
+        cssClass: {
+            root: "row",
+            item:""
+        }
     })
 );
 

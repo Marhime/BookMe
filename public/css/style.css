@@ -44,8 +44,11 @@ p {
 } 
 
 .card {
-    height: auto;
+    width: 150px;
     border: none;
+}
+.card-body{
+   width: 100%;
 }
 .cardlink{
     text-decoration:none;
