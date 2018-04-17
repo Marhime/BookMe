@@ -33,9 +33,11 @@ class EventFixture extends Fixture implements DependentFixtureInterface
     }
         $manager->flush();
     }
+
     
     public function getDependencies(): array{
     return[
     UserFixture::class,
     ];}
+
 }
