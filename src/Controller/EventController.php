@@ -117,11 +117,6 @@ class EventController extends Controller
     * @Route("/event/{id}", name="oneEvent")
     */
     
-
-   public function displayOneEvent(EventRepository $eventRepo, ObjectManager $manager)
-   {
-      $repository = $this->getDoctrine()->getRepository(Event::class);
-
     // Afficher un événement
     
    public function display($id)
@@ -140,5 +135,25 @@ class EventController extends Controller
 
     }
     
+    /**
+     * @Route("dashboard/listEvent", name="eventListOwner")
+     */
+
+     // afficher les événement de l'orga
+
+     public function displayEventByOwner($owner)
+     {
+        $event = $this->getDoctrine()
+        ->getRepository(Event::class)
+        ->findBy($owner);
+
+        if (!$eventOwner) {
+            throw $this->createNotFoundException(
+                'No event found for id '.$id
+            );
+        }
+        return $this->render('event/event_list_owner_inc.html.twig',
+            ['eventOwner' => $eventOwner]);
+     }
     
 }

@@ -6,11 +6,6 @@
 
     <div class="row">
         <div class="col">
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col">
             <ul>
                 <li>{{ event.name }}</li>
                 <li>{{ event.place }}</li>
@@ -20,5 +15,7 @@
             </ul>
         </div>
     </div>
-          
+    
+    {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}
+
 {% endblock %}
