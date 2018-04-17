@@ -152,7 +152,7 @@ class EventController extends Controller
                 'No event found for id '.$id
             );
         }
-        return $this->render('event/eventListOwner.html.twig',
+        return $this->render('event/event_list_owner_inc.html.twig',
             ['eventOwner' => $eventOwner]);
      }
     

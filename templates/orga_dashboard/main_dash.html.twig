@@ -36,10 +36,13 @@
                             Supprimer un Evenement <i class="far fa-edit"></i></a>            
             </div>
         </div>
+        </div>
+
+        {%  include 'event/event_list_owner_inc.html.twig' with { 'eventOwner' : eventOwner } %}
         <!-- <div class="col-md-9">
          {{ render(controller(
                 'App\\Controller\\EventController::displayEvent'
             )) }} 
-        </div> --!>
+        </div> -->
     </div> 
 {% endblock %}
