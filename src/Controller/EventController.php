@@ -57,7 +57,7 @@ class EventController extends Controller
         
         if($formEvent->isSubmitted() && $formEvent->isValid())
             {
-        
+            $event->setOwner($this->getUser());
             // 3 - Saving the entry in the db
             $manager->persist($event);
             $manager->flush();
@@ -78,14 +78,22 @@ class EventController extends Controller
     * @Route("/event/{id}", name="oneEvent")
     */
     
-   public function displayOneEvent (EventRepository $eventRepo, ObjectManager $manager)
-   {
-      $repository = $this->getDoctrine()->getRepository(Event::class);
+    // Afficher un événement
+    
+   public function display($id)
+    {
+        $event = $this->getDoctrine()
+            ->getRepository(Event::class)
+            ->find($id);
 
-      $event = $repository->findOneBy(['id' => '503']);
-      return $this->render('event/oneevent.html.twig', [
-           'event' => $event
-      ]);
+        if (!$event) {
+            throw $this->createNotFoundException(
+                'No event found for id '.$id
+            );
+        }
+        return $this->render('event/oneEvent.html.twig',
+            ['event' => $event]);
+
     }
     
     

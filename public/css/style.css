@@ -1,15 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700');
+
 body {
-    padding-top: 54px;
+    padding-top: 80px;
+    font-family: 'Roboto', sans-serif;
 }
 
 @media (min-width: 992px) {
     body {
-        padding-top: 56px;
+        padding-top: 80px;
     }
 }
+
+@media (max-width: 768px) {
+    .btn-container {
+        display: none;
+    }
+}
+
+.nav-link {
+    font-size: 16px;
+    color: #808080;
+    font-weight: normal !important;
+    text-overflow: ellipsis !important;
+    display:inline;
+}
+.nav-link:hover{
+    border-bottom: 2px solid;
+    transition: 0.1s ease;
+    color: #484848;
+}
+
 .business-header {
-    height: 50vh;
-    min-height: 300px;
+    min-height: 80vh;
     background: url('../img/festival_1.jpg') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -17,32 +39,141 @@ body {
     -o-background-size: cover;
 }
 
+p {
+    margin: 0;
+} 
+
 .card {
     height: 100%;
+    border: none;
+}
+.cardlink{
+    text-decoration:none;
+    color:black;
+}
+
+.cardlink:hover{
+ text-decoration:none;
+ color:black;
 }
 
 .navbar-custom{
     background: white;
-    min-height:80px;
-}
-.business-header{
-    margin-top: 23px;
-    height:600px;
-    background-color: captiontext;
-}
-.container-custom {
-    margin-top: 80px !important;
+    padding: 26px;
 }
 
 .home-title {
     text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
-    margin-top: 160px;
+    margin-top: 250px;
+    font-size: -webkit-calc(2.4vw + 9px) !important;
+    font-size: -moz-calc(2.4vw + 9px) !important;
+    font-size: calc(2.4vw + 9px) !important;
+    line-height: -webkit-calc(3vw + 7px) !important;
+    line-height: -moz-calc(3vw + 7px) !important;
+    line-height: calc(3vw + 7px) !important;
+    max-width: 80%;
 }
-/**barre de recherche principale **/
-.recherche{
-    margin-top: 20px;
-    height: 8vh;
-    padding:2px;
+
+.border-none {
+    border-color: transparent !important;
+}
+
+.btn-custom {
+    font-size: 19px !important;
+    line-height: 15px !important;
+    letter-spacing: undefined !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    color: #ffffff !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    border-radius: 4px !important;
+    border: 0px !important;
+    background: #000080 !important;
+    margin: 12px !important;
+    margin-left: 16px !important;
+    height: 48px !important;
+    text-align: center !important;
+    display: inline-block !important;
+    float: right !important;
+    white-space: nowrap !important;
+    cursor: pointer;
+}
+.search-bar {
+    font-size: 19px !important;
+    line-height: 24px !important;
+    background-color: #ffffff !important;
+    border-radius: 4px !important;
+    padding: 0px !important;
+    display: table !important;
+    table-layout: fixed !important;
+    height: 42px !important;
+    width: 100% !important;
+    position: relative !important;
+    box-shadow: 0 2px 5px rgba(156,160,171,0.25) !important;
+    border: 1px solid transparent !important;
+}
+
+.search-input {
+    font-size: 19px !important;
+    line-height: 24px !important;
+    letter-spacing: undefined !important;
+    padding-top: undefined !important;
+    padding-bottom: undefined !important;
+    color: #484848 !important;
+    background-color: transparent !important;
+    border: 0px !important;
+    padding: 11px !important;
+    width: auto !important;
+    font-weight: normal !important;
+    text-overflow: ellipsis !important;
+}
+
+*:focus {
+    outline: none;
+}
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+.search-icon {
+    font-size: 19px !important;
+    line-height: 24px !important;
+    font-weight: normal !important;
+    text-overflow: ellipsis !important;
+    color: #484848 !important;
+    padding-left: 12px !important;
+    padding-top: 11px !important;
+}
+
+.recherche {
+    color: #808080 !important;
+}
+
+pre-footer .container{
+    border-top: 1px solid lightgrey;
+}
+
+pre-footer li{
+     list-style: none;
+}
+.pre-link{
+    color:grey;
+    text-decoration:none;
+}
+.pre-link:hover{
+    text-decoration: none;
+}
+
+footer .bg-custom{
+    background: white;
+}
+
+footer .container{
+    border-top: 1px solid lightgrey;
+    padding-top:20px;
 }
