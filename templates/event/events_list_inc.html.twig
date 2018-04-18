@@ -1,6 +1,28 @@
-<ul>
-    {% for event in events %}
-    <li>{{ event.name }} {{ event.place }}</li>
-    {% endfor %}
-</ul>
+{% extends 'base.html.twig' %}
 
+{% block body %}
+<div class="row">
+    {% for event in events %}
+
+    <div class="card col-lg-3 col-sm-6 col-xs-12" style="width: 18rem;">
+        <img class="card-img-top" src="../img/wala1.jpg" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ event.name }}</h5>
+            <p class="card-text">{{ event.description }}</p>
+    </div>
+  
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ event.theme }}</li>
+        <li class="list-group-item">{{ event.place}}</li>  
+    </ul>
+  
+    <div class="card-body">
+        <a href="#" class="card-link">{{ event.website }}</a>
+        <a href="#" class="card-link">{{ event.name }}</a>
+    </div>
+</div>
+      
+
+   {% endfor %}
+</div>    
+{% endblock %}
