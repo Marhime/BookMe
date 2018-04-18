@@ -15,7 +15,11 @@
             </ul>
         </div>
     </div>
-    
-    {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}
+
+    {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}#}
+    {#{{ render(controller(#}
+        {#'App\\Controller\\ProductController::displayEventProduct',#}
+        {#{ 'id' : event.id }#}
+    {#)) }}#}
 
 {% endblock %}
