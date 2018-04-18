@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 *{
     outline: none !important;
@@ -68,7 +68,7 @@ p {
 }
 
 .navbar-custom{
-    background: #e0f2f1 ;
+    background: #eceff1;
     padding: 26px;
 }
 
