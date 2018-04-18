@@ -8,7 +8,7 @@ var search = instantsearch({
     indexName: 'dev_events',
     urlSync: true,
     searchParameters: {
-        hitsPerPage: 10
+        hitsPerPage: 8
     }
 });
 
@@ -17,8 +17,9 @@ var search = instantsearch({
 search.addWidget(
     instantsearch.widgets.searchBox({
         container: '#search-input',
-        magnifier: false,
- 
+        magnifier: false,    /** supprime l'icone recherche **/
+        wrapInput:false      /** bouton submit **/
+        
     })
 );
 
@@ -29,14 +30,22 @@ search.addWidget(
         templates: {
             item: document.getElementById('hit-template').innerHTML,
             empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
-        }
+        },   
+        cssClasses: {
+           root: "row",
+           item: "col-sm-3"
+        }            
     })
 );
 
 //PAGINATION WIDGET
 search.addWidget(
     instantsearch.widgets.pagination({
-        container: '#pagination'
+        container: '#pagination',
+        cssClasses:{
+            root: "row",
+            item: "m-1"
+        }
     })
 );
 
