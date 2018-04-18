@@ -18,11 +18,8 @@ search.addWidget(
     instantsearch.widgets.searchBox({
         container: '#search-input',
         magnifier: false,    /** supprime l'icone recherche **/
-        wrapInput:false,     /** bouton submit **/
-      cssClasses: {
-            root:"button",
-            item:"m-5"
-        }     
+        reset:false,
+        wrapInput:false     /** bouton submit **/
     })
 );
 
