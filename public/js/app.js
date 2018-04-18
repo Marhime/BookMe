@@ -18,8 +18,8 @@ search.addWidget(
     instantsearch.widgets.searchBox({
         container: '#search-input',
         magnifier: false,    /** supprime l'icone recherche **/
-        wrapInput:false      /** bouton submit **/
-        
+        reset:false,
+        wrapInput:false     /** bouton submit **/
     })
 );
 
@@ -38,16 +38,16 @@ search.addWidget(
     })
 );
 
-//PAGINATION WIDGET
-search.addWidget(
-    instantsearch.widgets.pagination({
-        container: '#pagination',
-        cssClasses:{
-            root: "row",
-            item: "m-1"
-        }
-    })
-);
+////PAGINATION WIDGET
+//search.addWidget(
+//    instantsearch.widgets.pagination({
+//        container: '#pagination',
+//        cssClasses:{
+//            root: "row",
+//            item: "m-1"
+//        }
+//    })
+//);
 
 
 //START THE WHOLE WIDGETS

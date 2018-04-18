@@ -8,6 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller
 {
     /**
+     * @Route("/", name="root")
+     */
+    public function root()
+    {
+        //redirection vers la route home en cas de redirection vers '/'
+        return $this->redirectToRoute('home');
+    }
+
+    /**
      * @Route("/home", name="home")
      */
     public function index()
