@@ -144,13 +144,13 @@ class EventController extends Controller
 
      public function displayEventByOwner($owner)
      {
-        $event = $this->getDoctrine()
+        $eventOwner = $this->getDoctrine()
         ->getRepository(Event::class)
         ->findBy($owner);
 
         if (!$eventOwner) {
             throw $this->createNotFoundException(
-                'No event found for id '.$id
+                'No event found for id '.$owner
             );
         }
         return $this->render('event/event_list_owner_inc.html.twig',
