@@ -59,6 +59,7 @@ class EventController extends Controller
         if($formEvent->isSubmitted() && $formEvent->isValid())
             {
             $event->setOwner($this->getUser());
+            
             // 3 - Saving the entry in the db
             $manager->persist($event);
             $manager->flush();
