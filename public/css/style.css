@@ -5,13 +5,13 @@
 }
 
 body {
-    padding-top: 80px;
+    padding-top: 92px;
     font-family: 'Roboto', sans-serif;
 }
 
 @media (min-width: 992px) {
     body {
-        padding-top: 80px;
+        padding-top: 92px;
     }
 }
 
