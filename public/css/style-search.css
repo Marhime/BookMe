@@ -199,7 +199,7 @@
     background: none;
 }
 
-/* SORT BY */
+/* SORT BY 
 #sort-by-wrapper {
     font-weight: 300;
     position: relative;
@@ -238,10 +238,10 @@
     border-left: 4px solid transparent;
 
     pointer-events: none;
-}
+}*/
 
 /* STATS */
-#stats {
+/*#stats {
 
 }
 
@@ -250,7 +250,7 @@
     color: #999;
 }
 
-/* FACETS */
+ FACETS 
 .facet {
     margin-bottom: 24px;
     font-size: 14px;
@@ -261,7 +261,7 @@
     padding: 0 0 6px;
     text-transform: uppercase;
     border-bottom: 2px solid #eee;
-}
+}*/
 .facet ul {
     margin: 0;
     padding: 0;

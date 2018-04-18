@@ -8,7 +8,7 @@ var search = instantsearch({
     indexName: 'dev_events',
     urlSync: true,
     searchParameters: {
-        hitsPerPage: 10
+        hitsPerPage: 8
     }
 });
 
@@ -33,7 +33,7 @@ search.addWidget(
         },   
         cssClasses: {
            root: "row",
-           item: "col-sm-3 col-md-3 col-lg-3 col-xs-6"
+           item: "col-sm-3"
         }            
     })
 );
@@ -41,7 +41,11 @@ search.addWidget(
 //PAGINATION WIDGET
 search.addWidget(
     instantsearch.widgets.pagination({
-        container: '#pagination'
+        container: '#pagination',
+        cssClasses:{
+            root: "row",
+            item: "m-1"
+        }
     })
 );
 

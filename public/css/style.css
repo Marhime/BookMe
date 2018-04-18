@@ -15,6 +15,9 @@ body {
     .btn-container {
         display: none;
     }
+     .nav-link:hover{
+         display:none;
+    }
 }
 
 .nav-link {
@@ -44,7 +47,7 @@ p {
 } 
 
 .card {
-    width: 200px;
+    width: auto;
     border: none;
 }
 .card-body{
@@ -130,6 +133,7 @@ p {
     border: 0px !important;
     padding: 11px !important;
     width: auto !important;
+    height: auto !important;
     font-weight: normal !important;
     text-overflow: ellipsis !important;
 }
