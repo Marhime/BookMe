@@ -165,10 +165,6 @@ pre-footer .container{
     border-top: 1px solid lightgrey;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2bfd284327ab6e52f3934979c0c2c7a57e1f4243
 .nav-link:hover {
     color: #484848;
 }
@@ -181,11 +177,13 @@ pre-footer .container{
     overflow: hidden;
 }
 
-<<<<<<< HEAD
-.pre-footer li{
-=======
+#allevents{
+    padding-bottom: 10px;
+    
+}
+
 pre-footer li{
->>>>>>> 2bfd284327ab6e52f3934979c0c2c7a57e1f4243
+
      list-style: none;
 }
 .pre-link{
