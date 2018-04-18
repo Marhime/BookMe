@@ -24,7 +24,8 @@ class UserController extends Controller
     {
         // 1) build the form
         $user = New User();
-        $formUser = $this->createForm(UserType::class, $user);
+        $formUser = $this->createForm(UserType::class, $user)
+            ->add('Envoyer', SubmitType::class);
 
         // 2) handle the submit
         $formUser->handleRequest($request);
