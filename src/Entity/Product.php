@@ -26,21 +26,20 @@ class Product
      */
     private $description;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $quantity;
-
-    /**
+     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $price;
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="products")
+     * @var Event event
      */
-    private $id_event;
+    private $event;
+
+
+    private $quantity;
 
     public function getId()
     {
@@ -71,18 +70,6 @@ class Product
         return $this;
     }
 
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): self
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
     public function getPrice()
     {
         return $this->price;
@@ -95,17 +82,29 @@ class Product
         return $this;
     }
 
- 
-
-    public function getIdEvent()
+    public function getEvent(): Event
     {
-        return $this->id_event;
+        return $this->event;
     }
 
-    public function setIdEvent(int $id_event): self
+    public function setEvent(Event $event)
     {
-        $this->id_event = $id_event;
-
+        $this->event = $event;
         return $this;
     }
+
+
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
+    }
+
+
+
 }

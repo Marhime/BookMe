@@ -6,6 +6,9 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+
+use Doctrine\DBAL\Types\IntegerType;
+use Doctrine\DBAL\Types\StringType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -70,6 +73,7 @@ class ProductController extends Controller
 
     /**
      * @Route("/product/edit", name="edit_product")
+     * @Route("/add", name="add_product")
      * 
      */
     
@@ -93,8 +97,13 @@ class ProductController extends Controller
         $formProduct->handleRequest($request);
 
         if($formProduct->isSubmitted() && $formProduct->isValid()){
-            //TODO event relation with id event emplementation
-            $manager->persist($product);
+            $product->setQuantity($request->get('quantity'));
+            $quantity= $product->getQuantity();
+
+            for ($i = 1; $i < $quantity; $i++ ) {
+                //TODO event relation with id event emplementation
+                $manager->persist($product);
+            }
             $manager->flush();
             return $this->redirectToRoute('product');
         }

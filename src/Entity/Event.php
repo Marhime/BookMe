@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EventRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,7 +68,17 @@ class Event
      * @ORM\Column(type="string", length=255)
      */
     private $website;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="event")
+     * @var Collection products
+     */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -166,6 +178,16 @@ class Event
     {
         $this->website = $website;
 
+        return $this;
+    }
+
+    public function getProducts(): Collection{
+        return $this->products;
+    }
+
+    public function setProducts(Collection $products)
+    {
+        $this->products = $products;
         return $this;
     }
     
