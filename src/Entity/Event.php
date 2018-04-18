@@ -28,7 +28,7 @@ class Event
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
-     * @var type User owner
+     * @var User owner
      * 
      */
     private $owner;
