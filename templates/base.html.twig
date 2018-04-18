@@ -42,7 +42,7 @@
                 <a class="nav-link" href="#">Ajoutez votre festival</a>
             </li>
             <li class="nav-item pr-4">
-                <a class="nav-link" data-toggle="modal" href="" data-target="#RegisterModal">Inscription</a>
+                <a class="nav-link" href="{{ path('register') }}">Inscription</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" href="" data-target="#LoginModal">Connexion</a>
@@ -72,12 +72,8 @@
 <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
     {% block modalLogin %}{% endblock %}
 </div>
-<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalLabel" aria-hidden="true">
-    {% block modalRegister %}{% endblock %}
-</div>
 
     <div class="container container-custom">
-
 
  {% block body %}{%endblock %}
     </div>

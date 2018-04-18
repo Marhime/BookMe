@@ -1,107 +1,14 @@
-/* {% block modalRegister %}
-      <!-- Modal -->
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header"> 
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <h5 class="modal-title" id="RegisterModalLabel">Vous êtes déjà connecté</h5>
-                <h2><small>{{ app.user.username }}</small> Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h2>
-                {% else %}
-                <p class="text-center">Vous êtes déjà inscrit ? <small><a data-toggle="modal" data-dismiss="modal" href="" data-target="#LoginModal">Connexion</a></small></p>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ path('register') }}" method="post" class="col-lg-5 mx-auto pt-4">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="_roles" type="checkbox" id="roles" value="ROLE_EXPO">
-                        <label class="form-check-label" for="roles">Exposant</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="ROLE_ORGA">
-                        <label class="form-check-label" name="_roles" for="inlineCheckbox2">Organisateur</label>
-                    </div>
-                    <div class="form-group">
-                        <label class="mb-0" for="lastname"><small>Nom</small></label>
-                        <input type="lastname" class="form-control" name="_lastname" id="lastname" placeholder="Nom">
-                    </div>
-                    <div class="form-group">
-                        <label class="mb-0" for="name"><small>Prénom</small></label>
-                        <input type="name" class="form-control" name="_name" id="name" placeholder="Prénom">
-                    </div>
-                    <div class="form-group">
-                        <label class="mb-0" for="company"><small>Société</small></label>
-                        <input type="company" class="form-control" name="_company" id="company" placeholder="Société">
-                    </div>
-                    <div class="form-group">
-                        <label class="mb-0" for="username"><small>Adresse email</small></label>
-                        <input type="email" class="form-control" id="username" name="_username" placeholder="exemple@mail.fr">
-                    </div>
-                    <div class="form-group">
-                        <label class="mb-0" for="password"><small>Mot de passe</small></label>
-                        <input type="password" class="form-control" name="_password.first" id="password" placeholder="Mot de passe">
-                    </div>
-                    <div class="form-group">
-                        <label class="mb-0" for="password"><small>Confirmer le mot de passe</small></label>
-                        <input type="password" class="form-control" name="_password.second" id="password" placeholder="Mot de passe">
-                    </div>
-                    <div class="text-center pt-2">
-                        <input type="hidden" name="_target_path" value="/home" />
-                        <button class="btn btn-danger btn-lg" type="submit"><span class="fa fa-user fa-lg pr-2"></span>S'inscrire</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              
-              
-            </div>
-          </div>
-        </div>
-        {% endblock %}
-*/
-
+{% extends 'base.html.twig' %}
 {% block body %}
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 <h1 class="text-center">Vous êtes déjà connecté</h1>
 <h2><small>{{ app.user.username }}</small> Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h2>
 {% else %}
 <h1 class="text-center">Inscrivez-vous sur notre plateforme</h1>
-<p class="text-center"><small>Vous êtes déjà inscrit ? <a href="{{ path('login') }}">Connexion</a></small></p>
-<form action="{{ path('login') }}" method="post" class="col-lg-5 mx-auto pt-4">
-    <div class="form-group">
-        <label class="mb-0" for="lastname"><small>Nom</small></label>
-        <input type="lastname" class="form-control" name="_lastname" id="lastname" placeholder="Nom">
-    </div>
-    <div class="form-group">
-        <label class="mb-0" for="name"><small>Prénom</small></label>
-        <input type="name" class="form-control" name="_name" id="name" placeholder="Prénom">
-    </div>
-    <div class="form-group">
-        <label class="mb-0" for="company"><small>Société</small></label>
-        <input type="company" class="form-control" name="_company" id="company" placeholder="Société">
-    </div>
-    <div class="form-group">
-        <label class="mb-0" for="username"><small>Adresse email</small></label>
-        <input type="email" class="form-control" id="username" name="_username" placeholder="exemple@mail.fr">
-    </div>
-    <div class="form-group">
-        <label class="mb-0" for="password"><small>Mot de passe</small></label>
-        <input type="password" class="form-control" name="_password.first" id="password" placeholder="Mot de passe">
-    </div>
-    <div class="form-group">
-        <label class="mb-0" for="password"><small>Confirmer le mot de passe</small></label>
-        <input type="password" class="form-control" name="_password.second" id="password" placeholder="Mot de passe">
-    </div>
-    <div class="text-center pt-2">
-        <input type="hidden" name="_target_path" value="/home" />
-        <button type="submit" class="btn btn-lg btn-danger"><i class="fa fa-user fa-lg pr-2"></i>S'inscrire</button>
-    </div>
+<p class="text-center"><small>Vous êtes déjà inscrit ? <a data-toggle="modal" href="" data-target="#LoginModal">Connexion</a></small></p>
+    {{ form_start(formUser) }}
+    {{ form_widget(formUser) }}
+    {{ form_end(formUser) }}
 </form>
-<<<<<<< HEAD
-=======
-
->>>>>>> 2bfd284327ab6e52f3934979c0c2c7a57e1f4243
 {% endif %}
 {% endblock %}

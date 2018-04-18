@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700');
 
+*{
+    outline: none !important;
+}
+}
 body {
     padding-top: 80px;
     font-family: 'Roboto', sans-serif;
@@ -164,6 +168,7 @@ p {
 pre-footer .container{
     border-top: 1px solid lightgrey;
 }
+
 
 .nav-link:hover {
     color: #484848;
