@@ -7,7 +7,7 @@
           <div class="container container-search">
             <div class="row">
               <div class="col-lg-12 px-5">
-                <h1 class="mx-auto pb-4 home-title">Trouvez et réservez des stands et des friteries uniques dans toute la France. </h1>
+                <h1 class="text-left pb-4 home-title">Trouvez et réservez des stands et des friteries uniques dans toute la France. </h1>
                 <div class="search-bar">
                  <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
                     <div class="input-group recherche">
@@ -30,16 +30,17 @@
    
     <h2 class="pt-3"> Les festivals en France </h2>
     
-      <div id="hits">
+      <div id="hits"> <!-- Instantsearch.js -->
           <script type="text/html" id="hit-template">
               {% verbatim %}
                 <div id="hit">
                   <a class="card cardlink" href="#">
                     <img class="card-img-top hit-image" src="http://www.from-paris.com/wp-content/uploads/2017/08/th-800x450-routedurock800.jpg-e1501756007444.jpg" alt="">
-                    <div class="card-body pl-0" id="hit-content">
+                     <img class="card-img-top" src="{{ asset(event.image) }}" alt="">
+                      <div class="card-body pl-0" id="hit-content">
                       <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
                       <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
-                      <p class="card-text">La Route du Rock présente sa 28ème Collection Été du 16 au 19 août 2018 à Saint-Malo..</p>
+                      <p class="card-text">{{{_highlightResult.description.value}}}</p>
                       <p class="card-subtitle text-muted">Réservation</p>
                     </div>
                    </a>
