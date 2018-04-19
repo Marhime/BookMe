@@ -1,6 +1,4 @@
 
-//initialize instantsearch.js with your only search api key
-
 var search = instantsearch({
     // Replace with your own values
     appId: '6URACH1V5V',
@@ -8,7 +6,7 @@ var search = instantsearch({
     indexName: 'dev_events',
     urlSync: true,
     searchParameters: {
-        hitsPerPage: 8
+        hitsPerPage: 1000
     }
 });
 

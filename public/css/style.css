@@ -39,7 +39,7 @@ body {
 
 .business-header {
     min-height: 80vh;
-    background: url('../img/home1.jpeg') center no-repeat scroll;
+    background: url('../img/festival_1.jpg') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -68,12 +68,12 @@ p {
 }
 
 .navbar-custom{
-    background: #FFFFFF;
+    background: white;
     padding: 26px;
 }
 
 .home-title {
-    text-shadow: 1px 1px 40px rgba(22, 23, 31, 0.4) !important;
+    text-shadow: 2px 1px 40px rgba(22, 23, 31, 0.4) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
     margin-top: 220px;
@@ -206,5 +206,5 @@ footer .bg-custom{
 footer .container{
     border-top: 1px solid lightgrey;
     padding-top:20px;
-   
 }
+
