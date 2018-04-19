@@ -58,7 +58,7 @@ class ProductController extends Controller
     {
         $productEvent = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->findBy($event);
+            ->find($event);
 
         if (!$productEvent) {
             throw $this->createNotFoundException(
@@ -75,7 +75,7 @@ class ProductController extends Controller
 
     /**
      * @Route("/product/edit", name="edit_product")
-     * @Route("/add", name="add_product")
+     * @Route("/product/add", name="add_product")
      * 
      */
     

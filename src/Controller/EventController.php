@@ -146,7 +146,7 @@ class EventController extends Controller
      {
         $eventOwner = $this->getDoctrine()
         ->getRepository(Event::class)
-        ->findBy($owner);
+        ->find($owner);
 
         if (!$eventOwner) {
             throw $this->createNotFoundException(
