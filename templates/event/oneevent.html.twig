@@ -3,22 +3,20 @@
 {% block title %} Votre Festival {% endblock %}
 
 {% block body %}
-    <div>
-        <img src="/img/festival_1.jpg" class="eventbanner">
-    </div>         
-                
-    <div class="row">
-        <div class="col">
-            <ul>
-                <li>{{ event.name }}</li>
-                <li>{{ event.place }}</li>
+        <div>
+            <img src="/img/festival_1.jpg" class="eventbanner">
+        </div> 
+        
+        <div class="eventdetails">
+            <h1>{{ event.name }}</h1>
+             
+            <ul>  
+               {# <li>{{ event.description }}</li>#}
                 <li>{{ event.phone }}</li>
                 <li>{{ event.theme }}</li>
-                <li>{{ event.website }}</li>
+                <a href="{{ event.website }}">{{ event.website }}</a>
             </ul>
         </div>
-    </div>
-
     {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}#}
     {{ render(controller(
         'App\\Controller\\ProductController::displayEventProduct',
