@@ -39,7 +39,7 @@ body {
 
 .business-header {
     min-height: 80vh;
-    background: url('../img/home2.jpeg') center center no-repeat scroll;
+    background: url('../img/home1.jpeg') center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -68,7 +68,7 @@ p {
 }
 
 .navbar-custom{
-    background: #eceff1;
+    background: #FFFFFF;
     padding: 26px;
 }
 
@@ -206,4 +206,5 @@ footer .bg-custom{
 footer .container{
     border-top: 1px solid lightgrey;
     padding-top:20px;
+   
 }
