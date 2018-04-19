@@ -4,11 +4,11 @@ namespace App\Entity;
 
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ORM\Entity(repositoryClass="EventRepository")
  */
 class Event
 {
@@ -27,17 +27,11 @@ class Event
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
-     * @var User owner
+     * @var type User owner
      * 
      */
     private $owner;
 
-    /**
-     *
-     * @ORM\Column(type="text") 
-     */
-     private $description;
-    
     /**
      * @ORM\Column(type="string", length=100)
      */
@@ -63,6 +57,7 @@ class Event
      */
     private $theme;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -70,7 +65,6 @@ class Event
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="event")
-     * @var Collection products
      */
     private $products;
 
@@ -79,11 +73,15 @@ class Event
         $this->products = new ArrayCollection();
     }
 
+
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getName()
     {
         return $this->name;
@@ -95,6 +93,7 @@ class Event
 
         return $this;
     }
+
 
     public function getOwner()
     {
@@ -108,6 +107,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getPlace()
     {
         return $this->place;
@@ -120,10 +122,14 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getOpeningDate(): DateTimeInterface
     {
         return $this->opening_date;
     }
+
 
     public function setOpeningDate(DateTimeInterface $opening_date): self
     {
@@ -132,6 +138,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getClosingDate(): DateTimeInterface
     {
         return $this->closing_date;
@@ -144,6 +153,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getPhone()
     {
         return $this->phone;
@@ -156,6 +168,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getTheme()
     {
         return $this->theme;
@@ -168,6 +183,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getWebsite()
     {
         return $this->website;
@@ -180,25 +198,13 @@ class Event
         return $this;
     }
 
-    public function getProducts(): Collection{
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
         return $this->products;
     }
 
-    public function setProducts(Collection $products)
-    {
-        $this->products = $products;
-        return $this;
-    }
-    
-    public function getDescription()
-    {
-       return $this->description;
-    }
-    
-    public function setDescription(string $description):self
-    {
-        $this->description = $description;
-        
-        return $this;
-    }
+
 }

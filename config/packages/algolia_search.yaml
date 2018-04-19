@@ -5,4 +5,6 @@ algolia_search:
     indices:
       - name: events
         class: App\Entity\Event
+        enable_serializer_groups: true
     batchSize: 250
+

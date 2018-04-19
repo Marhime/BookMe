@@ -20,19 +20,24 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
         // $manager->persist($product);
         for ($i = 0; $i < 20; $i++){
             $product = new Product();
-            $product->setEvent($this->getReference('event' . rand(0, 99)));
             $product->setDescription($faker->paragraph);
             $product->setPrice($faker->numberBetween(1000, 15000));
-
+            $product->setQuantity($faker->numberBetween(1, 20));
             $product->setType($faker->randomElement(array('Emplacement Standard','Emplacement premium','Popup','Stand entrée event')));
-            
+            $product->setEvent($this->getReference('event'.rand(0,99)));
             $manager->persist($product);
         }
 
         $manager->flush();
     }
 
-    public function getDependencies(): array
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
+     *
+     * @return array
+     */
+    function getDependencies()
     {
         return [
             EventFixture::class
