@@ -52,7 +52,7 @@ class UserController extends Controller
     
     /**
      * 
-     * @Route("/dashboard/edit/{id}", name="edit_user")
+     * @Route("/dashboard/editUser/{id}", name="edit_user")
      */
     public function editUser(Request $request, ObjectManager $manager, User $user = null)
     {
