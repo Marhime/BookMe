@@ -68,6 +68,11 @@ class Event
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
 
     public function __construct()
     {
@@ -206,6 +211,25 @@ class Event
     {
         return $this->products;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
 
 
 }
