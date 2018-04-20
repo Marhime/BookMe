@@ -5,28 +5,31 @@
 {% block body %}
     <div class="container-fluid">
         <div class="eventbanner img-fluid">
+        </div>
             <div class="detailsEvent">
                 <h1>{{ event.name }}</h1>
+                    <p>Site web <a href="{{ event.website }}"><i class="fas fa-external-link-alt fa"></i></a><p>
                     <ul>   
-                        <li><i class="fas fa-phone "> </i> {{ event.phone }}</li>
+                        <li><i class="fas fa-phone"> </i> {{ event.phone }}</li>
                         <li> {{ event.theme }}</li>
-                        <li> <a href="{{ event.website }}">{{ event.website }}</a></li>
                     </ul>
-            </div>
-        </div>
-            <div class="eventDescription">
                 <p>{#{{ event.description }}#}<p>
             </div>
+        
+ 
+        <div class="eventDescription">
+            
+        </div>
+        {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}#}
+        {{ render(controller(
+            'App\\Controller\\ProductController::displayEventProduct',
+            { 'event' : event.id }
+        )) }}
+        {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
+        {#{{ render(controller(#}
+            {#'App\\Controller\\ProductController::displayEventProduct',#}
+            {#{ 'event' : event.id }#}
+        {#)) }}#}
     </div>
-    {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}#}
-    {{ render(controller(
-        'App\\Controller\\ProductController::displayEventProduct',
-        { 'event' : event.id }
-    )) }}
-    {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
-    {#{{ render(controller(#}
-        {#'App\\Controller\\ProductController::displayEventProduct',#}
-        {#{ 'event' : event.id }#}
-    {#)) }}#}
 
 {% endblock %}
