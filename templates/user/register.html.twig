@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-<h1 class="text-center">Vous êtes déjà connecté</h1>
+    
+
+<h1>Vous êtes déjà connecté</h1>
 <h2><small>{{ app.user.username }}</small> Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h2>
 {% else %}
     <div class="container">
@@ -17,6 +19,6 @@
             </div>
         </div>
     </div>
-    
+ 
 {% endif %}
 {% endblock %}
