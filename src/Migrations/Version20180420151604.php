@@ -8,16 +8,17 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180416091951 extends AbstractMigration
+class Version20180420151604 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE event ADD owner_id INT DEFAULT NULL, DROP owner');
-        $this->addSql('ALTER TABLE event ADD CONSTRAINT FK_3BAE0AA77E3C61F9 FOREIGN KEY (owner_id) REFERENCES user (id)');
-        $this->addSql('CREATE INDEX IDX_3BAE0AA77E3C61F9 ON event (owner_id)');
+        $this->addSql('ALTER TABLE event ADD image VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE product ADD event_id INT DEFAULT NULL, DROP id_event');
+        $this->addSql('ALTER TABLE product ADD CONSTRAINT FK_D34A04AD71F7E88B FOREIGN KEY (event_id) REFERENCES event (id)');
+        $this->addSql('CREATE INDEX IDX_D34A04AD71F7E88B ON product (event_id)');
     }
 
     public function down(Schema $schema)
@@ -25,8 +26,9 @@ class Version20180416091951 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE event DROP FOREIGN KEY FK_3BAE0AA77E3C61F9');
-        $this->addSql('DROP INDEX IDX_3BAE0AA77E3C61F9 ON event');
-        $this->addSql('ALTER TABLE event ADD owner INT NOT NULL, DROP owner_id');
+        $this->addSql('ALTER TABLE event DROP image');
+        $this->addSql('ALTER TABLE product DROP FOREIGN KEY FK_D34A04AD71F7E88B');
+        $this->addSql('DROP INDEX IDX_D34A04AD71F7E88B ON product');
+        $this->addSql('ALTER TABLE product ADD id_event INT NOT NULL, DROP event_id');
     }
 }
