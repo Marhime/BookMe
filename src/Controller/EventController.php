@@ -28,80 +28,64 @@ class EventController extends Controller
             'events' => $events
         ]);
     }
-    
-    
-     /**
+
+
+    /**
      * @Route("/dashboard/event/add", name="addEvent")
      * @Route("/dashboard/event/edit/{id}", name="editEvent")
      */
-    
+
     // Function to add and edit an event
-    
-    public function addEvent(Request $request, ObjectManager $manager , Event $event = null)
+
+    public function addEvent(Request $request, ObjectManager $manager, Event $event = null)
     {
         // 1-Create a new event if no event exist
-        
+
         // set time only when it's new
         if ($event === null) {
             $event = new Event();
             $event->setOpeningDate(new \DateTime('now'));
             $event->setClosingDate(new \DateTime('tomorrow'));
+        }else{
+            $oldImage= $event->getImage();
+            //transformation dans le format attendu dans le form
+            $event->setImage(new File($event->getImage()));
+            $group = 'edition';
         }
-         
+
         $formEvent = $this->createForm(EventType::class, $event)
             ->add('Envoyer', SubmitType::class);
-        
-        
+
+
         //2 - validation of the form
-        
+
         $formEvent->handleRequest($request);
-        
-        if($formEvent->isSubmitted() && $formEvent->isValid())
-            {
+
+        if ($formEvent->isSubmitted() && $formEvent->isValid()) {
             $event->setOwner($this->getUser());
-            
+            //le déplacement du fichier temporaire dans notre fichier upload
+            //renommage avec hashage, guessExtension va déduire le type de fichier
+            //par le contenu MAIS pour la secu reencodage de l'img normalement
+            $image = $event->getImage();
+            if($image === null){
+                $event->setImage($oldImage);
+            }else{
+                $newFileName = md5(uniqid()) . '.' . $image->guessExtension();
+                $image->move('uploads', $newFileName);
+                $event->setImage('uploads/'.$newFileName);
+            }
             // 3 - Saving the entry in the db
             $manager->persist($event);
             $manager->flush();
             return $this->redirectToRoute('oneEvent');
-            
-            }
-    
-    return $this->render('event/add_event.html.twig', ['form' => $formEvent->createView()
-               ]);
-  
-            
-    
-    }
-    
-    /**
-     * 
-     * @Route("/dashboard/edit/{id}", name="edit_event")
-     */
-    public function editEvent(Request $request, ObjectManager $manager)
-    {
-        
-        $form = $this->createForm(EventType::class)
-            ->add('Envoyer',SubmitType::class);
-        
-        $form->handleRequest($request); 
-        
-        if($form->isSubmitted() && $form->isValid()){
-        // save user edit
-            
-            $user->setRoles('ROLE_USER');
-            $manager->persist($user);
-            $manager->flush();
-            return $this->redirectToRoute('dash_orga');
-            
+
         }
-        
-       
-        return $this->render('orga_dashboard/event_dash.html.twig',[
-                'form' => $form->createView(),
-                ]);
+
+        return $this->render('event/add_event.html.twig', ['form' => $formEvent->createView()
+        ]);
     }
-    
+
+
     /**
      * @Route("/dashboard/delete/{id}", name="delete_event")
      */
@@ -112,15 +96,15 @@ class EventController extends Controller
         $this->redirectToRoute('dash_orga');
         return $this->redirectToRoute('dash_orga');
     }
-    
-   /**
-    * 
-    * @Route("/event/{id}", name="oneEvent")
-    */
-    
+
+    /**
+     *
+     * @Route("/event/{id}", name="oneEvent")
+     */
+
     // Afficher un événement
-    
-   public function display($id)
+
+    public function display($id)
     {
         $event = $this->getDoctrine()
             ->getRepository(Event::class)
@@ -128,33 +112,33 @@ class EventController extends Controller
 
         if (!$event) {
             throw $this->createNotFoundException(
-                'No event found for id '.$id
+                'No event found for id ' . $id
             );
         }
         return $this->render('event/oneEvent.html.twig',
             ['event' => $event]);
 
     }
-    
+
     /**
      * @Route("dashboard/listEvent", name="eventListOwner")
      */
 
-     // afficher les événement de l'orga
+    // afficher les événement de l'orga
 
-     public function displayEventByOwner($owner)
-     {
+    public function displayEventByOwner($owner)
+    {
         $eventOwner = $this->getDoctrine()
-        ->getRepository(Event::class)
-        ->find($owner);
+            ->getRepository(Event::class)
+            ->find($owner);
 
         if (!$eventOwner) {
             throw $this->createNotFoundException(
-                'No event found for id '.$owner
+                'No event found for id ' . $owner
             );
         }
         return $this->render('event/event_list_owner_inc.html.twig',
             ['eventOwner' => $eventOwner]);
-     }
-    
+    }
+
 }

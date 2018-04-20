@@ -19,13 +19,15 @@ class EventFixture extends Fixture implements DependentFixtureInterface
         
         for ($i = 0; $i < 100; $i++) {
         $event = new Event();
-        $event->setName($faker->company);
+        $event->setName('Event'. $i);
         $event->setOwner($this->getReference('user' . rand(0, 99)));
         $event->setPlace($faker->city);
         $event->setOpeningDate($faker->dateTimeThisDecade);
         $event->setClosingDate($faker->dateTimeThisDecade);
         $event->setPhone('0699999999');
         $event->setTheme($faker->colorName);
+        $event->setDescription($faker->paragraph);
+        $event->setImage('img/festival_'.rand(1,4).'.jpg');
         $event->setWebsite($faker->url);
 //        $event->setDescription($faker->paragraph);
 
