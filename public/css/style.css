@@ -213,3 +213,7 @@ footer .container{
     padding-top:20px;
 }
 
+.event-list {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
