@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <div class="row mx-auto">
 
         <div class="col-md-3 text-center offset-md-1 col-sm-12">
@@ -23,8 +24,9 @@
         </div>
 
         <div class="col-md-7 pl-3 col-sm-12">
-            {% include 'event/events_list_owner_inc.html.twig' with { 'eventOwner' : user.events } %}
-            <a role="button" class="btn btn-outline-success active btn-block py-lg-4 active my-3" value="submit" aria-pressed="true"
+            {% include 'event/events_list_owner_inc.html.twig' with { 'eventOwner' : user.event } %}
+            <a role="button" class="btn btn-outline-success active btn-block py-lg-4 active my-3" value="submit"
+               aria-pressed="true"
                href="{{ path('addEvent', {'id' : user.id }) }}">
                 Ajouter un événement <i class="fas fa-plus"></i></a>
         </div>
