@@ -27,6 +27,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
         $event->setPhone('0699999999');
         $event->setTheme($faker->colorName);
         $event->setDescription($faker->paragraph);
+        $event->setImage('img/festival_'.rand(1,4).'.jpg');
         $event->setWebsite($faker->url);
 //        $event->setDescription($faker->paragraph);
 
