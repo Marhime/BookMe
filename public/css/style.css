@@ -19,8 +19,8 @@ body {
     .btn-container {
         display: none;
     }
-     .nav-link:hover{
-         display:none;
+    .nav-link:hover{
+        border:
     }
 }
 
@@ -177,11 +177,6 @@ pre-footer .container{
     border-top: 1px solid lightgrey;
 }
 
-
-.nav-link:hover {
-    color: #484848;
-}
-
 .modal-dialog {
     position: relative !important;
     margin: auto !important;
@@ -230,18 +225,24 @@ footer .container{
 }
 
 .detailsEvent h1{
-    font-size: 3.5em;
+    font-size: 40px !important;
+    font-weight: bold;
+    padding-top: 20px;
 }
 
 .detailsEvent{
-    color: white;
+    color: black;
     text-shadow: 2px 1px 40px rgba(22, 23, 31, 0.4);
-    padding:20px;
     text-align: center;
 }
 
+.detailsEvent ul{
+    padding:0;
+    padding-top:10px;
+}
+
 .detailsEvent li{
-    font-size: 1.7em;
+    font-size: 22px !important;
     list-style:none;
 }
 
