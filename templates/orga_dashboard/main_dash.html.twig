@@ -1,48 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
     <div class="row text-center">
         
-        <div class="col-sm-4">
-            <div class="card m-3 recapUser">
+        <div class="col-md-6 col-sm-12">
+            <div class="card">
                 
                 <img class="card-img-top" src="" alt="">
                 <div class="card-body">
                     <h3><i class="far fa-address-card"></i> Mon Profil</h3>
-                    <p class="card-title">{{ orga.name }} {{ orga.lastname }}</p>
+                    <p class="card-title">{{ user.name }} {{ user.lastname }}</p>
                 </div>
-                <div class="card-body text-left">
+                <div class="card-body">
                     
                     <p>Inscrit depuis le : </p>
                     <br>
-                    <p><i class="far fa-building"></i> : {{ orga.company }} </p>
+                    <p><i class="far fa-building"></i> : {{ user.company }} </p>
                     <br>
-                    <p><i class="far fa-envelope"></i> : {{ orga.email }} </p>
+                    <p><i class="far fa-envelope"></i> : {{ user.email }} </p>
                     <br>
-                    <p><i class="fas fa-phone-square"></i> : {{ orga.phone }} </p>
+                    <p><i class="fas fa-phone-square"></i> : {{ user.phone }} </p>
                 </div>
-                    <a role="button" class="btn btn-info active" value="submit" aria-pressed="true" href="{{ path('edit_user', {'id' : orga.id }) }}"> 
+                    <a role="button" class="btn btn-info active" value="submit" aria-pressed="true" href="{{ path('edit_user', {'id' : user.id }) }}">
                             Modifier Mon Profil <i class="far fa-edit"></i></a>
             </div>
         </div>
-                            
-        <div class="col-md-4 ">
-            <div class="card m-3">
-                <a role="button" class=" p-2 m-1 btn btn-dark active" value="submit" aria-pressed="true" href="{{ path('addEvent', {'id' : orga.id }) }}"> 
+
+        <div class="col-md-6 col-sm-12">
+            <div class="card">
+                <a role="button" class=" p-2 m-1 btn btn-dark active" value="submit" aria-pressed="true" href="{{ path('addEvent', {'id' : user.id }) }}">
                                 Ajouter un événement <i class="fas fa-plus"></i></a>
-                <a role="button" class="  p-2 m-1 btn btn-secondary active" value="submit" aria-pressed="true" href="{{ path('edit_event', {'id' : orga.id }) }}"> 
+                <a role="button" class="  p-2 m-1 btn btn-secondary active" value="submit" aria-pressed="true" href="{{ path('edit_event', {'id' : user.id }) }}">
                                 Modifier un événement <i class="far fa-edit"></i></a>
-                <a role="button" class=" p-2 m-1 btn btn-danger active" value="submit" aria-pressed="true" href="{{ path('delete_event', {'id' : orga.id }) }}"> 
+                <a role="button" class=" p-2 m-1 btn btn-danger active" value="submit" aria-pressed="true" href="{{ path('delete_event', {'id' : user.id }) }}">
+                            Supprimer un événement <i class="far fa-trash-alt"></i></a>
             </div>
         </div>
         </div>
 
-        {#{%  include 'event/event_list_owner_inc.html.twig' with { 'eventOwner' : eventOwner } %}#}
-        <!-- <div class="col-md-9">
-         {{ render(controller(
-                'App\\Controller\\EventController::displayEvent'
-            )) }} 
-        </div> -->
+        {%  include 'event/events_list_owner_inc.html.twig' with { 'eventOwner' : user.events } %}
+
     </div> 
 {% endblock %}

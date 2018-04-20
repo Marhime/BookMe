@@ -5,6 +5,8 @@
             <div class="card-body">
                 <h4 class="card-title">{{ event.name }}</h4>
                 <p class="card-text">{{ event.place }}</p>
+                <p class="card-text">{{ event.openingDate|date('Y-m-d') }} - {{ event.closingDate|date('Y-m-d') }}</p>
+                <a href="{{ path('oneEvent', { 'id' : event.id }) }}" class="btn btn-danger">Afficher/Modifier l'événement</a>
             </div>
         </div>
         {% endfor %}
