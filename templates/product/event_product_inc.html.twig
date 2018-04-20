@@ -1,15 +1,26 @@
-
-    <div class="row text-center">
-        {% for product in productEvent %}
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">{{ product.type }}</h4>
-                    <p class="card-text">{{ product.description }}</p>
+<div class="row text-center">
+    {% for product in productEvent %}
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+            <img class="card-img-top" src="" alt="">
+            <div class="card-body">
+                <h4 class="card-title">{{ product.type }}</h4>
+                <p class="card-text">{{ product.description }}</p>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% if product.event.owner.id == app.user.id %}
+                    <a class="btn btn-success" href="#">Modifier</a>
+                    <a class="btn btn-success" href="#">Supprimer</a>
+                {% else %}
                     <a class="btn btn-success" href="#">Réserver</a>
-                </div>
+                {% endif %}
+                {% endif %}
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="btn btn-success" data-dismiss="modal" data-toggle="modal" href="{{ path('login') }}" data-target="#LoginModal">Réserver</a>
+                {% endif %}
+
+
             </div>
-        {% endfor %}
         </div>
+        {% endfor %}
     </div>
+</div>
