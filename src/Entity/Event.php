@@ -68,6 +68,7 @@ class Event
      */
     private $products;
 
+
     public function __construct()
     {
         $this->products = new ArrayCollection();

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-   <title>{% block title %}{% endblock %}- Book My Festival</title>
+    <title>{% block title %}{% endblock %}BookMyFestival</title>
     
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -33,7 +33,7 @@
    <!-- Button trigger modal -->
     <nav class="navbar navbar-expand-lg border-bottom navbar-custom navbar-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('home') }}">BookMyFestival</a>
+        <a class="navbar-brand" href="{{ path('home') }}"><span class="text-custom">Book</span>MyFestival</a>
         <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -84,7 +84,7 @@
       <pre-footer class="mt-3 bg-custom">
         <div class="container">
             <div class="row">
-              <div class="pt-3 col-sm-4 col-xs-6">
+              <div class="pt-3 col-sm-4 col-xs-2">
                   <ul>
                       <li>BookMyFestival</li>
                         <li> <a class="pre-link" href={{ path('events')}}>Les festivals</a></li>
@@ -92,14 +92,14 @@
                         <li> <a class="pre-link" href="#">Réservez un stand</a></li>
                   </ul>
               </div>
-                <div class="pt-3 col-sm-4 col-xs-6">
+                <div class="pt-3 col-sm-4 col-xs-2">
                   <ul>
                       <li>Organisateurs</li>
                         <li> <a class="pre-link" href="#{#{{ form ajout organisateur #}">Devenez organisateur</a></li>
                         <li> <a class="pre-link" href="#{#{{ add.event }}#}">Ajoutez un festival</a></li>
                   </ul>
               </div>
-                     <div class="pt-3 col-sm-4 col-xs-6">
+                     <div class="pt-3 col-sm-4 col-xs-2">
                   <ul>
                       <li>Besoin d'informations</li>
                         <li> <a class="pre-link" href="#">Nous Contacter</a></li>
@@ -126,7 +126,6 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script>
         $( "#LoginModal" ).load( "{{ path('login') }}" );
-        $( "#RegisterModal" ).load( "{{ path('register') }}" );
     </script>
     {% block JavaScript %}{% endblock %}
 

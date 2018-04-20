@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Repository\EventRepository;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -52,7 +53,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/event/product", name="event_product_show")
+     * @Route("", name="event_product_show")
      */
     public function displayEventProduct($event)
     {
@@ -74,16 +75,18 @@ class ProductController extends Controller
 
 
     /**
-     * @Route("/product/edit", name="edit_product")
+     * @Route("{idEvent}/product/edit/{idProduct}", name="edit_product")
      * @Route("/product/add", name="add_product")
      * 
      */
     
     //add a product
     
-    public function editProduct(Request $request, ObjectManager $manager, Product $product = null)
+    public function editProduct(Request $request, ObjectManager $manager, EventRepository $eventRepository, ProductRepository $productRepository, $idEvent, $idProduct)
     {
         //If doesn't exist create a product
+        $product = $productRepository->find($idProduct);
+        $event = $eventRepository->find($idEvent);
         if($product === null){
             $product = new Product();
             $group = 'insertion';
@@ -101,6 +104,7 @@ class ProductController extends Controller
         if($formProduct->isSubmitted() && $formProduct->isValid()){
             $product->setQuantity($request->get('quantity'));
             $quantity= $product->getQuantity();
+            $product->setEvent($event);
 
             for ($i = 1; $i < $quantity; $i++ ) {
                 //TODO event relation with id event emplementation
