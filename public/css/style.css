@@ -20,7 +20,7 @@ body {
         display: none;
     }
     .nav-link:hover{
-        border:
+        border: none;
     }
 }
 
@@ -227,7 +227,9 @@ footer .container{
 .detailsEvent h1{
     font-size: 40px !important;
     font-weight: bold;
-    padding-top: 20px;
+    padding:10px;
+    border: 1px solid grey;
+    display:inline;
 }
 
 .detailsEvent{
@@ -238,7 +240,7 @@ footer .container{
 
 .detailsEvent ul{
     padding:0;
-    padding-top:10px;
+    padding-top:15px;
 }
 
 .detailsEvent li{
