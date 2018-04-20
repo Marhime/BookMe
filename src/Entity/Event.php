@@ -221,6 +221,7 @@ class Event
     }
 
     /**
+     * @Groups({"searchable"})
      * @return mixed
      */
     public function getDescription()
