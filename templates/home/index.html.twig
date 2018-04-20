@@ -27,8 +27,8 @@
  {%endblock%}
     
 {% block body %}
-   
-    <h2 class="pt-3"> Les festivals en France </h2>
+   <div class="container">
+    <h2 class="pt-3"> <strong>Les festivals en France</strong> </h2>
     
       <div id="hits"> <!-- Instantsearch.js -->
           <script type="text/html" id="hit-template">
@@ -55,7 +55,7 @@
 
    <script src="{{asset('js/app.js')}}"></script>
  
-      
+   </div>
       <!-- /.row -->
 
 {% endblock %}

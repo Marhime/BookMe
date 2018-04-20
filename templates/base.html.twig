@@ -74,7 +74,7 @@
     {% block modalLogin %}{% endblock %}
 </div>
 
-    <div class="container container-custom">
+    <div class="container-fluid container-custom">
 
  {% block body %}{%endblock %}
     </div>
@@ -84,7 +84,7 @@
       <pre-footer class="mt-3 bg-custom">
         <div class="container">
             <div class="row">
-              <div class="pt-3 col-sm-4 col-xs-2">
+              <div class="pt-3 col-sm-4 col-xs-6">
                   <ul>
                       <li>BookMyFestival</li>
                         <li> <a class="pre-link" href={{ path('events')}}>Les festivals</a></li>
@@ -92,7 +92,7 @@
                         <li> <a class="pre-link" href="#">Réservez un stand</a></li>
                   </ul>
               </div>
-                <div class="pt-3 col-sm-4 col-xs-2">
+                <div class="pt-3 col-sm-4 col-xs-6">
                   <ul>
                       <li>Organisateurs</li>
                         <li> <a class="pre-link" href="#{#{{ form ajout organisateur #}">Devenez organisateur</a></li>
@@ -112,7 +112,7 @@
     </pre-footer>
     
     <!-- Footer -->
-    <footer class="py-5 mt-3 bg-custom">
+    <footer class="py-3 bg-custom">
       <div class="container">
         <p class="pt-2 text-center text-black">Copyright &copy; BookMyFestival by HAMAN 2018</p>
       </div>

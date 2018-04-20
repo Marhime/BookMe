@@ -3,17 +3,28 @@
 {% block title %} Votre Festival {% endblock %}
 
 {% block body %}
-
-    <div class="row">
-        <div class="col">
-            <ul>
-                <li>{{ event.name }}</li>
-                <li>{{ event.place }}</li>
-                <li>{{ event.phone }}</li>
+    <div class="container">
+        <div class="eventbanner img-fluid">
+              
+        </div> 
+        
+        <div class="eventdetails mt-3">
+            <h1>{{ event.name }}</h1>
+             
+            <ul>  
+               {# <li>{{ event.description }}</li>#}
+                <li><i class="fas fa-phone"></i>{{ event.phone }}</li>
                 <li>{{ event.theme }}</li>
-                <li>{{ event.website }}</li>
+                <a href="{{ event.website }}">{{ event.website }}</a>
             </ul>
         </div>
+    {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}#}
+    {{ render(controller(
+        'App\\Controller\\ProductController::displayEventProduct',
+        { 'event' : event.id }
+    )) }}
+    </div>
+
     </div>
 
     {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
