@@ -2,60 +2,65 @@
 
 {% block title %}{% endblock %}
 
-{%block header %}
-        <header class="business-header">
-          <div class="container container-search">
+{% block header %}
+    <header class="business-header">
+        <div class="container container-search">
             <div class="row">
-              <div class="col-lg-12 px-5">
-                <h1 class="text-left pb-4 home-title">Trouvez et réservez des stands et des friteries uniques dans toute la France. </h1>
-                <div class="search-bar">
-                 <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
-                    <div class="input-group recherche">
-                      <i class="fas fa-search fa-2x pl-3 my-auto"></i>
-                        <input type="text" id="search-input" autocomplete="off" value="" class="form-control border-none search-input"
-                           placeholder="Que recherchez-vous?">
-                        <div class="btn-container">
-                            <button type="submit" class="btn-custom">Rechercher</button>
-                        </div>
+                <div class="col-lg-12 px-5">
+                    <h1 class="text-left pb-4 home-title">Trouvez et réservez des stands et des friteries uniques dans
+                        toute la France. </h1>
+                    <div class="search-bar">
+                        <form class="form-horizontal" method="post" accept-charset="utf-8">
+                            <!-- barre de recherche Homepage -->
+                            <div class="input-group recherche">
+                                <i class="fas fa-search fa-2x pl-3 my-auto"></i>
+                                <input type="text" id="search-input" autocomplete="off" value=""
+                                       class="form-control border-none search-input"
+                                       placeholder="Que recherchez-vous?">
+                                <div class="btn-container">
+                                    <button type="submit" class="btn-custom">Rechercher</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                 </form>
                 </div>
-             </div>
-           </div>
+            </div>
         </div>
-      </header>
- {%endblock%}
+    </header>
+{% endblock %}
     
 {% block body %}
-   <div class="container">
-    <h2 class="pt-3"> <strong>Les festivals en France</strong> </h2>
-    
-      <div id="hits"> <!-- Instantsearch.js -->
-          <script type="text/html" id="hit-template">
-              {% verbatim %}
-                <div id="hit">
-                  <a class="card cardlink" href="#">
-                    <img class="card-img-top hit-image" src="http://www.from-paris.com/wp-content/uploads/2017/08/th-800x450-routedurock800.jpg-e1501756007444.jpg" alt="">
-                     <img class="card-img-top" src="{{ asset(event.image) }}" alt="">
-                      <div class="card-body pl-0" id="hit-content">
-                      <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
-                      <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
-                      <p class="card-text">{{{_highlightResult.description.value}}}</p>
-                      <p class="card-subtitle text-muted">Réservation</p>
-                    </div>
-                   </a>
-                  </div>
-               {% endverbatim %}
-          </script>
-        </div>
-        
-          <div id="allevents">
-           <a href="{{ path('events') }}">Afficher tous les festivals <i class=" fas fa-arrow-right"></i> </a>
-          </div>
 
-   <script src="{{asset('js/app.js')}}"></script>
- 
-   </div>
-      <!-- /.row -->
+
+<h2 class="pt-3"> Les festivals en France </h2>
+
+<div id="hits"> <!-- Instantsearch.js -->
+    <script type="text/html" id="hit-template">
+
+        <div id="hit">
+            <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{  objectID }}}{% endverbatim %}">
+                {% verbatim %}
+                <img class="card-img-top hit-image"
+                     src="{{{image}}}"
+                     alt="">
+                <div class="card-body pl-0" id="hit-content">
+                    <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
+                    <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
+                    <p class="card-text">{{{_highlightResult.description.value}}}</p>
+                    <p class="card-subtitle text-muted">Réservation</p>
+                </div>
+                {% endverbatim %}
+            </a>
+        </div>
+
+    </script>
+</div>
+
+<div id="allevents">
+    <a href="{{ path('events') }}">Afficher tous les festivals <i class=" fas fa-arrow-right"></i> </a>
+</div>
+
+<script src="{{ asset('js/app.js') }}"></script>
+
 
 {% endblock %}

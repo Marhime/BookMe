@@ -24,6 +24,11 @@ body {
     }
 }
 
+.event-list {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
 .container-fluid{
     padding:0;
 }

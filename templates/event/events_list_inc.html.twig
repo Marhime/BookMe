@@ -20,24 +20,28 @@
     <div class="row">
     {% for event in events %}
         
-            <div id="hits"> <!-- Instantsearch.js -->
-                <script type="text/html" id="hit-template">
-                   {% verbatim %}
-                     <div id="hit">
-                       <a class="card cardlink" href="#">
-                         <img class="card-img-top hit-image" src="http://www.from-paris.com/wp-content/uploads/2017/08/th-800x450-routedurock800.jpg-e1501756007444.jpg" alt="">
-                          <img class="card-img-top" src="{{ asset(event.image) }}" alt="">
-                           <div class="card-body pl-0" id="hit-content">
-                           <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
-                           <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
-                            <p class="card-text">{{{_highlightResult.description.value}}}</p>
-                         </div>
-                        </a>
-                       </div>
-                    {% endverbatim %}
-                </script>
-            </div>
-         </div>
+
+   <div id="hits"> <!-- Instantsearch.js -->
+       <script type="text/html" id="hit-template">
+
+           <div id="hit">
+               <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{ objectID }}}{% endverbatim %}">
+                <img class="card-img-top hit-image"
+                     src="{% verbatim %}{{{image}}}{% endverbatim %}"
+                     alt="">
+                <div class="card-body pl-0" id="hit-content">
+                    <p class="card-subtitle text-muted ">{% verbatim %}{{{_highlightResult.place.value}}}{% endverbatim %}</p>
+                    <h4 class="card-title">{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}</h4>
+                    <p class="card-text">{% verbatim %}{{{_highlightResult.description.value}}}{% endverbatim %}</p>
+                    <p class="card-subtitle text-muted">Réservation</p>
+                </div>
+               </a>
+           </div>
+
+       </script>
+        </div>
+    </div>
+
         
    {# <div class="card col-lg-3 col-sm-6 col-xs-12" style="width: 18rem;">
         <img class="card-img-top" src="../img/wala1.jpg" alt="Card image cap">

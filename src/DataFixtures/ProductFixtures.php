@@ -25,6 +25,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setQuantity($faker->numberBetween(1, 20));
             $product->setType($faker->randomElement(array('Emplacement Standard','Emplacement premium','Popup','Stand entrée event')));
             $product->setEvent($this->getReference('event'.rand(0,99)));
+
             $manager->persist($product);
         }
 
