@@ -8,7 +8,7 @@ body {
     padding-top: 92px;
     font-family: 'Roboto', sans-serif;
 }
-
+    
 @media (min-width: 992px) {
     body {
         padding-top: 92px;
@@ -183,6 +183,8 @@ pre-footer .container{
     top: 50%;
     transform: translate(0, -50%) !important;
     overflow: hidden;
+    text-align: center;
+    
 }
 
 #allevents{
@@ -246,3 +248,11 @@ footer .container{
     list-style:none;
 }
 
+.emoji{
+    font-size:70px;
+}
+
+.lala{
+    text-align: center;
+    padding-top: 25px;
+}

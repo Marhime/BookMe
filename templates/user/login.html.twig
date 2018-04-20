@@ -10,6 +10,7 @@
             </div>
             <div class="modal-body">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <h6 class="emoji">😊</h6>
                     <h5 class="modal-title text-center" id="LoginModalLabel">Vous êtes déjà connecté</h5>
                     <h5><small>{{ app.user.username }}</small><br>Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h5>
                     {% else %}
