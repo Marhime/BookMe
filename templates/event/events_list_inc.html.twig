@@ -2,7 +2,7 @@
 
 {% block body %}
              
-            
+            <div class="container">
                 <div class="search-bar p-2 m-3">
                  <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
                     <div class="input-group recherche">
@@ -20,6 +20,7 @@
     <div class="row">
     {% for event in events %}
         
+
    <div id="hits"> <!-- Instantsearch.js -->
        <script type="text/html" id="hit-template">
 
@@ -40,6 +41,7 @@
        </script>
         </div>
     </div>
+
         
    {# <div class="card col-lg-3 col-sm-6 col-xs-12" style="width: 18rem;">
         <img class="card-img-top" src="../img/wala1.jpg" alt="Card image cap">
