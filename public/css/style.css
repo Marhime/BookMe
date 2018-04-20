@@ -218,18 +218,26 @@ footer .container{
     border: 1px solid lightgrey;   
 }
 
-
 /** Page One Event **/
 .eventbanner{  
-    width: 100%;
-    height:40%;
+    opacity: 0.8;
+    background:url('../img/home1.jpeg');
+    height:50%;
 }
 .eventdetails{
     text-align: center;
     margin: 0;
     padding:0;
 }
+.eventdetails h1{
+    border: 3px solid black;
+    display:inline;
+    padding:3px;
+    
+}
 .eventdetails ul{
+    border: 2px solid black;
      list-style: none;  
-     padding:0;
+     padding:10px;
+     margin:10px;
 }
