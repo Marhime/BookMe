@@ -8,6 +8,9 @@ body {
     padding-top: 92px;
     font-family: 'Roboto', sans-serif;
 }
+.container-fluid{
+    padding:0;
+}
 
 @media (min-width: 992px) {
     body {
@@ -222,7 +225,7 @@ footer .container{
 .detailsEvent h1{
     font-size: 40px !important;
     font-weight: bold;
-    padding:10px;
+    padding:8px 0 8px;
 }
 
 .detailsEvent{
@@ -232,11 +235,15 @@ footer .container{
 }
 
 .detailsEvent ul{
+    padding-top:8px;
     padding:0;
-    padding-top:15px;
 }
 
 .detailsEvent li{
     font-size: 22px !important;
     list-style:none;
+}
+.detailsEvent img{
+    width:100%;
+    max-height: 70vh;
 }
