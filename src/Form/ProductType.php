@@ -16,7 +16,6 @@ class ProductType extends AbstractType
             ->add('type')
             ->add('description')
             ->add('price')
-            ->add('id_event')
         ;
     }
 

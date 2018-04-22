@@ -69,7 +69,7 @@ class User implements UserInterface
         $this->events = new ArrayCollection();
     }
     
-    public function getEvent() : Collection
+    public function getEvents() : Collection
     {
         return $this->events;
     }
