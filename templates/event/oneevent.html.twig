@@ -19,10 +19,7 @@
             </div>
     </div>
     {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}#}
-    {{ render(controller(
-        'App\\Controller\\ProductController::displayEventProduct',
-        { 'event' : event.id }
-    )) }}
+
     {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
     {#{{ render(controller(#}
         {#'App\\Controller\\ProductController::displayEventProduct',#}

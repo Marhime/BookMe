@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-md-7 pl-3 col-sm-12">
-            {% include 'event/events_list_owner_inc.html.twig' with { 'eventOwner' : user.event } %}
+            {% include 'event/events_list_owner_inc.html.twig' with { 'eventOwner' : user.events } %}
             <a role="button" class="btn btn-outline-success active btn-block py-lg-4 active my-3" value="submit"
                aria-pressed="true"
                href="{{ path('addEvent', {'id' : user.id }) }}">
