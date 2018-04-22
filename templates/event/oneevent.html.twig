@@ -7,23 +7,23 @@
         <div class="eventbanner img-fluid">
             <div class="detailsEvent">
                 <h1>{{ event.name }}</h1>
-                    <ul>   
-                        <li><i class="fas fa-phone "> </i> {{ event.phone }}</li>
-                        <li> {{ event.theme }}</li>
-                        <li> <a href="{{ event.website }}">{{ event.website }}</a></li>
-                    </ul>
+                <ul>
+                    <li><i class="fas fa-phone "> </i> {{ event.phone }}</li>
+                    <li> {{ event.theme }}</li>
+                    <li><a href="{{ event.website }}">{{ event.website }}</a></li>
+                </ul>
             </div>
         </div>
-            <div class="eventDescription">
-                <p>{#{{ event.description }}#}<p>
-            </div>
+        <div class="eventDescription">
+            <p>{#{{ event.description }}#}<p>
+        </div>
     </div>
     {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}#}
 
-    {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
+    {% include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
     {#{{ render(controller(#}
-        {#'App\\Controller\\ProductController::displayEventProduct',#}
-        {#{ 'event' : event.id }#}
+    {#'App\\Controller\\ProductController::displayEventProduct',#}
+    {#{ 'event' : event.id }#}
     {#)) }}#}
 
 {% endblock %}
