@@ -31,14 +31,14 @@
     
 {% block body %}
 
-<h2 class="pt-3"> Les festivals en France </h2>
+    <h2 class="pt-3"> Les festivals en France </h2>
 
-<div id="hits"> <!-- Instantsearch.js -->
-    <script type="text/html" id="hit-template">
-
-        <div id="hit">
-            <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{  objectID }}}{% endverbatim %}">
-                {% verbatim %}
+    <div id="hits"> <!-- Instantsearch.js -->
+        <script type="text/html" id="hit-template">
+            <div id="hit">
+                <a class="card cardlink"
+                   href="{{ path('root') }}event/{% verbatim %}{{{  objectID }}}{% endverbatim %}">
+                    {% verbatim %}
                 <img class="card-img-top hit-image"
                      src="{{{image}}}"
                      alt="">
@@ -49,19 +49,18 @@
                     <p class="card-subtitle text-muted">Réservation</p>
                 </div>
                 {% endverbatim %}
-            </a>
-        </div>
+                </a>
+            </div>
+        </script>
+    </div>
 
-    </script>
-</div>
+    <div id="allevents">
+        <a href="{{ path('events') }}">Afficher tous les festivals <i class=" fas fa-arrow-right"></i> </a>
+    </div>
 
-<div id="allevents">
-    <a href="{{ path('events') }}">Afficher tous les festivals <i class=" fas fa-arrow-right"></i> </a>
-</div>
-
-<script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
 
-<!-- /.row -->
+    <!-- /.row -->
 
 {% endblock %}
