@@ -75,7 +75,7 @@ class ProductController extends Controller
 
 
     /**
-     * @Route("{idEvent}/product/edit/{idProduct}", name="edit_product")
+     * @Route("event/{idEvent}/product/edit/{idProduct}", name="edit_product")
      * @Route("/product/add", name="add_product")
      * 
      */
@@ -117,5 +117,22 @@ class ProductController extends Controller
             ['form' => $formProduct->createView(), ]);
 
     }
+
+    /**
+     * @Route("event/product/delete/{id}", name="delete_product")
+     */
+    public function deleteProduct(Product $product, ObjectManager $manager)
+
+    {
+        $idEvent = $product->getEvent()->getId();
+        if($product->getEvent()->getOwner()->getId() !== $this->getUser()->getId())
+        {
+            throw $this->createAccessDeniedException("Vous n'êtes pas autorisé à supprimer ce produit");
+        }
+        $manager->remove($product);
+        $manager->flush();
+        return $this->redirectToRoute('oneEvent', ['id' => $idEvent]);
+    }
+
 
 }

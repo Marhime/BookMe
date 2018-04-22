@@ -99,20 +99,15 @@ class UserController extends Controller
     //function to acess to the orga dashboard
     //TODO limit acess to orga roles
     /**
-     * @Route("/dashboard/{id}", name="dash_orga")
+     * @Route("/profile", name="profile")
      */
-    public function dashOrga($id)
+    public function dashOrga()
     {
-        $orga = $this->getDoctrine()
+        $user = $this->getDoctrine()
             ->getRepository(User::class)
-            ->find($id);
+            ->find($this->getUser()->getId());
 
-        if (!$orga) {
-            throw $this->createNotFoundException(
-                'No user found for id '.$id
-            );
-        }
         return $this->render('orga_dashboard/main_dash.html.twig',
-            ['orga' => $orga]);
+            ['user' => $user]);
     }
 }

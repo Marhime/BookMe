@@ -30,7 +30,36 @@
 {% endblock %}
     
 {% block body %}
+   <div class="container">
+    <h2 class="pt-3"> <strong>Les festivals en France</strong> </h2>
+    
+      <div id="hits"> <!-- Instantsearch.js -->
+          <script type="text/html" id="hit-template">
+              {% verbatim %}
+                <div id="hit">
+                  <a class="card cardlink" href="#">
+                    <img class="card-img-top hit-image" src="http://www.from-paris.com/wp-content/uploads/2017/08/th-800x450-routedurock800.jpg-e1501756007444.jpg" alt="">
+                     <img class="card-img-top" src="{{ asset(event.image) }}" alt="">
+                      <div class="card-body pl-0" id="hit-content">
+                      <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
+                      <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
+                      <p class="card-text">{{{_highlightResult.description.value}}}</p>
+                      <p class="card-subtitle text-muted">Réservation</p>
+                    </div>
+                   </a>
+                  </div>
+               {% endverbatim %}
+          </script>
+        </div>
+        
+          <div id="allevents">
+           <a href="{{ path('events') }}">Afficher tous les festivals <i class=" fas fa-arrow-right"></i> </a>
+          </div>
 
+   <script src="{{asset('js/app.js')}}"></script>
+ 
+   </div>
+      <!-- /.row -->
     <h2 class="pt-3"> Les festivals en France </h2>
 
     <div id="hits"> <!-- Instantsearch.js -->
