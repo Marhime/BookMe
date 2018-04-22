@@ -81,12 +81,11 @@
 
 /* HITS */
 #hits {
- 
+     padding: 0 0;
 }
 
 .hit {
     font-size: 0;
-    padding: 15px 0;
     border-bottom: 1px solid #eee;
 }
 .hit-name {
@@ -96,7 +95,6 @@
     display: inline-block;
     width: 100%;
     height: 170px;
-    text-align: center;
 }
 
 .hit-content {

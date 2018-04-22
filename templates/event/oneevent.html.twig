@@ -6,28 +6,27 @@
         <div class="container-fluid">
             <div class="detailsEvent">
                 <img class="card-img-top img-fluid" src="{{ asset(event.image) }}" alt="image de l'événement"> <!-- affichage de l'image -->
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-8 mx-auto">
-                <h1>{{ event.name }}</h1> <!-- Nom de l'événement -->
-                    <ul>  
-                        <li class="border border-dark rounded mb-3 "> {{ event.description }}</li> <!-- description de l'événement -->
-                        <li class="p-3"> Site web <a href="{{ event.website }}"><i class="fas fa-external-link-alt fa"></i></a><li> <!-- site web -->
-                        <li class="d-inline float-left"><i class="fas fa-phone"></i> :  {{ event.phone }}</li> <!-- numéro de l'organisateur --> 
-                        <li class="d-inline"> <i class="fas fa-map-marker"></i> {{ event.place }}</li> <!-- lieu de l'événement -->
-                        <li class="d-inline float-right"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
-                    </ul>
-            </div>
-        {#{%  include 'product/event_product_inc.html.twig' with { 'productEvent' : productEvent } %}
-        {{ render(controller(
-            'App\\Controller\\ProductController::displayEventProduct',
-            { 'event' : event.id }
-        )) }}#}
+                    <div class="col-md-12 mx-auto">
+                        <h1>{{ event.name }}</h1> <!-- Nom de l'événement -->
+                            <ul>  
+                                <li class="border border-dark mb-2 "> {{ event.description }}</li> <!-- description de l'événement -->
+                                <li class="p-3"> Site web <a href="{{ event.website }}"><i class="fas fa-external-link-alt fa"></i></a><li> <!-- site web -->
+                                <li class="d-inline float-left"><i class="fas fa-phone"></i> :  {{ event.phone }}</li> <!-- numéro de l'organisateur --> 
+                                <li class="d-inline"> <i class="fas fa-map-marker"></i> {{ event.place }}</li> <!-- lieu de l'événement -->
+                                <li class="d-inline float-right"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
+                            </ul>
+                    </div>
+                </div>
         
-        {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %} <!-- affichage des produits disponibles -->
-        {#{{ render(controller(#}
-            {#'App\\Controller\\ProductController::displayEventProduct',#}
-            {#{ 'event' : event.id }#}
-        {#)) }}#}
+            {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %} <!-- affichage des produits disponibles -->
+            {#{{ render(controller(#}
+                {#'App\\Controller\\ProductController::displayEventProduct',#}
+                {#{ 'event' : event.id }#}
+            {#)) }}#}
+            </div>
+        </div>
     </div>
 
 {% endblock %}

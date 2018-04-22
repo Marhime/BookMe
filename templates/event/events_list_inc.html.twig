@@ -3,7 +3,7 @@
 {% block body %}
              
     <div class="container">
-        <div class="search-bar p-2 m-3">
+        <div class="search-bar p-2 m-1">
             <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
                 <div class="input-group recherche">
                     <i class="fas fa-search fa-2x pl-3 my-auto"></i>
@@ -25,7 +25,7 @@
                         <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{ objectID }}}{% endverbatim %}">
                             <img class="card-img-top hit-image" src="{% verbatim %}{{{image}}}{% endverbatim %}"
                               alt="image de l'évenement">
-                            <div class="card-body pl-0" id="hit-content">
+                            <div class="card-body" id="hit-content">
                                 <p class="card-subtitle text-muted ">{% verbatim %}{{{_highlightResult.place.value}}}{% endverbatim %}</p>
                                 <h4 class="card-title">{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}</h4>
                                 <p class="card-text">{% verbatim %}{{{_highlightResult.description.value}}}{% endverbatim %}</p>
