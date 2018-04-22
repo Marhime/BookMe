@@ -47,21 +47,20 @@ nav .text-custom{
 .nav-link {
     font-size: 16px;
     color: #808080;
-    font-weight: normal !important;
+    font-weight: bold !important;
     text-overflow: ellipsis !important;
     display:inline;
-}
-
-
-.navbar-custom{
-    background: white;
-    padding: 26px;
 }
 
 .nav-link:hover {
     color: #484848;
     text-decoration: underline;
     transition : 1s ease;
+}
+
+.navbar-custom{
+    background: white;
+    padding: 26px;
 }
 
 /** Header bannière **/
@@ -168,6 +167,7 @@ nav .text-custom{
 }
 .card-body{
    width: 100%;
+   padding:5px;
 }
 
 .cardlink{
@@ -178,6 +178,11 @@ nav .text-custom{
 .cardlink:hover{
  text-decoration:none;
  color:black;
+}
+
+.card-title{
+    font-weight:500;
+    color: #222222;
 }
 
 .border-none {
@@ -237,10 +242,9 @@ footer .container{
 
 .detailsEvent h1{
     font-size: 40px !important;
-    font-weight: 500;    
-    padding: 10px 0px 10px;
+    font-weight: 600;    
+    padding: 10px 0px 10px; 
 }
-
 
 .detailsEvent ul{
     padding-top:8px;

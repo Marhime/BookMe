@@ -30,38 +30,36 @@
 {% endblock %}
     
 {% block body %}
-<div class="container">
-<h2 class="pt-3"> Les festivals en France </h2>
+    <div class="container">
+        <h2 class="pt-3"> Les festivals en France </h2>
 
-<div id="hits"> <!-- Instantsearch.js -->
-    <script type="text/html" id="hit-template">
+        <div id="hits"> <!-- Instantsearch.js nous permet de récupérer des événements stockés dans la base de donnée --> 
+            <script type="text/html" id="hit-template">
 
-        <div id="hit">
-            <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{  objectID }}}{% endverbatim %}">
-                {% verbatim %}
-                <img class="card-img-top hit-image"
-                     src="{{{image}}}"
-                     alt="image de l'evenement">
-                <div class="card-body pl-0" id="hit-content">
-                    <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
-                    <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
-                    <p class="card-text">{{{_highlightResult.description.value}}}</p>
-                    <p class="card-subtitle text-muted">Réservation</p>
-                </div>
-                {% endverbatim %}
-            </a>
+                <div id="hit">
+                    <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{  objectID }}}{% endverbatim %}">
+                        {% verbatim %}
+                            <img class="card-img-top hit-image"src="{{{image}}}" alt="image de l'evenement">      
+                            <div class="card-body pl-0" id="hit-content">
+                                <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
+                                <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
+                                <p class="card-text">{{{_highlightResult.description.value}}}</p>
+                                <p class="card-subtitle text-muted">Réservation</p>
+                            </div><hr>
+                        {% endverbatim %}
+                    </a>
+               </div> 
+            
+            </script>
         </div>
 
-    </script>
-</div>
+    <div id="allevents">
+        <a href="{{ path('events') }}">Afficher tous les festivals <i class=" fas fa-arrow-right"></i> </a> <!-- lien vers tous les événements -->
+    </div>
 
-<div id="allevents">
-    <a href="{{ path('events') }}">Afficher tous les festivals <i class=" fas fa-arrow-right"></i> </a>
-</div>
-
-<script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script> <!-- fichier javascript -->
 
 
-<!-- /.row -->
-</div>
+    <!-- /.row -->
+    </div>
 {% endblock %}

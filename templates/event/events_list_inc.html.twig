@@ -17,29 +17,28 @@
         </div>
          
         <div class="row">
-            {% for event in events %}
+        {% for event in events %}
         
             <div id="hits"> <!-- Instantsearch.js -->
                 <script type="text/html" id="hit-template">
                     <div id="hit">
                         <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{ objectID }}}{% endverbatim %}">
-                            <img class="card-img-top hit-image" src="{% verbatim %}{{{image}}}{% endverbatim %}"
-                              alt="image de l'évenement">
+                            <img class="card-img-top hit-image" src="{% verbatim %}{{{image}}}{% endverbatim %}" 
+                              alt="image de l'évenement"> <!-- image de l'événement -->
                             <div class="card-body pb-3" id="hit-content">
-                                <p class="card-subtitle text-muted ">{% verbatim %}{{{_highlightResult.place.value}}}{% endverbatim %}</p>
-                                <h4 class="card-title">{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}</h4>
-                                <p class="card-text">{% verbatim %}{{{_highlightResult.description.value}}}{% endverbatim %}</p>
+                                <p class="card-subtitle text-muted ">{% verbatim %}{{{_highlightResult.place.value}}}{% endverbatim %}</p> <!-- lieu -->
+                                <h4 class="card-title">{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}</h4> <!-- nom de l'événement -->
+                                <p class="card-text">{% verbatim %}{{{_highlightResult.description.value}}}{% endverbatim %}</p> <!-- description -->
                                 <p class="card-subtitle text-muted">Réservation</p><hr>
                             </div>
                         </a>
                     </div>
                 </script>
             </div>
-     
         </div>
         
-   {% endfor %}
+        {% endfor %}
     </div>    
 
-<script src="{{asset('js/app2.js')}}"></script>
+    <script src="{{asset('js/app2.js')}}"></script> <!-- fichier javascript -->
 {% endblock %}

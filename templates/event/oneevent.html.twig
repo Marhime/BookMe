@@ -6,7 +6,7 @@
     
     <div class="container-fluid">
         <div class="detailsEvent">
-                <img class="card-img-top img-fluid" src="{{ asset(event.image) }}" alt="image de l'événement"> <!-- affichage de l'image -->
+                <img class="card-img-top img-fluid" src="{{ asset(event.image) }}" alt=""> <!-- affichage de l'image -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 mx-auto">
@@ -16,7 +16,7 @@
                                 <li class="p-3"> Site web <a href="{{ event.website }}"><i class="fas fa-external-link-alt fa"></i></a><li> <!-- site web -->
                                 <li class="d-inline float-left"><i class="fas fa-phone"></i> {{ event.phone }}</li> <!-- numéro de l'organisateur --> 
                                 <li class="d-inline float-right"> <i class="fas fa-map-marker text-danger"></i> {{ event.place }}</li> <!-- lieu de l'événement -->
-                                <li class="d-flex-inline"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
+                                <li class="d-inline-flex"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
                             </ul>
                     </div>
                 
