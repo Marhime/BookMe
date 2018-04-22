@@ -6,6 +6,7 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -68,6 +69,18 @@ class Event
      */
     private $products;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(groups={"insertion"})
+     * @var object
+     * @Assert\Image(maxSize = "2M",minWidth="200", minHeight="200")
+     */
+    private $image;
 
     public function __construct()
     {
@@ -206,6 +219,38 @@ class Event
     {
         return $this->products;
     }
+
+    /**
+     * @Groups({"searchable"})
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @Groups({"searchable"})
+     */
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function setImage($image) {
+        $this->image = $image;
+        return $this;
+    }
+
 
 
 }

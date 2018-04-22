@@ -221,6 +221,7 @@ footer .container{
     padding-top:20px;
 }
 
+
 /**Page - Dashboard/ - **/
 .recapUser{
     border: 1px solid lightgrey;   
@@ -250,3 +251,7 @@ footer .container{
     list-style:none;
 }
 
+.event-list {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}

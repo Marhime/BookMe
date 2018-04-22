@@ -12,7 +12,7 @@ class HomeController extends Controller
      */
     public function root()
     {
-        //redirection vers la route home en cas de redirection vers '/'
+        //redirection vers la route home en cas de redirection vers de terre '/'
         return $this->redirectToRoute('home');
     }
 
