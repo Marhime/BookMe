@@ -4,14 +4,25 @@
     outline: none !important;
 }
 
+*:focus {
+    outline: none;
+}
+
 body {
     padding-top: 92px;
     font-family: 'Roboto', sans-serif;
 }
+
 .container-fluid{
     padding:0;
 }
 
+p {
+    margin: 0;
+} 
+
+
+/** Media queries **/ 
 @media (min-width: 992px) {
     body {
         padding-top: 92px;
@@ -27,6 +38,12 @@ body {
     }
 }
 
+/** Zone de Navigation **/
+nav .text-custom{
+    color:#000080;
+    font-weight:bold;
+}
+
 .nav-link {
     font-size: 16px;
     color: #808080;
@@ -38,7 +55,7 @@ body {
 
 .navbar-custom{
     background: white;
-    padding: 15px;
+    padding: 26px;
 }
 
 .nav-link:hover {
@@ -47,6 +64,7 @@ body {
     transition : 1s ease;
 }
 
+/** Header bannière **/
 .business-header {
     min-height: 80vh;
     background: url('../img/festival_1.jpg') center center no-repeat scroll;
@@ -54,28 +72,6 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-}
-
-p {
-    margin: 0;
-} 
-
-.card {
-    width: auto;
-    border: none;
-}
-.card-body{
-   width: 100%;
-   padding-left: 0;
-}
-.cardlink{
-    text-decoration:none;
-    color:black;
-}
-
-.cardlink:hover{
- text-decoration:none;
- color:black;
 }
 
 .home-title {
@@ -90,10 +86,6 @@ p {
     line-height: -moz-calc(3vw + 7px) !important;
     line-height: calc(3vw + 12px) !important;
     max-width: 80%;
-}
-
-.border-none {
-    border-color: transparent !important;
 }
 
 .btn-custom {
@@ -117,7 +109,7 @@ p {
     white-space: nowrap !important;
     cursor: pointer;
 }
-
+/** barre de recherche **/
 .search-bar {
     font-size: 19px !important;
     line-height: 24px !important;
@@ -132,7 +124,7 @@ p {
     box-shadow: 0 2px 5px rgba(156,160,171,0.25) !important;
     border: 1px solid transparent !important;
 }
-
+/** input de recherche **/
 .search-input {
     font-size: 15px !important;
     line-height: 24px !important;
@@ -143,20 +135,12 @@ p {
     background-color: transparent !important;
     border: 0px !important;
     padding: 11px !important;
-    width: auto !important;
+    width: 100%;
     height: auto !important;
     font-weight: normal !important;
     text-overflow: ellipsis !important;
 }
 
-nav .text-custom{
-    color:#000080;
-    font-weight:bold;
-}
-
-*:focus {
-    outline: none;
-}
 .form-control:focus {
     border-color: inherit;
     -webkit-box-shadow: none;
@@ -177,35 +161,53 @@ nav .text-custom{
     color: #808080 !important;
 }
 
+/** Zone des HitCards **/
+.card {
+    width: auto;
+    border: none;
+}
+.card-body{
+   width: 100%;
+}
+
+.cardlink{
+    text-decoration:none;
+    color:black;
+}
+
+.cardlink:hover{
+ text-decoration:none;
+ color:black;
+}
+
+.border-none {
+    border-color: transparent !important;
+}
+
+/** Zone du Préfooter **/
+
 pre-footer .container{
     border-top: 1px solid lightgrey;
 }
 
-.modal-dialog {
-    position: relative !important;
-    margin: auto !important;
-    top: 50%;
-    transform: translate(0, -50%) !important;
-    overflow: hidden;
-}
-
 #allevents{
-    padding-bottom: 10px;
-    
+    padding-bottom: 10px;    
 }
 
 pre-footer li{
-
      list-style: none;
 }
+
 .pre-link{
     color:grey;
     text-decoration:none;
 }
+
 .pre-link:hover{
     text-decoration: none;
 }
 
+/** Zone du Footer **/
 footer .bg-custom{
     background: white;
 }
@@ -215,13 +217,17 @@ footer .container{
     padding-top:20px;
 }
 
-/** Page One Event **/
-.detailsEvent h1{
-    font-size: 40px !important;
-    font-weight: 600;
-    padding:6px 0 3px;
-    color: #565656;
+/** Modal de Connexion de l'utilisateur **/
+.modal-dialog {
+    position: relative !important;
+    margin: auto !important;
+    top: 50%;
+    transform: translate(0, -50%) !important;
+    overflow: hidden;
 }
+
+
+/** Page OneEvent **/
 
 .detailsEvent{
     color: black;
@@ -229,9 +235,15 @@ footer .container{
     text-align: center;
 }
 
+.detailsEvent h1{
+    font-size: 40px !important;
+    font-weight: 500;    
+    padding: 10px 0px 10px;
+}
+
+
 .detailsEvent ul{
     padding-top:8px;
-    padding:0;
 }
 
 .detailsEvent li{

@@ -25,11 +25,11 @@
                         <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{ objectID }}}{% endverbatim %}">
                             <img class="card-img-top hit-image" src="{% verbatim %}{{{image}}}{% endverbatim %}"
                               alt="image de l'évenement">
-                            <div class="card-body" id="hit-content">
+                            <div class="card-body pb-3" id="hit-content">
                                 <p class="card-subtitle text-muted ">{% verbatim %}{{{_highlightResult.place.value}}}{% endverbatim %}</p>
                                 <h4 class="card-title">{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}</h4>
                                 <p class="card-text">{% verbatim %}{{{_highlightResult.description.value}}}{% endverbatim %}</p>
-                                <p class="card-subtitle text-muted">Réservation</p>
+                                <p class="card-subtitle text-muted">Réservation</p><hr>
                             </div>
                         </a>
                     </div>
