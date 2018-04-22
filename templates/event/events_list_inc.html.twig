@@ -2,66 +2,44 @@
 
 {% block body %}
              
-            
-                <div class="search-bar p-2 m-3">
-                 <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
-                    <div class="input-group recherche">
-                      <i class="fas fa-search fa-2x pl-3 my-auto"></i>
-                        <input type="text" id="search-input" autocomplete="off" value="" class=" form-control border-none search-input"
-                           placeholder="Que recherchez-vous?">
-                        <div class="btn-container">
-                            <button type="submit" class="btn-custom">Rechercher</button>
-                        </div>
+    <div class="container">
+        <div class="search-bar p-2 m-3">
+            <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
+                <div class="input-group recherche">
+                    <i class="fas fa-search fa-2x pl-3 my-auto"></i>
+                    <input type="text" id="search-input" autocomplete="off" value="" class=" form-control border-none search-input"
+                          placeholder="Que recherchez-vous?">
+                    <div class="btn-container">
+                        <button type="submit" class="btn-custom">Rechercher</button>
                     </div>
-                 </form>
                 </div>
-         
-
-    <div class="row">
-    {% for event in events %}
-        
-   <div id="hits"> <!-- Instantsearch.js -->
-       <script type="text/html" id="hit-template">
-
-           <div id="hit">
-               <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{ objectID }}}{% endverbatim %}">
-                <img class="card-img-top hit-image"
-                     src="{% verbatim %}{{{image}}}{% endverbatim %}"
-                     alt="">
-                <div class="card-body pl-0" id="hit-content">
-                    <p class="card-subtitle text-muted ">{% verbatim %}{{{_highlightResult.place.value}}}{% endverbatim %}</p>
-                    <h4 class="card-title">{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}</h4>
-                    <p class="card-text">{% verbatim %}{{{_highlightResult.description.value}}}{% endverbatim %}</p>
-                    <p class="card-subtitle text-muted">Réservation</p>
-                </div>
-               </a>
-           </div>
-
-       </script>
+            </for>
         </div>
-    </div>
+         
+        <div class="row">
+            {% for event in events %}
         
-   {# <div class="card col-lg-3 col-sm-6 col-xs-12" style="width: 18rem;">
-        <img class="card-img-top" src="../img/wala1.jpg" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">{{ event.name }}</h5>
-            <p class="card-text">{{ event.description }}</p>
-    </div>
-  
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ event.theme }}</li>
-        <li class="list-group-item">{{ event.place}}</li>  
-    </ul>
-  
-    <div class="card-body">
-        <a href="#" class="card-link">{{ event.website }}</a>
-        <a href="#" class="card-link">{{ event.name }}</a>
-    </div>
-</div>#}
-    
-      
-
+            <div id="hits"> <!-- Instantsearch.js -->
+                <script type="text/html" id="hit-template">
+                    <div id="hit">
+                        <a class="card cardlink" href="{{ path('root') }}event/{% verbatim %}{{{ objectID }}}{% endverbatim %}">
+                            <img class="card-img-top hit-image" src="{% verbatim %}{{{image}}}{% endverbatim %}"
+                              alt="image de l'évenement">
+                            <div class="card-body pl-0" id="hit-content">
+                                <p class="card-subtitle text-muted ">{% verbatim %}{{{_highlightResult.place.value}}}{% endverbatim %}</p>
+                                <h4 class="card-title">{% verbatim %}{{{_highlightResult.name.value}}}{% endverbatim %}</h4>
+                                <p class="card-text">{% verbatim %}{{{_highlightResult.description.value}}}{% endverbatim %}</p>
+                                <p class="card-subtitle text-muted">Réservation</p>
+                            </div>
+                        </a>
+                    </div>
+                </script>
+            </div>
+     
+        </div>
+        
    {% endfor %}
-</div>    
+    </div>    
+
 <script src="{{asset('js/app2.js')}}"></script>
 {% endblock %}

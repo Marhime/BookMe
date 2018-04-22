@@ -49,7 +49,7 @@
                 <a class="nav-link" data-toggle="modal" href="" data-target="#LoginModal">Connexion</a>
             </li>
               {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-              <li class="nav-item dropdown pl-4">
+              <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Mon Compte
                   </a>
@@ -74,7 +74,7 @@
     {% block modalLogin %}{% endblock %}
 </div>
 
-    <div class="container container-custom">
+    <div class="container-fluid container-custom">
 
  {% block body %}{%endblock %}
     </div>
@@ -87,15 +87,14 @@
               <div class="pt-3 col-sm-4 col-xs-2">
                   <ul>
                       <li>BookMyFestival</li>
-                        <li> <a class="pre-link" href={{ path('events')}}>Les festivals</a></li>
-                        <li> <a class="pre-link" href="{{ path('product') }}">Les types de stands</a></li>
+                      <li> <a class="pre-link" href={{ path('events')}}>Les festivals</a></li>
                         <li> <a class="pre-link" href="#">Réservez un stand</a></li>
                   </ul>
               </div>
                 <div class="pt-3 col-sm-4 col-xs-2">
                   <ul>
                       <li>Organisateurs</li>
-                        <li> <a class="pre-link" href="#{#{{ form ajout organisateur #}">Devenez organisateur</a></li>
+                        <li> <a class="pre-link" href={{path('register')}}>Devenez organisateur</a></li>
                         <li> <a class="pre-link" href="#{#{{ add.event }}#}">Ajoutez un festival</a></li>
                   </ul>
               </div>

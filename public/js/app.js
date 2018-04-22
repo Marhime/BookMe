@@ -34,7 +34,7 @@ search.addWidget(
         },   
         cssClasses: {
            root: "row",
-           item: "col-sm-3"
+           item: "col-lg-3 col-sm-6 col-md-4 col-xs-6"
         }            
     })
 );

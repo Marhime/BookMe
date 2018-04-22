@@ -30,7 +30,7 @@
 {% endblock %}
     
 {% block body %}
-
+<div class="container">
 <h2 class="pt-3"> Les festivals en France </h2>
 
 <div id="hits"> <!-- Instantsearch.js -->
@@ -41,7 +41,7 @@
                 {% verbatim %}
                 <img class="card-img-top hit-image"
                      src="{{{image}}}"
-                     alt="">
+                     alt="image de l'evenement">
                 <div class="card-body pl-0" id="hit-content">
                     <p class="card-subtitle text-muted ">{{{_highlightResult.place.value}}}</p>
                     <h4 class="card-title">{{{_highlightResult.name.value}}}</h4>
@@ -63,5 +63,5 @@
 
 
 <!-- /.row -->
-
+</div>
 {% endblock %}
