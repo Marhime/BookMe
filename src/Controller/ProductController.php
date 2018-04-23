@@ -85,12 +85,13 @@ class ProductController extends Controller
     public function editProduct(Request $request, ObjectManager $manager, EventRepository $eventRepository, ProductRepository $productRepository, $idEvent, $idProduct = null)
     {
         //If doesn't exist create a product
-        $product = $productRepository->find($idProduct);
+
         $event = $eventRepository->find($idEvent);
-        if($product === null){
+        if($idProduct === null){
             $product = new Product();
             $group = 'insertion';
         }else{
+            $product = $productRepository->find($idProduct);
             $group = 'edition';
         }
 
@@ -102,16 +103,12 @@ class ProductController extends Controller
         $formProduct->handleRequest($request);
 
         if($formProduct->isSubmitted() && $formProduct->isValid()){
-            $product->setQuantity($request->get('quantity'));
-            $quantity= $product->getQuantity();
             $product->setEvent($event);
+            //TODO event relation with id event emplementation
+            $manager->persist($product);
 
-            for ($i = 1; $i < $quantity; $i++ ) {
-                //TODO event relation with id event emplementation
-                $manager->persist($product);
-            }
             $manager->flush();
-            return $this->redirectToRoute('product');
+            return $this->redirectToRoute('oneEvent', ['id' => $event->getId()]);
         }
         return $this->render('product/edit_product.html.twig',
             ['form' => $formProduct->createView(), ]);

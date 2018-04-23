@@ -68,7 +68,7 @@ class UserController extends Controller
             $user->setRoles('ROLE_USER');
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute('dash_orga');
+            return $this->redirectToRoute('profile');
             
         }
         

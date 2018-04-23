@@ -9,37 +9,38 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 
 
-
 class EventFixture extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
         $factory = new Factory();
         $faker = $factory::create('fr_FR');
-        
+
         for ($i = 0; $i < 100; $i++) {
-        $event = new Event();
-        $event->setName('Event'. $i);
-        $event->setOwner($this->getReference('user' . rand(0, 99)));
-        $event->setPlace($faker->city);
-        $event->setOpeningDate($faker->dateTimeThisDecade);
-        $event->setClosingDate($faker->dateTimeThisDecade);
-        $event->setPhone('0699999999');
-        $event->setTheme($faker->colorName);
-        $event->setDescription($faker->paragraph);
-        $event->setImage('img/festival_'.rand(1,4).'.jpg');
-        $event->setWebsite($faker->url);
+            $event = new Event();
+            $event->setName('Festival' . $i);
+            $event->setOwner($this->getReference('user' . rand(0, 99)));
+            $event->setPlace($faker->city);
+            $event->setOpeningDate($faker->dateTimeThisDecade);
+            $event->setClosingDate($faker->dateTimeThisDecade);
+            $event->setPhone('0699999999');
+            $event->setTheme($faker->colorName);
+            $event->setDescription($faker->text($maxNbChars = 120));
+            $event->setImage('img/festival_' . rand(1, 4) . '.jpg');
+            $event->setWebsite($faker->url);
 //        $event->setDescription($faker->paragraph);
 
-        $this->addReference('event'.$i, $event);
-        
-        $manager->persist($event);
-    }
+            $this->addReference('event' . $i, $event);
+
+            $manager->persist($event);
+        }
         $manager->flush();
     }
-    
-    public function getDependencies(): array{
-    return[
-    UserFixture::class,
-    ];}
+
+    public function getDependencies(): array
+    {
+        return [
+            UserFixture::class,
+        ];
+    }
 }
