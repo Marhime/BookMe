@@ -282,9 +282,18 @@ footer .container{
     width:100%;
     max-height: 70vh;
 }
-
+.actionorga{
+    position: fixed;
+    top: 40%;
+    right: -5px;
+    box-shadow: 0 2px 5px rgba(156,160,171,0.25);
+}
+.actionorga-active{
+    right: -5%;
+}
 
 /**Page - Dashboard/ - **/
 .recapUser{
     border: 1px solid lightgrey;
 }
+
