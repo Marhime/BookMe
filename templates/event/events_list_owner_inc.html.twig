@@ -1,12 +1,16 @@
-<div class="col-md-12">
-    <div class="row">
-        {% for event in eventOwner %}
-        <div class="card col-md-4">
-            <div class="card-body">
+{% for event in eventOwner %}
+    <div class="event-list mt-3 p-2">
+        <div class="row">
+            <div class="col-6">
                 <h4 class="card-title">{{ event.name }}</h4>
                 <p class="card-text">{{ event.place }}</p>
+                <p class="card-text">{{ event.openingDate|date('Y-m-d') }} - {{ event.closingDate|date('Y-m-d') }}</p>
+            </div>
+            <div class="col-6 align-self-center text-right">
+                <a href="{{ path('oneEvent', { 'id' : event.id }) }}" class="btn btn-danger">Afficher/Modifier
+                    l'événement</a>
             </div>
         </div>
-        {% endfor %}
     </div>
-</div>
+
+{% endfor %}

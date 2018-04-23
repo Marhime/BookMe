@@ -10,9 +10,7 @@
             </div>
             <div class="modal-body">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <h6 class="emoji">😊</h6>
-                    <h3 class="modal-title text-center" id="LoginModalLabel">Vous êtes déjà connecté</h3>
-                    
+                    <h5 class="modal-title text-center" id="LoginModalLabel">Vous êtes déjà connecté</h5>
                     <h5><small>{{ app.user.username }}</small><br>Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h5>
                     {% else %}
                     {% if last_username %}
@@ -31,13 +29,12 @@
                                 <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de passe">
                             </div>
                             <div class="text-center pt-2">
-                                <input type="hidden" name="_target_path" value="/home" />
                                 <button class="btn btn-danger btn-lg" type="submit">Se connecter</button>
                             </div>
                         </form>
             </div>
             <div class="modal-footer">
-              <p class="mx-auto">Vous n'avez pas de compte ? <a data-dismiss="modal" data-toggle="modal" href="" data-target="#RegisterModal">Inscription</a></p>
+              <p class="mx-auto">Vous n'avez pas de compte ? <a href="{{ path('register') }}">Inscription</a></p>
             </div>
           </div>
         </div>

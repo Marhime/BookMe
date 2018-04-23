@@ -30,11 +30,11 @@ search.addWidget(
         container: '#hits',
         templates: {
             item: document.getElementById('hit-template').innerHTML,
-            empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
+            empty: "Nous n'avons trouvé aucun résultat correspondant à votre recherche <em>\"{{query}}\"</em>"
         },   
         cssClasses: {
            root: "row",
-           item: "col-sm-3"
+           item: "col-lg-3 col-sm-6 col-md-4 col-xs-6"
         }            
     })
 );

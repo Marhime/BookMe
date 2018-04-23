@@ -58,7 +58,7 @@ class Event
      */
     private $theme;
 
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */

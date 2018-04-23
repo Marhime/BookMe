@@ -1,21 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-<div class ="row lala">    
-    <div class ="col-12">
-    <h1 class ="emoji">😊</h1>
-<h1 class="text-center">Vous êtes déjà connecté</h1>
-<h2><small>{{ app.user.username }}</small> Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h2>
-
-{% else %}
-<h1 class="text-center">Inscrivez-vous sur notre plateforme</h1>
-<p class="text-center"><small>Vous êtes déjà inscrit ? <a data-toggle="modal" href="" data-target="#LoginModal">Connexion</a></small></p>
-    {{ form_start(formUser) }}
-    {{ form_widget(formUser) }}
-    {{ form_end(formUser) }}
-</form>
-</div>
-</div>
-{% endif %}
+    <div class="container">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <h1 class="text-center">Vous êtes déjà connecté</h1>
+                <h2><small>{{ app.user.username }}</small> Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h2>
+        {% else %}
+            <h1 class="text-center">Inscrivez-vous sur notre plateforme</h1>
+            <p class="text-center"><small>Vous êtes déjà inscrit ? <a data-toggle="modal" href="" data-target="#LoginModal">Connexion</a></small></p>
+                {{ form_start(formUser) }}
+                {{ form_widget(formUser) }}
+                {{ form_end(formUser) }}
+        {% endif %}
+    <div>
 {% endblock %}
