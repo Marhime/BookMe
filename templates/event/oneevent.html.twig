@@ -6,34 +6,40 @@
 {% block header %}
 <div class="container-fluid">
     <div class="detailsEvent">
-        <img class="card-img-top img-fluid" src="{{ asset(event.image) }}" alt="Responsive Image Event">
+        <img class="img-fluid" src="{{ asset(event.image) }}" alt="Responsive Image Event">
         <!-- affichage de l'image -->
         {% endblock %}
         {% block body %}
-            <div class="row">
-                <div class="col-md-12 mx-auto">
-                    <h1>{{ event.name }}</h1> <!-- Nom de l'événement -->
-                    <ul class="border p-3 bg-light ">
-                        <li> {{ event.description }}</li> <!-- description de l'événement -->
-                        <li class="p-3"> Site web <a href="{{ event.website }}"><i
-                                        class="fas fa-external-link-alt fa"></i></a>
-                        <li> <!-- site web -->
-                        <li class="d-inline float-left"><i class="fas fa-phone"></i> {{ event.phone }}</li>
-                        <!-- numéro de l'organisateur -->
-                        <li class="d-inline float-right"><i
-                                    class="fas fa-map-marker text-danger"></i> {{ event.place }}</li>
-                        <!-- lieu de l'événement -->
-                        <li class="d-inline-flex"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
-                    </ul>
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <h1>{{ event.name }}</h1> <!-- Nom de l'événement -->
+                <hr class="separation">
+                <div class="container">
+                    <div class="row">
+                        <p class="col"><strong>Tel</strong>: 0{{ event.phone }}</p>
+                        <p class="col">{{ event.theme }}</p>
+                        <p class="col"><a href="{{ event.website }}"><strong>Website</strong></a></p>
+                        <p class="col"><i class="fas fa-map-marker text-danger mr-1"></i>{{ event.place }}</p>
+                    </div>
                 </div>
-                <div class="produitdispo mx-auto">
-                    <h2>Nos produits</h2>
-
+                <hr class="separation">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis mi, auctor non rhoncus id,
+                    accumsan non tortor. Etiam non bibendum elit. Class aptent taciti sociosqu ad litora torquent per
+                    conubia nostra, per inceptos himenaeos. Quisque volutpat orci id erat vestibulum finibus. Nullam
+                    congue fringilla posuere. Curabitur dictum nibh sit amet est pulvinar ullamcorper. Maecenas vel
+                    libero maximus sem iaculis accumsan quis quis magna. Etiam sit amet nunc eu turpis iaculis tempor.
+                    Nam quis mauris in nunc imperdiet dictum. Nam id odio tortor. Donec lacinia convallis augue vel
+                    cursus. Ut lorem mauris, malesuada non orci a, posuere scelerisque sapien. Curabitur feugiat tellus
+                    est, sed ornare mauris gravida quis. Nunc bibendum blandit lorem, sed malesuada nulla fermentum ac.
+                    In tempus ligula sed elit aliquam, non ullamcorper sapien consectetur. Sed ut purus id sapien
+                    vulputate pharetra.</p>
+                <div class="mx-auto">
                     {% include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
                     <!-- affichage des produits disponibles -->
                 </div>
             </div>
         </div>
+    </div>
 </div>
 {# Orga action list #}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
