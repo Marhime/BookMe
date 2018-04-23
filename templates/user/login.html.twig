@@ -1,44 +1,52 @@
-{% block modalLogin %}    
-      <!-- Modal -->
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="LoginModalLabel">Connexion</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+{% block modalLogin %}
+    <!-- Modal -->
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="LoginModalLabel">Connexion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <h6 class="emoji">😊</h6>
+        <h5 class="modal-title text-center" id="LoginModalLabel">Vous êtes déjà connecté</h5>
+        <h5>
+            <small>{{ app.user.username }}</small>
+            <br>Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h5>
+    {% else %}
+        {% if last_username %}
+            <h5 class="modal-title" id="LoginModalLabel">Ravi de vous revoir</h5>
+        {% endif %}
+        <form action="{{ path('login') }}" method="post" class="col-lg-8 mx-auto pt-4">
+            {% if error %}
+                <h5 class="modal-title"
+                    id="LoginModalLabel">{{ error.messageKey|trans(error.messageData, 'security') }}</h5>
+            {% endif %}
+            <div class="form-group">
+                <label class="mb-0" for="username">
+                    <small>Adresse email</small>
+                </label>
+                <input type="email" class="form-control" id="username" name="_username" aria-describedby="emailHelp"
+                       value="{{ last_username }}" placeholder="exemple@mail.fr">
             </div>
-            <div class="modal-body">
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <h6 class="emoji">😊</h6>
-                    <h5 class="modal-title text-center" id="LoginModalLabel">Vous êtes déjà connecté</h5>
-                    <h5><small>{{ app.user.username }}</small><br>Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h5>
-                    {% else %}
-                    {% if last_username %}
-                    <h5 class="modal-title" id="LoginModalLabel">Ravi de vous revoir</h5>
-                    {% endif %}
-                    <form action="{{ path('login') }}" method="post" class="col-lg-8 mx-auto pt-4">
-                        {% if error %}
-                            <h5 class="modal-title" id="LoginModalLabel">{{ error.messageKey|trans(error.messageData, 'security') }}</h5>
-                        {% endif %}
-                        <div class="form-group">
-                                <label class="mb-0" for="username"><small>Adresse email</small></label>
-                                <input type="email" class="form-control" id="username" name="_username" aria-describedby="emailHelp" value="{{ last_username }}" placeholder="exemple@mail.fr">
-                            </div>
-                            <div class="form-group">
-                                <label class="mb-0" for="password"><small>Mot de passe</small></label>
-                                <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de passe">
-                            </div>
-                            <div class="text-center pt-2">
-                                <button class="btn btn-danger btn-lg" type="submit">Se connecter</button>
-                            </div>
-                        </form>
+            <div class="form-group">
+                <label class="mb-0" for="password">
+                    <small>Mot de passe</small>
+                </label>
+                <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de passe">
             </div>
-            <div class="modal-footer">
-              <p class="mx-auto">Vous n'avez pas de compte ? <a href="{{ path('register') }}">Inscription</a></p>
+            <div class="text-center pt-2">
+                <button class="btn btn-danger btn-lg" type="submit">Se connecter</button>
             </div>
-          </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+            <p class="mx-auto">Vous n'avez pas de compte ? <a href="{{ path('register') }}">Inscription</a></p>
+        </div>
+        </div>
         </div>
 
-{% endif %}
+    {% endif %}
 {% endblock %}
