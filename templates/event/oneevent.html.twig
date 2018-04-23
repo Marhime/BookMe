@@ -3,7 +3,7 @@
 {% block title %} Votre Festival {% endblock %}
 
 {% block body %}
-    
+
     <div class="container-fluid">
         <div class="detailsEvent">
                 <img class="card-img-top img-fluid" src="{{ asset(event.image) }}" alt=""> <!-- affichage de l'image -->
@@ -19,21 +19,13 @@
                                 <li class="d-inline-flex"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
                             </ul>
                     </div>
-                
-        
                     <div class="produitdispo mx-auto">
                         <h2>Nos produits</h2>
                     
-                    {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %} <!-- affichage des produits disponibles -->
-                    {#{{ render(controller(#}
-                        {#'App\\Controller\\ProductController::displayEventProduct',#}
-                        {#{ 'event' : event.id }#}
-                    {#)) }}#}
-                
+                    {%  include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %} <!-- affichage des produits disponibles -->              
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-{% endblock %}
+ {% endblock %}

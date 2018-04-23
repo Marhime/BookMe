@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-             
+
+       
     <div class="container">
         <div class="search-bar p-2 m-1">
             <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
@@ -13,12 +14,10 @@
                         <button type="submit" class="btn-custom">Rechercher</button>
                     </div>
                 </div>
-            </for>
+            </form>
         </div>
          
-        <div class="row">
-        {% for event in events %}
-        
+        <div class="row">        
             <div id="hits"> <!-- Instantsearch.js -->
                 <script type="text/html" id="hit-template">
                     <div id="hit">
@@ -36,9 +35,7 @@
                 </script>
             </div>
         </div>
-        
-        {% endfor %}
     </div>    
 
-    <script src="{{asset('js/app2.js')}}"></script> <!-- fichier javascript -->
+    <script src="{{asset('js/app2.js')}}"></script>
 {% endblock %}

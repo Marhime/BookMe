@@ -124,7 +124,7 @@ class EventController extends Controller
      * @Route("dashboard/listEvent", name="eventListOwner")
      */
 
-    // afficher les événement de l'orga
+    // afficher les événements de l'orga
 
     public function displayEventByOwner($owner)
     {
