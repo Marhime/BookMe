@@ -1,27 +1,31 @@
 <div class="row text-center">
     {% for product in productEvent %}
-    <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card">
-            <img class="card-img-top" src="" alt="">
-            <div class="card-body">
-                <h4 class="card-title">{{ product.type }}</h4>
-                <p class="card-text">{{ product.description }}</p>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% if product.event.owner.id == app.user.id %}
-                        <a href="{{ path('delete_product', { 'id' : product.id }) }}"
-                           class="btn btn-danger">Supprimer</a>
-                        <a href="{{ path('edit_product', { 'idProduct' : product.id, 'idEvent' : product.event.id }) }}"
-                           class="btn btn-success">Modifier</a>
-                    {% else %}
-                        <a class="btn btn-success" href="#">Réserver</a>
+        <div class="col-md-4 col-xs-12 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">{{ product.type }}</h4>
+                    <p class="card-text">{{ product.description }}</p>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if product.event.owner.id == app.user.id %}
+                            <a href="{{ path('delete_product', { 'id' : product.id }) }}"
+                               class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('edit_product', { 'idProduct' : product.id, 'idEvent' : product.event.id }) }}"
+                               class="btn btn-success">Modifier</a>
+                        {% else %}
+                            <a class="btn btn-success" href="#">Réserver</a>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="btn btn-success" data-dismiss="modal" data-toggle="modal" href="{{ path('login') }}"
-                       data-target="#LoginModal">Réserver</a>
-                {% endif %}
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="btn btn-success" data-dismiss="modal" data-toggle="modal" href="{{ path('login') }}"
+                           data-target="#LoginModal">Réserver</a>
+                    {% endif %}
+                </div>
             </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if event.owner.id == app.user.id %}
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title"></h4>
@@ -29,6 +33,7 @@
                     <a class="btn btn-success" href="{{ path('add_product', {'idEvent': event.id}) }}">Ajouter</a>
                 </div>
             </div>
-        </div>
-    </div>
+        {% endif %}
+    {% endif %}
+
 </div>

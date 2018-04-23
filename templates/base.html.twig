@@ -39,10 +39,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+              {% if is_granted('ROLE_ORGA')%}
             <li class="nav-item pr-4">
-                <a class="nav-link" href="#">Ajoutez votre festival</a>
+                <a class="nav-link" href="{{ path('addEvent') }}">Ajoutez votre festival</a>
             </li>
-              {% if not is_granted('ROLE_ORGA')%}
+              {% endif %}
+              {% if not is_granted('IS_AUTHENTICATED_FULLY')%}
             <li class="nav-item pr-4">
                 <a class="nav-link" href="{{ path('register') }}">Inscription</a>
             </li>
