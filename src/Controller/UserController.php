@@ -96,6 +96,25 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @Route("/login_", name="login_")
+     */
+    public function loginfail(AuthenticationUtils $authenticationUtils)
+    {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('user/login_.html.twig', array(
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ));
+
+    }
+
+
     //function to acess to the orga dashboard
     //TODO limit acess to orga roles
     /**
