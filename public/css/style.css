@@ -78,7 +78,7 @@ nav .text-custom{
 /** Header bannière **/
 .business-header {
     min-height: 80vh;
-    background: url('../img/festival_1.jpg') center center no-repeat scroll;
+    background: url('../img/home1.jpeg') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -280,9 +280,8 @@ footer .container{
 }
 .detailsEvent img{
     width:100%;
-    max-height: 70vh;
+    max-height: 55vh;
 }
-
 
 /**Page - Dashboard/ - **/
 .recapUser{
