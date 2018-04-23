@@ -185,6 +185,7 @@ pre-footer .container{
     top: 50%;
     transform: translate(0, -50%) !important;
     overflow: hidden;
+    text-align: center;
 }
 
 #allevents{
@@ -211,5 +212,15 @@ footer .bg-custom{
 footer .container{
     border-top: 1px solid lightgrey;
     padding-top:20px;
+}
+
+.emoji{
+    font-size:70px;
+}
+
+.lala
+{    
+    text-align: center;
+    padding-top: 25px;
 }
 
