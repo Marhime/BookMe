@@ -2,6 +2,9 @@
 {% block body %}
     <div class="container">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class ="row lala">
+            <div class ="col-12">
+            <h1 class ="emoji">😊</h1>
             <h1 class="text-center">Vous êtes déjà connecté</h1>
                 <h2><small>{{ app.user.username }}</small> Ce n'est pas vous ? <a href="{{ path('logout') }}">Se déconnecter</a></h2>
         {% else %}
@@ -12,4 +15,6 @@
                 {{ form_end(formUser) }}
         {% endif %}
     <div>
+  </div>
+</div>
 {% endblock %}

@@ -233,44 +233,14 @@ footer .container{
     padding-top:20px;
 }
 
-
-/** Modal de Connexion de l'utilisateur **/
-.modal-dialog {
-    position: relative !important;
-    margin: auto !important;
-    top: 50%;
-    transform: translate(0, -50%) !important;
-    overflow: hidden;
+.emoji{
+    font-size:70px;
 }
 
-
-/** Page OneEvent **/
-
-.detailsEvent{
-    color: black;
-    text-shadow: 2px 1px 40px rgba(22, 23, 31, 0.4);
+.lala
+{    
     text-align: center;
-}
-
-.detailsEvent h1{
-    font-size: 40px !important;
-    font-weight: 600;    
-    padding: 10px 0px 10px; 
-}
-
-.detailsEvent ul{
-    padding-top:8px;
-}
-
-.detailsEvent li{
-    font-size: 22px !important;
-    list-style:none;
-}
-.detailsEvent img{
-    width:100%;
-    max-height: 70vh;
-}
-=======
+    padding-top: 25px;
 
 /**Page - Dashboard/ - **/
 .recapUser{
@@ -306,3 +276,13 @@ footer .container{
     border-radius: 5px;
 }
 
+.emoji{
+    font-size:70px;
+    text-align: center;
+}
+
+.lala
+{    
+    text-align: center;
+    padding-top: 25px;
+}
