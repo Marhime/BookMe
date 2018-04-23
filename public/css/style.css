@@ -78,7 +78,7 @@ nav .text-custom{
 /** Header bannière **/
 .business-header {
     min-height: 80vh;
-    background: url('../img/home1.jpeg') center center no-repeat scroll;
+    background: url('../img/home1.gif') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
