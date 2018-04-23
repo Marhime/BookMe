@@ -4,19 +4,20 @@
 
        
     <div class="container">
-        <div class="search-bar p-2 m-1">
+        <div  id="haut" class="search-bar p-2 m-1">
             <form class="form-horizontal" method="post" accept-charset="utf-8">  <!-- barre de recherche Homepage -->
                 <div class="input-group recherche">
                     <i class="fas fa-search fa-2x pl-3 my-auto"></i>
                     <input type="text" id="search-input" autocomplete="off" value="" class=" form-control border-none search-input"
-                          placeholder="Que recherchez-vous?">
-                    <div class="btn-container">
-                        <button type="submit" class="btn-custom">Rechercher</button>
-                    </div>
+                            placeholder="Que recherchez-vous?">
+                        <div class="btn-container">
+                            <button type="submit" class="btn-custom">Rechercher</button>
+                      </div>
                 </div>
             </form>
         </div>
-         
+       
+        
         <div class="row">        
             <div id="hits"> <!-- Instantsearch.js -->
                 <script type="text/html" id="hit-template">
@@ -36,6 +37,8 @@
             </div>
         </div>
     </div>    
+    
+    <a href="#haut" class="arrowtop"><i class="fas fa-angle-up fa-3x"></i></a>
 
     <script src="{{asset('js/app2.js')}}"></script>
 {% endblock %}
