@@ -22,8 +22,7 @@ class EventType extends AbstractType
             ->add('website')
             ->add('description')
             ->add('image', FileType::class,
-                ['required' => false])
-        ;
+                ['required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

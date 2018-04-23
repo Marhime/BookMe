@@ -18,13 +18,13 @@ class ProductFixtures extends Fixture
 
         // $product = new Product();
         // $manager->persist($product);
-        for ($i = 0; $i < 300; $i++){
+        for ($i = 0; $i < 300; $i++) {
             $product = new Product();
             $product->setDescription($faker->paragraph(2));
             $product->setPrice($faker->numberBetween(200, 1000));
-            $product->setType($faker->randomElement(array('Emplacement Standard','Emplacement Premium','Emplacement Popup')));
+            $product->setType($faker->randomElement(array('Emplacement Standard', 'Emplacement Premium', 'Emplacement Popup')));
             $manager->persist($product);
-            $this->addReference("product". $i, $product);
+            $this->addReference("product" . $i, $product);
         }
 
         $manager->flush();

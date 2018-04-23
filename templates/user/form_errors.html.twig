@@ -3,7 +3,9 @@
         {% if errors|length > 0 %}
             {% if compound %}
                 {% for error in errors %}
-                    <h2 class="modal-title"><small>{{ error.message }}</small></h2>
+                    <h2 class="modal-title">
+                        <small>{{ error.message }}</small>
+                    </h2>
                 {% endfor %}
             {% else %}
                 {# ... display the errors for a single field #}

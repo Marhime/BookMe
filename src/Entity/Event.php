@@ -18,7 +18,7 @@ class Event
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    
+
     private $id;
 
     /**
@@ -29,7 +29,7 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
      * @var type User owner
-     * 
+     *
      */
     private $owner;
 
@@ -58,7 +58,7 @@ class Event
      */
     private $theme;
 
-    
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -242,15 +242,16 @@ class Event
     /**
      * @Groups({"searchable"})
      */
-    public function getImage() {
+    public function getImage()
+    {
         return $this->image;
     }
 
-    public function setImage($image) {
+    public function setImage($image)
+    {
         $this->image = $image;
         return $this;
     }
-
 
 
 }

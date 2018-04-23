@@ -26,7 +26,7 @@ class UserType extends AbstractType
             ->add('phone', TelType::class, array('label' => 'Téléphone'))
             ->add('password', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Mot de passe'),
+                'first_options' => array('label' => 'Mot de passe'),
                 'second_options' => array('label' => 'Confirmer votre mot de passe'),
             ))
             ->add('roles', ChoiceType::class, array(
@@ -34,11 +34,9 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'choices' => array(
                     'Organisateur' => 'ROLE_ORGA',
-                    'Exposant'     => 'ROLE_EXPO'
+                    'Exposant' => 'ROLE_EXPO'
                 )
-            ))
-
-        ;
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

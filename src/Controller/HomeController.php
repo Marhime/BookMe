@@ -10,6 +10,7 @@ class HomeController extends Controller
     /**
      * @Route("/", name="root")
      */
+    //route for root
     public function root()
     {
         //redirection vers la route home en cas de redirection vers de terre '/'
@@ -19,6 +20,7 @@ class HomeController extends Controller
     /**
      * @Route("/home", name="home")
      */
+    //render the homepage
     public function index()
     {
         return $this->render('home/index.html.twig', [

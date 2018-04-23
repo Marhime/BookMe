@@ -29,8 +29,7 @@ class UserController extends Controller
 
         // 2) handle the submit
         $formUser->handleRequest($request);
-        if($formUser->isSubmitted() && $formUser->isValid())
-        {
+        if ($formUser->isSubmitted() && $formUser->isValid()) {
             // 3) Encode the password
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
@@ -49,33 +48,33 @@ class UserController extends Controller
             'formUser' => $formUser->createView()
         ]);
     }
-    
+
     /**
-     * 
+     *
      * @Route("/dashboard/editUser/{id}", name="edit_user")
      */
     public function editUser(Request $request, ObjectManager $manager, User $user = null)
     {
-        
+
         $form = $this->createForm(EditUserType::class, $user)
-            ->add('Envoyer',SubmitType::class);
-        
-        $form->handleRequest($request); 
-        
-        if($form->isSubmitted() && $form->isValid()){
-        // save user edit
-            
+            ->add('Envoyer', SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // save user edit
+
             $user->setRoles('ROLE_USER');
             $manager->persist($user);
             $manager->flush();
             return $this->redirectToRoute('profile');
-            
+
         }
-        
-       
-        return $this->render('orga_dashboard/edit_dash.html.twig',[
-                'form' => $form->createView(),
-                ]);
+
+
+        return $this->render('orga_dashboard/edit_dash.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -91,7 +90,7 @@ class UserController extends Controller
 
         return $this->render('user/login.html.twig', array(
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
 
     }
@@ -109,7 +108,7 @@ class UserController extends Controller
 
         return $this->render('user/login_.html.twig', array(
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
 
     }

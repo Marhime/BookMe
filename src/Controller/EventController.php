@@ -47,8 +47,8 @@ class EventController extends Controller
             $event = new Event();
             $event->setOpeningDate(new \DateTime('now'));
             $event->setClosingDate(new \DateTime('tomorrow'));
-        }else{
-            $oldImage= $event->getImage();
+        } else {
+            $oldImage = $event->getImage();
             //transformation dans le format attendu dans le form
             $event->setImage(new File($event->getImage()));
             $group = 'edition';
@@ -68,12 +68,12 @@ class EventController extends Controller
             //renommage avec hashage, guessExtension va déduire le type de fichier
             //par le contenu MAIS pour la secu reencodage de l'img normalement
             $image = $event->getImage();
-            if($image === null){
+            if ($image === null) {
                 $event->setImage($oldImage);
-            }else{
+            } else {
                 $newFileName = md5(uniqid()) . '.' . $image->guessExtension();
                 $image->move('uploads', $newFileName);
-                $event->setImage('uploads/'.$newFileName);
+                $event->setImage('uploads/' . $newFileName);
             }
             // 3 - Saving the entry in the db
             $manager->persist($event);
@@ -90,6 +90,7 @@ class EventController extends Controller
     /**
      * @Route("/dashboard/delete/{id}", name="delete_event")
      */
+    //TODO fix circular reference in algolia
     public function deleteEvent(Event $event, ObjectManager $manager)
     {
         $manager->remove($event);
@@ -102,7 +103,7 @@ class EventController extends Controller
      * @Route("/event/{id}", name="oneEvent")
      */
 
-    // Afficher un événement
+    // Display an event method to include
 
     public function display($id)
     {
