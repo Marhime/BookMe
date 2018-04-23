@@ -81,26 +81,23 @@
 
 /* HITS */
 #hits {
- 
+    padding-right: 0;
 }
 
 .hit {
     font-size: 0;
-    padding: 15px 0;
     border-bottom: 1px solid #eee;
+    padding:0;
 }
 .hit-name {
-    margin: 0;
+    margin: 2px;
 }
 .hit-image {
     display: inline-block;
     width: 100%;
-    text-align: center;
+    height: 170px;
 }
-.hit-image img {
-    max-width: 100%;
-    max-height: 180px;
-}
+
 .hit-content {
     font-size: 13px;
     font-weight: 300;
