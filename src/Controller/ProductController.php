@@ -34,7 +34,7 @@ class ProductController extends Controller
 
 
     /**
-     * @Route("/product/{id}", name="product_show")
+     * @Route("", name="product_show")
      */
     public function display($id)
     {
@@ -76,13 +76,13 @@ class ProductController extends Controller
 
     /**
      * @Route("event/{idEvent}/product/edit/{idProduct}", name="edit_product")
-     * @Route("/product/add", name="add_product")
+     * @Route("event/{idEvent}/product/add", name="add_product")
      * 
      */
     
     //add a product
     
-    public function editProduct(Request $request, ObjectManager $manager, EventRepository $eventRepository, ProductRepository $productRepository, $idEvent, $idProduct)
+    public function editProduct(Request $request, ObjectManager $manager, EventRepository $eventRepository, ProductRepository $productRepository, $idEvent, $idProduct = null)
     {
         //If doesn't exist create a product
         $product = $productRepository->find($idProduct);
