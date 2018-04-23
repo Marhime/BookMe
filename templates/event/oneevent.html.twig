@@ -2,46 +2,52 @@
 
 {% block title %} Votre Festival {% endblock %}
 
-{% block body %}
 
-    <div class="container-fluid">
-        <div class="detailsEvent">
-                <img class="card-img-top img-fluid" src="{{ asset(event.image) }}" alt="Responsive Image Event"> <!-- affichage de l'image -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 mx-auto">
-                        <h1>{{ event.name }}</h1> <!-- Nom de l'événement -->
-                        <ul class="border p-3 bg-light ">
-                            <li> {{ event.description }}</li> <!-- description de l'événement -->
-                            <li class="p-3"> Site web <a href="{{ event.website }}"><i
-                                            class="fas fa-external-link-alt fa"></i></a>
-                            <li> <!-- site web -->
-                            <li class="d-inline float-left"><i class="fas fa-phone"></i> {{ event.phone }}</li>
-                            <!-- numéro de l'organisateur -->
-                            <li class="d-inline float-right"><i
-                                        class="fas fa-map-marker text-danger"></i> {{ event.place }}</li>
-                            <!-- lieu de l'événement -->
-                            <li class="d-inline-flex"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
-                        </ul>
-                    </div>
-                    <div class="produitdispo mx-auto">
-                        <h2>Nos produits</h2>
+{% block header %}
+<div class="container-fluid">
+    <div class="detailsEvent">
+        <img class="card-img-top img-fluid" src="{{ asset(event.image) }}" alt="Responsive Image Event">
+        <!-- affichage de l'image -->
+        {% endblock %}
+        {% block body %}
+            <div class="row">
+                <div class="col-md-12 mx-auto">
+                    <h1>{{ event.name }}</h1> <!-- Nom de l'événement -->
+                    <ul class="border p-3 bg-light ">
+                        <li> {{ event.description }}</li> <!-- description de l'événement -->
+                        <li class="p-3"> Site web <a href="{{ event.website }}"><i
+                                        class="fas fa-external-link-alt fa"></i></a>
+                        <li> <!-- site web -->
+                        <li class="d-inline float-left"><i class="fas fa-phone"></i> {{ event.phone }}</li>
+                        <!-- numéro de l'organisateur -->
+                        <li class="d-inline float-right"><i
+                                    class="fas fa-map-marker text-danger"></i> {{ event.place }}</li>
+                        <!-- lieu de l'événement -->
+                        <li class="d-inline-flex"> Thème : {{ event.theme }}</li> <!-- Thème de l'événement -->
+                    </ul>
+                </div>
+                <div class="produitdispo mx-auto">
+                    <h2>Nos produits</h2>
 
-                        {% include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
-                        <!-- affichage des produits disponibles -->
-                    </div>
+                    {% include 'product/event_product_inc.html.twig' with { 'productEvent' : event.products } %}
+                    <!-- affichage des produits disponibles -->
                 </div>
             </div>
         </div>
-    </div>
-    {# Orga action list #}
-
-    <div class="list-group actionorga">
-        <a href="#" class="list-group-item list-group-item-action active">
-            ACTIONS
-        </a>
-        <a href="{{ path('editEvent', {'id' : event.id}) }}" class="list-group-item list-group-item-action">Modifier l'événement</a>
-        <a href="{{ path('add_product', {'idEvent': event.id}) }}" class="list-group-item list-group-item-action">Ajouter un produit</a>
-        <a href="{{ path('profile') }}" class="list-group-item list-group-item-action">Mon compte</a>
-    </div>
+</div>
+{# Orga action list #}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if event.owner.id == app.user.id %}
+            <div class="list-group actionorga">
+                <a href="#" class="list-group-item list-group-item-action active">
+                    ACTIONS
+                </a>
+                <a href="{{ path('editEvent', {'id' : event.id}) }}" class="list-group-item list-group-item-action">Modifier
+                    l'événement</a>
+                <a href="{{ path('add_product', {'idEvent': event.id}) }}"
+                   class="list-group-item list-group-item-action">Ajouter un produit</a>
+                <a href="{{ path('profile') }}" class="list-group-item list-group-item-action">Mon compte</a>
+            </div>
+        {% endif %}
+    {% endif %}
 {% endblock %}
