@@ -94,8 +94,7 @@ class EventController extends Controller
     {
         $manager->remove($event);
         $manager->flush();
-        $this->redirectToRoute('dash_orga');
-        return $this->redirectToRoute('dash_orga');
+        return $this->redirectToRoute('profile');
     }
 
     /**

@@ -4,7 +4,7 @@
         <!-- Table #1  -->
         {% for product in productEvent %}
         <div class="col-xs-12 col-lg-4">
-            <div class="card text-xs-center">
+            <div class="card1 text-xs-center">
                 <div class="card-header">
                     <h1 class="card-title">
                         {{ product.type }}
@@ -19,15 +19,15 @@
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         {% if product.event.owner.id == app.user.id %}
                             <a href="{{ path('delete_product', { 'id' : product.id }) }}"
-                               class="btn btn-gradient mt-2">Supprimer</a>
+                               class="btn btn-gradient1 mt-2">Supprimer</a>
                             <a href="{{ path('edit_product', { 'idProduct' : product.id, 'idEvent' : product.event.id }) }}"
-                               class="btn btn-gradient mt-2">Modifier</a>
+                               class="btn btn-gradient1 mt-2">Modifier</a>
                         {% else %}
-                            <a class="btn btn-gradient mt-2" href="#">Réserver</a>
+                            <a class="btn btn-gradient1 mt-2" href="#">Réserver</a>
                         {% endif %}
                     {% endif %}
                     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="btn btn-gradient mt-2" data-dismiss="modal" data-toggle="modal"
+                        <a class="btn btn-gradient1 mt-2" data-dismiss="modal" data-toggle="modal"
                            href="{{ path('login') }}"
                            data-target="#LoginModal">Réserver</a>
                     {% endif %}

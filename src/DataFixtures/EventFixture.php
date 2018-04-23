@@ -30,7 +30,13 @@ class EventFixture extends Fixture implements DependentFixtureInterface
             $event->setWebsite($faker->url);
 //        $event->setDescription($faker->paragraph);
 
-            $this->addReference('event' . $i, $event);
+            for ($j = 0; $j < 3; $j++)
+            {
+                echo 'product' .rand((100*$j),(100*($j+1)) - 1);
+                $product = $this->getReference('product' .rand((100*$j),(100*($j+1)) - 1));
+                $event->getProducts()->add($product);
+                $product->setEvent($event);
+            }
 
             $manager->persist($event);
         }
@@ -41,6 +47,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixture::class,
+            ProductFixtures::class
         ];
     }
 }

@@ -278,10 +278,10 @@ footer .container{
     font-size: 22px !important;
     list-style:none;
 }
+
 .detailsEvent img{
-    width:100%;
-    max-height: 55vh;
 }
+
 .actionorga{
     position: fixed;
     top: 40%;
@@ -300,7 +300,7 @@ footer .container{
 }
 
 
-.card {
+.card1 {
     border: 0;
     border-radius: 0px;
     -webkit-box-shadow: 0 3px 0px 0 rgba(0, 0, 0, 0.08);
@@ -310,7 +310,7 @@ footer .container{
     position: relative;
     will-change: transform;
 }
-.card:after {
+.card1:after {
     content: '';
     position: absolute;
     top: 0;
@@ -320,26 +320,26 @@ footer .container{
     background-color: #57e2b2;
     transition: 0.5s;
 }
-.card:hover {
+.card1:hover {
     transform: scale(1.05);
     -webkit-box-shadow: 0 20px 35px 0 rgba(0, 0, 0, 0.08);
     box-shadow: 0 20px 35px 0 rgba(0, 0, 0, 0.08);
 }
-.card:hover:after {
+.card1:hover:after {
     width: 100%;
 }
-.card .card-header {
+.card1 .card-header {
     background-color: white;
     padding-left: 2rem;
     border-bottom: 0px;
 }
-.card .card-title {
+.card1 .card-title {
     margin-bottom: 1rem;
 }
-.card .card-block {
+.card1 .card-block {
     padding-top: 0;
 }
-.card .list-group-item {
+.card1 .list-group-item {
     border: 0px;
     padding: .25rem;
     color: #808080;
@@ -363,7 +363,7 @@ footer .container{
     letter-spacing: 0px;
 }
 
-.btn {
+.btn1 {
     text-transform: uppercase;
     font-size: .75rem;
     font-weight: 500;
@@ -373,11 +373,11 @@ footer .container{
     letter-spacing: 1px;
 }
 
-.btn-gradient {
+.btn-gradient1 {
     background-color: #f2f2f2;
     transition: background .3s ease-in-out;
 }
-.btn-gradient:hover {
+.btn-gradient1:hover {
     color: white;
     background-color: #57e2b2;
 }

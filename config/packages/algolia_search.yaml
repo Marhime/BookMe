@@ -6,5 +6,8 @@ algolia_search:
       - name: events
         class: App\Entity\Event
         enable_serializer_groups: true
+      - name: users
+        class: App\Entity\User
+        enable_serializer_groups: true
     batchSize: 250
 
