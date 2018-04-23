@@ -42,12 +42,14 @@
             <li class="nav-item pr-4">
                 <a class="nav-link" href="#">Ajoutez votre festival</a>
             </li>
+              {% if not is_granted('ROLE_ORGA')%}
             <li class="nav-item pr-4">
                 <a class="nav-link" href="{{ path('register') }}">Inscription</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" href="" data-target="#LoginModal">Connexion</a>
             </li>
+              {% endif %}
               {% if is_granted('IS_AUTHENTICATED_FULLY') %}
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
