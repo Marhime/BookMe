@@ -18,6 +18,12 @@ body {
     padding:0;
 }
 
+.arrowtop{
+    position: fixed;
+    right: 35px;
+    bottom:25px;
+}
+
 p {
     margin: 0;
 }
