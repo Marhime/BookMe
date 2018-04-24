@@ -6,12 +6,14 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  */
-class Event
+class Event implements NormalizableInterface
 {
     /**
      * @ORM\Id()
@@ -65,7 +67,7 @@ class Event
     private $website;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="event", cascade={"remove"})
      */
     private $products;
 
@@ -81,6 +83,21 @@ class Event
      * @Assert\Image(maxSize = "2M",minWidth="200", minHeight="200")
      */
     private $image;
+
+    public function normalize(NormalizerInterface $serializer, $format = null, array $context = array()): array
+    {
+        return [
+            'name' => $this->getName(),
+            'place' => $this->getPlace(),
+            'opening_date' => $this->getOpeningDate(),
+            'closing_date' => $this->getClosingDate(),
+            'description' => $this->getDescription(),
+            'phone' => $this->getPhone(),
+            'website' => $this->getWebsite(),
+            'image' => $this->getImage(),
+            'theme' => $this->getTheme()
+        ];
+    }
 
     public function __construct()
     {

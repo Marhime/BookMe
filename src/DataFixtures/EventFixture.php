@@ -14,7 +14,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $factory = new Factory();
-        $faker = $factory::create('fr_FR');
+        $faker = $factory::create('en_UK');
 
         for ($i = 0; $i < 100; $i++) {
             $event = new Event();
@@ -24,7 +24,7 @@ class EventFixture extends Fixture implements DependentFixtureInterface
             $event->setOpeningDate($faker->dateTimeThisDecade);
             $event->setClosingDate($faker->dateTimeThisDecade);
             $event->setPhone('0699999999');
-            $event->setTheme($faker->colorName);
+            $event->setTheme($faker->randomElement(array('Rock', 'Electro', 'Rap', 'Reggae', 'Jazz')));
             $event->setDescription($faker->text($maxNbChars = 120));
             $event->setImage('img/festival_' . rand(1, 4) . '.jpg');
             $event->setWebsite($faker->url);
