@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <form action="{{ path('login_') }}" method="post" class="col-lg-3 mx-auto pt-4">
+    <form action="{{ path('login') }}" method="post" class="col-lg-3 mx-auto pt-4">
         {% if error %}
             <h5 class="alert alert-danger text-center"
-                id="LoginModalLabel">{{ error.messageKey|trans(error.messageData, 'security') }}</h5>
+            >{{ error.messageKey|trans(error.messageData, 'security') }}</h5>
         {% endif %}
         <div class="form-group">
             <label class="mb-0" for="username">
