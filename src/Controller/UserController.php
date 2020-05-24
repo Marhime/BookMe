@@ -24,12 +24,12 @@ class UserController extends Controller
     {
         // 1) build the form
         $user = New User();
-        $formUser = $this->createForm(UserType::class, $user);
+        $formUser = $this->createForm(UserType::class, $user)
+            ->add('Envoyer', SubmitType::class);
 
         // 2) handle the submit
         $formUser->handleRequest($request);
-        if($formUser->isSubmitted() && $formUser->isValid())
-        {
+        if ($formUser->isSubmitted() && $formUser->isValid()) {
             // 3) Encode the password
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
@@ -48,33 +48,33 @@ class UserController extends Controller
             'formUser' => $formUser->createView()
         ]);
     }
-    
+
     /**
-     * 
-     * @Route("/dashboard/edit/{id}", name="edit_user")
+     *
+     * @Route("/dashboard/editUser/{id}", name="edit_user")
      */
     public function editUser(Request $request, ObjectManager $manager, User $user = null)
     {
-        
+
         $form = $this->createForm(EditUserType::class, $user)
-            ->add('Envoyer',SubmitType::class);
-        
-        $form->handleRequest($request); 
-        
-        if($form->isSubmitted() && $form->isValid()){
-        // save user edit
-            
+            ->add('Envoyer', SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // save user edit
+
             $user->setRoles('ROLE_USER');
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute('dash_orga');
-            
+            return $this->redirectToRoute('profile');
+
         }
-        
-       
-        return $this->render('orga_dashboard/edit_dash.html.twig',[
-                'form' => $form->createView(),
-                ]);
+
+
+        return $this->render('orga_dashboard/edit_dash.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -90,28 +90,42 @@ class UserController extends Controller
 
         return $this->render('user/login.html.twig', array(
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
 
     }
 
+    /**
+     * @Route("/login_", name="login_")
+     */
+    public function loginfail(AuthenticationUtils $authenticationUtils)
+    {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('user/login_.html.twig', array(
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ));
+
+    }
+
+
     //function to acess to the orga dashboard
     //TODO limit acess to orga roles
     /**
-     * @Route("/dashboard/{id}", name="dash_orga")
+     * @Route("/profile", name="profile")
      */
-    public function dashOrga($id)
+    public function dashOrga()
     {
-        $orga = $this->getDoctrine()
+        $user = $this->getDoctrine()
             ->getRepository(User::class)
-            ->find($id);
+            ->find($this->getUser()->getId());
 
-        if (!$orga) {
-            throw $this->createNotFoundException(
-                'No user found for id '.$id
-            );
-        }
         return $this->render('orga_dashboard/main_dash.html.twig',
-            ['orga' => $orga]);
+            ['user' => $user]);
     }
 }

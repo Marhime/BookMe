@@ -2,21 +2,25 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * @ORM\Entity(repositoryClass="EventRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  */
-class Event
+class Event implements NormalizableInterface
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    
+
     private $id;
 
     /**
@@ -27,16 +31,10 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="events")
      * @var type User owner
-     * 
+     *
      */
     private $owner;
 
-    /**
-     *
-     * @ORM\Column(type="text") 
-     */
-     private $description;
-    
     /**
      * @ORM\Column(type="string", length=100)
      */
@@ -62,17 +60,59 @@ class Event
      */
     private $theme;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $website;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="event", cascade={"remove"})
+     */
+    private $products;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(groups={"insertion"})
+     * @var object
+     * @Assert\Image(maxSize = "2M",minWidth="200", minHeight="200")
+     */
+    private $image;
+
+    public function normalize(NormalizerInterface $serializer, $format = null, array $context = array()): array
+    {
+        return [
+            'name' => $this->getName(),
+            'place' => $this->getPlace(),
+            'opening_date' => $this->getOpeningDate(),
+            'closing_date' => $this->getClosingDate(),
+            'description' => $this->getDescription(),
+            'phone' => $this->getPhone(),
+            'website' => $this->getWebsite(),
+            'image' => $this->getImage(),
+            'theme' => $this->getTheme()
+        ];
+    }
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
 
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getName()
     {
         return $this->name;
@@ -84,6 +124,7 @@ class Event
 
         return $this;
     }
+
 
     public function getOwner()
     {
@@ -97,6 +138,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getPlace()
     {
         return $this->place;
@@ -109,10 +153,14 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getOpeningDate(): DateTimeInterface
     {
         return $this->opening_date;
     }
+
 
     public function setOpeningDate(DateTimeInterface $opening_date): self
     {
@@ -121,6 +169,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getClosingDate(): DateTimeInterface
     {
         return $this->closing_date;
@@ -133,6 +184,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getPhone()
     {
         return $this->phone;
@@ -145,6 +199,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getTheme()
     {
         return $this->theme;
@@ -157,6 +214,9 @@ class Event
         return $this;
     }
 
+    /**
+     * @Groups({"searchable"})
+     */
     public function getWebsite()
     {
         return $this->website;
@@ -168,16 +228,47 @@ class Event
 
         return $this;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @Groups({"searchable"})
+     * @return mixed
+     */
     public function getDescription()
     {
-       return $this->description;
+        return $this->description;
     }
-    
-    public function setDescription(string $description):self
+
+    /**
+     * @param mixed $description
+     * @return Event
+     */
+    public function setDescription($description)
     {
         $this->description = $description;
-        
         return $this;
     }
+
+    /**
+     * @Groups({"searchable"})
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+
 }

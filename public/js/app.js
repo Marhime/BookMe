@@ -8,17 +8,19 @@ var search = instantsearch({
     indexName: 'dev_events',
     urlSync: true,
     searchParameters: {
-        hitsPerPage: 10
+        hitsPerPage: 8
     }
 });
+
 
 //SEARCH WIDGET
 
 search.addWidget(
     instantsearch.widgets.searchBox({
         container: '#search-input',
-        magnifier: false,
- 
+        magnifier: false,    /** supprime l'icone recherche **/
+        reset:false,         /** supprime l'icone reset **/
+        wrapInput:false     /** bouton submit **/
     })
 );
 
@@ -28,18 +30,24 @@ search.addWidget(
         container: '#hits',
         templates: {
             item: document.getElementById('hit-template').innerHTML,
-            empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
-        }
+            empty: "Nous n'avons trouvé aucun résultat correspondant à votre recherche <em>\"{{query}}\"</em>"
+        },   
+        cssClasses: {
+           root: "row",
+           item: "col-lg-3 col-sm-6 col-md-4 col-xs-6"
+        }            
     })
 );
 
-//PAGINATION WIDGET
-search.addWidget(
-    instantsearch.widgets.pagination({
-        container: '#pagination'
-    })
-);
+////PAGINATION WIDGET
+//search.addWidget(
+//    instantsearch.widgets.pagination({
+//        container: '#pagination',
+//        cssClasses:{
+//            root: "row",
+//            item: "m-1"
+//        }
+//    })
+//);
 
-
-//START THE WHOLE WIDGETS
 search.start();

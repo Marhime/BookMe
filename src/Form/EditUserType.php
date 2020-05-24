@@ -16,8 +16,7 @@ class EditUserType extends AbstractType
             ->add('lastname')
             ->add('company')
             ->add('email')
-            ->add('phone')
-        ;
+            ->add('phone');
     }
 
     public function configureOptions(OptionsResolver $resolver)
